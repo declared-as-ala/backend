@@ -6,25 +6,45 @@ import {
 } from '../utils/jwt.js';
 
 // REGISTER
+import Customer from '../models/Customer.js';
+import { signAccessToken, signRefreshToken } from '../utils/jwt.js';
+import bcrypt from 'bcryptjs';
+
+// REGISTER
 export async function register(req, res, next) {
   try {
     const { email, password, firstName, lastName, phone } = req.body;
+
+    // Check if email is already used
     const exists = await Customer.findOne({ email });
     if (exists) return res.status(409).json({ message: 'Email déjà utilisé' });
 
-    const user = await Customer.create({
+    // Create new customer (password will be hashed by pre-save hook)
+    const customer = await Customer.create({
       email,
       password,
       firstName,
       lastName,
       phone,
     });
-    const payload = { id: user._id, email: user.email, firstName, lastName };
+
+    // JWT payload
+    const payload = {
+      id: customer._id,
+      email: customer.email,
+      firstName: customer.firstName,
+      lastName: customer.lastName,
+    };
+
     const accessToken = signAccessToken(payload);
     const refreshToken = signRefreshToken(payload);
 
     res.status(201).json({
-      user: { ...payload, phone, loyaltyPoints: user.loyaltyPoints },
+      user: {
+        ...payload,
+        phone: customer.phone,
+        loyaltyPoints: customer.loyaltyPoints,
+      },
       accessToken,
       refreshToken,
     });
@@ -37,26 +57,33 @@ export async function register(req, res, next) {
 export async function login(req, res, next) {
   try {
     const { email, password } = req.body;
-    const user = await Customer.findOne({ email, active: true });
-    if (!user)
-      return res.status(401).json({ message: 'Identifiants invalides' });
-    const ok = await user.comparePassword(password);
-    if (!ok) return res.status(401).json({ message: 'Identifiants invalides' });
 
+    // Find customer
+    const customer = await Customer.findOne({ email, active: true });
+    if (!customer)
+      return res.status(401).json({ message: 'Identifiants invalides' });
+
+    // Compare password using model method
+    const isMatch = await customer.comparePassword(password);
+    if (!isMatch)
+      return res.status(401).json({ message: 'Identifiants invalides' });
+
+    // JWT payload
     const payload = {
-      id: user._id,
-      email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
+      id: customer._id,
+      email: customer.email,
+      firstName: customer.firstName,
+      lastName: customer.lastName,
     };
+
     const accessToken = signAccessToken(payload);
     const refreshToken = signRefreshToken(payload);
 
     res.json({
       user: {
         ...payload,
-        phone: user.phone,
-        loyaltyPoints: user.loyaltyPoints,
+        phone: customer.phone,
+        loyaltyPoints: customer.loyaltyPoints,
       },
       accessToken,
       refreshToken,
