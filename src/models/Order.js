@@ -2,35 +2,32 @@ import mongoose from 'mongoose';
 
 const orderSchema = new mongoose.Schema(
   {
-    // Articles de la commande
     items: [
       {
-        productId: { type: String, required: true },      // ID du produit
-        variantId: { type: String, required: true },      // ID de la variante
-        name: { type: String, required: true },           // Nom du produit
-        variantUnit: { type: String, required: true },    // 500g | 1kg | pièce
-        quantity: { type: Number, required: true },       // Quantité
-        price: { type: Number, required: true },          // Prix par variante
-        currency: { type: String, default: 'EUR' },       // Devise
-        image: { type: String },                           // Image optionnelle
+        productId: { type: String, required: true },
+        variantId: { type: String, required: true },
+        name: { type: String, required: true },
+        variantUnit: { type: String, required: true },
+        quantity: { type: Number, required: true },
+        price: { type: Number, required: true },
+        currency: { type: String, default: 'EUR' },
+        image: { type: String },
       },
     ],
 
-    // Informations client
     customer: {
       fullName: { type: String, required: true },
       email: { type: String, required: true },
       phone: { type: String, required: true },
+      isAdmin: { type: Boolean, default: false }, // pour vérifier admin
     },
 
-    // Type de retrait
     pickupType: {
       type: String,
-      enum: ['store', 'delivery'], // 'store' = retrait magasin, 'delivery' = livraison
+      enum: ['store', 'delivery'],
       required: true,
     },
 
-    // Détails du lieu de retrait
     pickupLocation: {
       id: { type: String },
       name: { type: String },
@@ -38,7 +35,6 @@ const orderSchema = new mongoose.Schema(
       description: { type: String },
     },
 
-    // Adresse de livraison
     deliveryAddress: {
       street: String,
       postalCode: String,
@@ -46,56 +42,66 @@ const orderSchema = new mongoose.Schema(
       country: String,
     },
 
-    deliveryFee: { type: Number, default: 0 }, // Frais de livraison
-    amount: { type: Number, required: true },  // Montant total de la commande
+    deliveryFee: { type: Number, default: 0 },
+    amount: { type: Number, required: true },
     currency: { type: String, default: 'EUR' },
 
-    // Remises
     discountCode: { type: String },
     discountAmount: { type: Number, default: 0 },
 
-    // Statut de la commande
-    status: { 
-      type: String, 
-      enum: ['en_attente', 'payé', 'échoué', 'terminé', 'annulé'], 
-      default: 'en_attente' 
+    status: {
+      type: String,
+      enum: ['en_attente', 'payé', 'terminé', 'annulé'],
+      default: 'en_attente',
     },
 
-    // Mode de paiement
-    paymentMethod: { 
-      type: String, 
-      enum: ['stripe', 'paypal', 'espèces'], 
-      required: true 
+    paymentMethod: {
+      type: String,
+      enum: ['stripe', 'paypal', 'espèces'],
+      required: true,
     },
 
-    // Identifiants paiement
     stripePaymentIntentId: { type: String },
     paypalOrderId: { type: String },
+    notes: { type: String },
 
-    notes: { type: String }, // Notes optionnelles
+    // Nouveau champ pour livraison
+    isDelivered: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
 
-// Hook pour définir le statut automatiquement selon le type de retrait et le mode de paiement
+// Hook pour définir le statut et livraison automatiquement
 orderSchema.pre('save', function (next) {
   if (!this.isModified('status')) {
     if (this.pickupType === 'delivery') {
       this.status = this.paymentMethod === 'espèces' ? 'en_attente' : 'payé';
+      this.isDelivered = false;
     } else if (this.pickupType === 'store') {
       this.status = this.paymentMethod === 'espèces' ? 'en_attente' : 'payé';
+      this.isDelivered = true; // retrait magasin = considéré comme livré
     }
   }
   next();
 });
 
-// Méthode pour marquer la commande comme terminée
-orderSchema.methods.marquerTermine = function() {
+// Méthode pour marquer la commande comme terminée / livrée
+orderSchema.methods.marquerLivree = function () {
+  if (this.pickupType === 'delivery') {
+    this.isDelivered = true;
+    this.status = 'terminé';
+    return this.save();
+  }
+  return Promise.resolve(this); // retrait magasin déjà livré
+};
+
+orderSchema.methods.marquerTermine = function () {
   this.status = 'terminé';
+  if (this.pickupType === 'delivery') this.isDelivered = true;
   return this.save();
 };
 
-// Indexes pour améliorer les performances
+// Indexes
 orderSchema.index({ 'customer.email': 1 });
 orderSchema.index({ status: 1 });
 orderSchema.index({ createdAt: -1 });

@@ -18,41 +18,35 @@ export const createOrder = async (req, res) => {
       discountCode,
       discountAmount = 0,
       notes,
-      paymentMethod, // <-- nouveau champ
+      paymentMethod,
     } = req.body;
 
-    // Validation du panier
     if (!items || items.length === 0) {
       return res.status(400).json({ message: 'Le panier est vide' });
     }
 
-    // Validation du mode de paiement
     if (!['stripe', 'paypal', 'espèces'].includes(paymentMethod)) {
       return res.status(400).json({ message: 'Mode de paiement invalide' });
     }
 
     let totalAmount = 0;
 
-    // Construire les articles avec informations correctes
     const formattedItems = await Promise.all(
       items.map(async (item) => {
         const product = await Product.findById(item.productId);
-        if (!product) {
+        if (!product)
           throw new Error(`Produit avec l'ID ${item.productId} introuvable`);
-        }
 
         const variant = product.variants.find((v) => v.id === item.variantId);
-        if (!variant) {
+        if (!variant)
           throw new Error(
-            `Variante ${item.variantId} introuvable pour le produit ${product.title}`
+            `Variante ${item.variantId} introuvable pour ${product.title}`
           );
-        }
 
-        if (variant.stock < item.quantity) {
+        if (variant.stock < item.quantity)
           throw new Error(
             `Stock insuffisant pour ${product.title} (${variant.unit})`
           );
-        }
 
         const subtotal = variant.price * item.quantity;
         totalAmount += subtotal;
@@ -70,10 +64,8 @@ export const createOrder = async (req, res) => {
       })
     );
 
-    // Ajouter frais de livraison et soustraire remise
     totalAmount = totalAmount + deliveryFee - discountAmount;
 
-    // Créer la commande
     const order = await Order.create({
       items: formattedItems,
       customer,
@@ -86,7 +78,7 @@ export const createOrder = async (req, res) => {
       discountCode,
       discountAmount,
       notes,
-      paymentMethod, // <-- inclus pour le pre-save hook
+      paymentMethod,
     });
 
     res
@@ -178,11 +170,9 @@ export const getOrderById = async (req, res) => {
     }
 
     const order = await Order.findById(id);
-    if (!order) {
+    if (!order)
       return res.status(404).json({ message: 'Commande introuvable' });
-    }
 
-    // Vérification : admin ou propriétaire
     if (
       !req.customer?.isAdmin &&
       order.customer.email !== req.customer?.email
@@ -194,5 +184,34 @@ export const getOrderById = async (req, res) => {
   } catch (err) {
     console.error('[getOrderById] Erreur :', err);
     res.status(500).json({ message: 'Échec de récupération de la commande' });
+  }
+};
+
+/**
+ * Mettre à jour le statut / livraison
+ * PATCH /api/orders/:id/status
+ */
+export const updateOrderStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, markDelivered } = req.body;
+
+    const order = await Order.findById(id);
+    if (!order)
+      return res.status(404).json({ message: 'Commande introuvable' });
+
+    if (status) order.status = status;
+
+    if (markDelivered && order.pickupType === 'delivery') {
+      order.isDelivered = true;
+      order.status = 'terminé';
+    }
+
+    await order.save();
+
+    res.json({ message: 'Commande mise à jour', data: order });
+  } catch (err) {
+    console.error('[updateOrderStatus] Erreur :', err);
+    res.status(500).json({ message: 'Échec de mise à jour de la commande' });
   }
 };

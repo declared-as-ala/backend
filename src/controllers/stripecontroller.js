@@ -1,60 +1,49 @@
-// src/controllers/stripeController.js
 import stripe from '../utils/stripe.js';
 import Order from '../models/Order.js';
 import { sendInvoiceEmail } from '../utils/mailer.js';
 
 /**
- * Create a PaymentIntent and automatically create an Order
+ * Créer un PaymentIntent Stripe et sauvegarder la commande
+ * POST /api/stripe/create-payment-intent
  */
 export const createPaymentIntent = async (req, res) => {
   try {
     const {
-      amount,
-      currency = 'EUR',
-      customer,
       items,
+      customer,
       pickupType,
-      deliveryFee = 0,
       pickupLocationDetails,
       deliveryAddress,
+      deliveryFee = 0,
       notes,
       discountCode,
       discountAmount = 0,
+      currency = 'EUR',
     } = req.body;
 
-    // ✅ Validate required fields
-    if (!amount || isNaN(amount) || amount <= 0) {
-      return res.status(400).json({ message: 'Invalid amount' });
-    }
+    // Validation de base
+    if (!items || !Array.isArray(items) || items.length === 0)
+      return res.status(400).json({ message: 'Le panier est vide' });
 
-    if (!customer || !customer.email || !customer.phone) {
+    if (!customer?.email || !customer?.phone)
       return res
         .status(400)
-        .json({ message: 'Customer info missing or phone not provided' });
-    }
+        .json({ message: 'Informations client manquantes' });
 
-    if (!pickupType || !['store', 'delivery'].includes(pickupType)) {
-      return res.status(400).json({ message: 'Invalid pickupType' });
-    }
+    if (!pickupType || !['store', 'delivery'].includes(pickupType))
+      return res.status(400).json({ message: 'Type de retrait invalide' });
 
-    if (pickupType === 'store' && !pickupLocationDetails) {
+    if (pickupType === 'store' && !pickupLocationDetails)
       return res
         .status(400)
-        .json({ message: 'pickupLocationDetails required for store pickup' });
-    }
+        .json({ message: 'Informations du magasin manquantes' });
 
-    if (pickupType === 'delivery' && !deliveryAddress) {
+    if (pickupType === 'delivery' && !deliveryAddress)
       return res
         .status(400)
-        .json({ message: 'deliveryAddress required for delivery' });
-    }
+        .json({ message: 'Adresse de livraison manquante' });
 
-    // Validate items
-    if (!items || !Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ message: 'Items are required' });
-    }
-
-    // Map items to match new schema
+    // Calcul du montant total
     const orderItems = items.map((item) => ({
       productId: item.productId,
       variantId: item.variantId,
@@ -66,50 +55,27 @@ export const createPaymentIntent = async (req, res) => {
       image: item.image || '',
     }));
 
-    // Calculate total amount if needed
     const totalAmount =
-      orderItems.reduce((sum, item) => sum + item.price * item.quantity, 0) +
+      orderItems.reduce((sum, i) => sum + i.price * i.quantity, 0) +
       deliveryFee -
       (discountAmount || 0);
 
-    // Convert amount to cents for Stripe
-    const amountInCents = Math.round(amount * 100);
+    if (totalAmount <= 0)
+      return res.status(400).json({ message: 'Montant total invalide' });
 
-    // Prepare metadata for Stripe
-    const metadata = {
-      pickupType,
-      deliveryFee: deliveryFee.toString(),
-      amountEur: amount.toString(),
-      orderId: '', // Will update after order creation
-    };
-
-    if (pickupLocationDetails) {
-      metadata.pickupLocationId = pickupLocationDetails.id;
-      metadata.pickupLocationName = pickupLocationDetails.name;
-      metadata.pickupLocationAddress = pickupLocationDetails.address;
-    }
-
-    if (deliveryAddress) {
-      metadata.deliveryStreet = deliveryAddress.street || '';
-      metadata.deliveryCity = deliveryAddress.city || '';
-      metadata.deliveryPostalCode = deliveryAddress.postalCode || '';
-      metadata.deliveryCountry = deliveryAddress.country || '';
-    }
-
-    // Create Stripe PaymentIntent
+    // Créer PaymentIntent Stripe
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amountInCents,
+      amount: Math.round(totalAmount * 100), // en cents
       currency: currency.toLowerCase(),
       automatic_payment_methods: { enabled: true },
       receipt_email: customer.email,
-      metadata,
     });
 
-    // Prepare order data
+    // Préparer la commande pour la BDD
     const orderData = {
       items: orderItems,
       customer: {
-        fullName: customer.name || customer.fullName || 'Unknown',
+        fullName: customer.fullName || customer.name || 'Inconnu',
         email: customer.email,
         phone: customer.phone,
       },
@@ -118,32 +84,21 @@ export const createPaymentIntent = async (req, res) => {
         pickupType === 'store' ? pickupLocationDetails : undefined,
       deliveryAddress: pickupType === 'delivery' ? deliveryAddress : undefined,
       deliveryFee,
-      amount, // keep in EUR
+      amount: totalAmount,
       currency: currency.toUpperCase(),
-      status: 'pending',
+      status: 'en_attente', // statut par défaut
+      paymentMethod: 'stripe',
       stripePaymentIntentId: paymentIntent.id,
       notes,
       discountCode: discountCode || '',
       discountAmount: discountAmount || 0,
     };
 
-    // Save order in DB
     const order = await Order.create(orderData);
 
-    // Update PaymentIntent metadata with orderId
+    // Mettre à jour PaymentIntent metadata avec orderId
     await stripe.paymentIntents.update(paymentIntent.id, {
-      metadata: {
-        ...metadata,
-        orderId: order._id.toString(),
-      },
-    });
-
-    console.log('Order created successfully:', {
-      orderId: order._id,
-      amount: `${order.amount} EUR`,
-      pickupType: order.pickupType,
-      pickupLocation: order.pickupLocation,
-      deliveryAddress: order.deliveryAddress,
+      metadata: { orderId: order._id.toString() },
     });
 
     res.json({
@@ -152,65 +107,79 @@ export const createPaymentIntent = async (req, res) => {
       paymentIntentId: paymentIntent.id,
     });
   } catch (err) {
-    console.error('[createPaymentIntent] Error:', err);
+    console.error('[createPaymentIntent] Erreur:', err);
     res.status(500).json({
-      message: 'Payment intent creation failed',
+      message: 'Échec de création du PaymentIntent',
       error: process.env.NODE_ENV === 'development' ? err.message : undefined,
     });
   }
 };
 
 /**
- * Handle Stripe webhook to update order status
+ * Gérer le webhook Stripe pour mettre à jour la commande après paiement
+ * POST /api/stripe/webhook
  */
 export const handleStripeWebhook = async (req, res) => {
-  try {
-    const sig = req.headers['stripe-signature'];
+  const sig = req.headers['stripe-signature'];
+  let event;
 
-    // Stripe requires raw body buffer
-    const event = stripe.webhooks.constructEvent(
+  try {
+    event = stripe.webhooks.constructEvent(
       req.body,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
+  } catch (err) {
+    console.error('❌ Webhook signature failed:', err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
 
-    console.log('✅ Webhook event received:', event.type);
+  try {
+    switch (event.type) {
+      case 'payment_intent.succeeded': {
+        const pi = event.data.object;
 
-    if (event.type === 'payment_intent.succeeded') {
-      const pi = event.data.object;
-      console.log('💳 Payment succeeded for PaymentIntent:', pi.id);
+        const order = await Order.findOneAndUpdate(
+          { stripePaymentIntentId: pi.id },
+          { status: 'payé' },
+          { new: true }
+        );
 
-      const order = await Order.findOneAndUpdate(
-        { stripePaymentIntentId: pi.id },
-        { status: 'paid' },
-        { new: true }
-      );
+        if (order) await sendInvoiceEmailSafely(order);
 
-      if (order) await sendInvoiceEmailSafely(order);
-    } else if (event.type === 'charge.succeeded') {
-      const charge = event.data.object;
-      const order = await Order.findOneAndUpdate(
-        { stripePaymentIntentId: charge.payment_intent },
-        { status: 'paid' },
-        { new: true }
-      );
+        break;
+      }
 
-      if (order) await sendInvoiceEmailSafely(order);
+      case 'charge.succeeded': {
+        const charge = event.data.object;
+
+        const order = await Order.findOneAndUpdate(
+          { stripePaymentIntentId: charge.payment_intent },
+          { status: 'payé' },
+          { new: true }
+        );
+
+        if (order) await sendInvoiceEmailSafely(order);
+        break;
+      }
+
+      default:
+        console.log('⚠️ Webhook non géré:', event.type);
     }
 
     res.json({ received: true });
   } catch (err) {
-    console.error('❌ Stripe webhook error:', err.message);
-    res.status(400).send(`Webhook Error: ${err.message}`);
+    console.error('❌ Stripe webhook processing error:', err.message);
+    res.status(500).send(`Webhook processing failed: ${err.message}`);
   }
 };
 
-// Helper function to safely send invoice email
+// Fonction helper pour envoyer facture sans casser le webhook
 async function sendInvoiceEmailSafely(order) {
   try {
     await sendInvoiceEmail(order.customer.email, order);
-    console.log('📧 Invoice email sent successfully to:', order.customer.email);
-  } catch (emailError) {
-    console.error('❌ Failed to send invoice email:', emailError);
+    console.log('📧 Facture envoyée à:', order.customer.email);
+  } catch (err) {
+    console.error('❌ Échec envoi facture:', err.message);
   }
 }
