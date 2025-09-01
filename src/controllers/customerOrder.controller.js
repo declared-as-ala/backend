@@ -3,7 +3,7 @@ import Product from '../models/Product.js';
 import mongoose from 'mongoose';
 
 /**
- * Place a new order
+ * Créer une nouvelle commande
  * POST /api/orders
  */
 export const createOrder = async (req, res) => {
@@ -18,32 +18,39 @@ export const createOrder = async (req, res) => {
       discountCode,
       discountAmount = 0,
       notes,
+      paymentMethod, // <-- nouveau champ
     } = req.body;
 
+    // Validation du panier
     if (!items || items.length === 0) {
-      return res.status(400).json({ message: 'Your cart is empty' });
+      return res.status(400).json({ message: 'Le panier est vide' });
+    }
+
+    // Validation du mode de paiement
+    if (!['stripe', 'paypal', 'espèces'].includes(paymentMethod)) {
+      return res.status(400).json({ message: 'Mode de paiement invalide' });
     }
 
     let totalAmount = 0;
 
-    // Build formatted items with correct variant info
+    // Construire les articles avec informations correctes
     const formattedItems = await Promise.all(
       items.map(async (item) => {
         const product = await Product.findById(item.productId);
         if (!product) {
-          throw new Error(`Product with ID ${item.productId} not found`);
+          throw new Error(`Produit avec l'ID ${item.productId} introuvable`);
         }
 
         const variant = product.variants.find((v) => v.id === item.variantId);
         if (!variant) {
           throw new Error(
-            `Variant ${item.variantId} not found for product ${product.title}`
+            `Variante ${item.variantId} introuvable pour le produit ${product.title}`
           );
         }
 
         if (variant.stock < item.quantity) {
           throw new Error(
-            `Insufficient stock for ${product.title} (${variant.unit})`
+            `Stock insuffisant pour ${product.title} (${variant.unit})`
           );
         }
 
@@ -63,9 +70,10 @@ export const createOrder = async (req, res) => {
       })
     );
 
-    // Add delivery fee and subtract discount
+    // Ajouter frais de livraison et soustraire remise
     totalAmount = totalAmount + deliveryFee - discountAmount;
 
+    // Créer la commande
     const order = await Order.create({
       items: formattedItems,
       customer,
@@ -78,19 +86,23 @@ export const createOrder = async (req, res) => {
       discountCode,
       discountAmount,
       notes,
+      paymentMethod, // <-- inclus pour le pre-save hook
     });
 
-    res.status(201).json({ message: 'Order placed successfully', data: order });
+    res
+      .status(201)
+      .json({ message: 'Commande créée avec succès', data: order });
   } catch (err) {
-    console.error('[createOrder] Error:', err);
-    res.status(400).json({ message: err.message || 'Failed to create order' });
+    console.error('[createOrder] Erreur :', err);
+    res
+      .status(400)
+      .json({ message: err.message || 'Échec de la création de la commande' });
   }
 };
 
 /**
- * Get all orders (admin)
+ * Récupérer toutes les commandes (admin)
  * GET /api/orders
- * Supports pagination
  */
 export const getAllOrders = async (req, res) => {
   try {
@@ -112,20 +124,19 @@ export const getAllOrders = async (req, res) => {
       pages: Math.ceil(total / limit),
     });
   } catch (err) {
-    console.error('[getAllOrders] Error:', err);
-    res.status(500).json({ message: 'Failed to fetch orders' });
+    console.error('[getAllOrders] Erreur :', err);
+    res.status(500).json({ message: 'Échec de récupération des commandes' });
   }
 };
 
 /**
- * Get orders for logged-in customer
+ * Récupérer les commandes du client connecté
  * GET /api/orders/my
- * Supports pagination
  */
 export const getMyOrders = async (req, res) => {
   try {
     if (!req.customer?.email) {
-      return res.status(401).json({ message: 'Unauthorized: email missing' });
+      return res.status(401).json({ message: 'Non autorisé : email manquant' });
     }
 
     const email = req.customer.email;
@@ -133,7 +144,6 @@ export const getMyOrders = async (req, res) => {
     const limit = Number(req.query.limit) > 0 ? Number(req.query.limit) : 10;
     const skip = (page - 1) * limit;
 
-    // Make sure only orders with valid customer.email are returned
     const query = { 'customer.email': email };
 
     const orders = await Order.find(query)
@@ -150,40 +160,39 @@ export const getMyOrders = async (req, res) => {
       pages: Math.ceil(total / limit),
     });
   } catch (err) {
-    console.error('[getMyOrders] Error:', err);
-    res.status(500).json({ message: 'Failed to fetch orders' });
+    console.error('[getMyOrders] Erreur :', err);
+    res.status(500).json({ message: 'Échec de récupération des commandes' });
   }
 };
 
 /**
- * Get single order by ID (admin or owner)
+ * Récupérer une commande par ID (admin ou propriétaire)
  * GET /api/orders/:id
  */
 export const getOrderById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: 'Invalid order ID' });
+      return res.status(400).json({ message: 'ID de commande invalide' });
     }
 
     const order = await Order.findById(id);
     if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+      return res.status(404).json({ message: 'Commande introuvable' });
     }
 
-    // Only admin or order owner can access
+    // Vérification : admin ou propriétaire
     if (
       !req.customer?.isAdmin &&
       order.customer.email !== req.customer?.email
     ) {
-      return res.status(403).json({ message: 'Access denied' });
+      return res.status(403).json({ message: 'Accès refusé' });
     }
 
     res.json(order);
   } catch (err) {
-    console.error('[getOrderById] Error:', err);
-    res.status(500).json({ message: 'Failed to fetch order' });
+    console.error('[getOrderById] Erreur :', err);
+    res.status(500).json({ message: 'Échec de récupération de la commande' });
   }
 };
