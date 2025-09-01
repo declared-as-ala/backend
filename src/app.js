@@ -13,7 +13,7 @@ import { customerAuth } from './middleware/customerAuth.js';
 import Customerdiscountroutes from './routes/reduce.routes.js';
 // routes/index.js or app.js
 import paypalRoutes from './routes/paypal.routes.js';
-
+import forgetpassword from './routes/forgetpassword.routes.js';
 // Use PayPal routes
 
 const app = express();
@@ -51,6 +51,7 @@ app.use('/api', (req, res, next) => {
 
 // Routes
 app.use('/api', customerAuthRoutes);
+app.use('/api', forgetpassword);
 app.use('/api/orders', customerAuth, customerOrderRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/payments', StripeRoutes);
