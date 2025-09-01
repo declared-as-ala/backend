@@ -1,4 +1,4 @@
-import Customer from '../models/Customer';
+import Customer from '../models/Customer.js';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';

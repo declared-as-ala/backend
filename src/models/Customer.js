@@ -1,3 +1,7 @@
+import mongoose from 'mongoose';
+
+const { Schema, model } = mongoose;
+
 const customerSchema = new Schema(
   {
     email: {
@@ -20,3 +24,5 @@ const customerSchema = new Schema(
   },
   { timestamps: true }
 );
+
+export default model('Customer', customerSchema);
