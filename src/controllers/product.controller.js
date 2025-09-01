@@ -11,15 +11,14 @@ export async function listProducts(req, res, next) {
       category, // filter by category
       page = 1, // pagination page
       limit = 10, // items per page
-      isActive = true, // show only active products by default
+      isActive = 'true', // default to only active products
     } = req.query;
 
     const filter = {};
 
-    // Active products filter
-    if (isActive !== undefined) {
-      filter.isActive = isActive === 'true';
-    }
+    // Convert isActive to boolean
+    const activeFilter = String(isActive).toLowerCase() === 'true';
+    filter.isActive = activeFilter;
 
     // Search by title or description
     if (q) {
@@ -34,21 +33,38 @@ export async function listProducts(req, res, next) {
       filter.category = category;
     }
 
-    // Fetch products with pagination
+    // Pagination calculation
+    const pageNumber = Number(page) > 0 ? Number(page) : 1;
+    const limitNumber = Number(limit) > 0 ? Number(limit) : 10;
+    const skip = (pageNumber - 1) * limitNumber;
+
+    // Log the filter for debugging
+    console.log(
+      '[listProducts] Filter:',
+      filter,
+      'Page:',
+      pageNumber,
+      'Limit:',
+      limitNumber
+    );
+
+    // Fetch products with filter, pagination, and sort
     const products = await Product.find(filter)
-      .skip((page - 1) * limit)
-      .limit(Number(limit))
+      .skip(skip)
+      .limit(limitNumber)
       .sort({ createdAt: -1 });
 
-    const count = await Product.countDocuments(filter);
+    // Total count
+    const total = await Product.countDocuments(filter);
 
     res.json({
       data: products,
-      page: Number(page),
-      total: count,
-      pages: Math.ceil(count / limit),
+      page: pageNumber,
+      total,
+      pages: Math.ceil(total / limitNumber),
     });
   } catch (err) {
+    console.error('[listProducts] Error:', err);
     next(err);
   }
 }

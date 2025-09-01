@@ -2,13 +2,7 @@ import { Router } from 'express';
 import {
   createPaymentIntent,
   handleStripeWebhook,
-} from '../controllers/payment.controller.js';
-import {
-  createPayPalOrder,
-  capturePayPalOrder,
-  handlePayPalReturn,
-  handlePayPalCancel,
-} from '../controllers/paypal.controller.js';
+} from '../controllers/stripecontroller.js';
 
 const router = Router();
 

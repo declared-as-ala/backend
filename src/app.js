@@ -4,13 +4,9 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { tinyRateLimit } from './middleware/rateLimit.js';
 import productRoutes from './routes/product.routes.js';
-import paymentRoutes from './routes/payment.routes.js';
+import StripeRoutes from './routes/stripe.routes.js';
 // ... existing imports above
-import adminAuthRoutes from './routes/admin.auth.routes.js';
-import adminProductRoutes from './routes/admin.product.routes.js';
 
-import adminOrderRoutes from './routes/admin.order.routes.js';
-import adminDashboardRoutes from './routes/admin.dashboard.routes.js';
 import customerAuthRoutes from './routes/customerAuth.routes.js';
 import customerOrderRoutes from './routes/customerOrder.routes.js';
 import { customerAuth } from './middleware/customerAuth.js';
@@ -19,7 +15,6 @@ import Customerdiscountroutes from './routes/reduce.routes.js';
 import paypalRoutes from './routes/paypal.routes.js';
 
 // Use PayPal routes
-
 
 const app = express();
 
@@ -58,13 +53,9 @@ app.use('/api', (req, res, next) => {
 app.use('/api', customerAuthRoutes);
 app.use('/api/orders', customerAuth, customerOrderRoutes);
 app.use('/api/products', productRoutes);
-app.use('/api/payments', paymentRoutes);
+app.use('/api/payments', StripeRoutes);
 app.use('/api/payments/paypal', paypalRoutes);
-app.use('/api/admin/auth', adminAuthRoutes);
-app.use('/api/admin/products', adminProductRoutes);
-app.use('/api/discounts', Customerdiscountroutes);
 
-app.use('/api/admin/orders', adminOrderRoutes);
-app.use('/api/admin/dashboard', adminDashboardRoutes);
+app.use('/api/discounts', Customerdiscountroutes);
 
 export default app;
