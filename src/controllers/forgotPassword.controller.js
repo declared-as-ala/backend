@@ -1,6 +1,6 @@
+// controllers/authController.ts
 import Customer from '../models/Customer.js';
 import bcrypt from 'bcryptjs';
-import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
 /**
@@ -23,26 +23,29 @@ export const sendResetCode = async (req, res) => {
 
     // Generate 6-digit code
     const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
-    const resetCodeExpiry = Date.now() + 10 * 60 * 1000; // expires in 10 minutes
+    const resetCodeExpiry = Date.now() + 10 * 60 * 1000; // 10 min expiry
 
     customer.resetCode = resetCode;
     customer.resetCodeExpiry = resetCodeExpiry;
     await customer.save();
 
-    // Send email with nodemailer (you can replace it with SMS if needed)
+    // Setup Nodemailer transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // You can use any email provider
+      service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.SMTP_USER, // must match .env
+        pass: process.env.SMTP_PASS, // Gmail App Password if 2FA enabled
       },
     });
 
+    // Send email
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from: `"Les Délices" <${process.env.SMTP_USER}>`,
       to: customer.email,
       subject: 'Password Reset Code',
-      text: `Your password reset code is: ${resetCode}. It expires in 10 minutes.`,
+      text: `Hello ${
+        customer.fullName || ''
+      },\n\nYour password reset code is: ${resetCode}. It will expire in 10 minutes.\n\nIf you did not request this, please ignore this email.\n\nRegards,\nLes Délices Team`,
     });
 
     return res.status(200).json({ message: 'Reset code sent successfully' });
@@ -70,7 +73,7 @@ export const resetPassword = async (req, res) => {
         .json({ message: 'No account found with this email' });
     }
 
-    // Check if code matches and is not expired
+    // Check code and expiry
     if (
       customer.resetCode !== resetCode ||
       !customer.resetCodeExpiry ||
@@ -79,11 +82,11 @@ export const resetPassword = async (req, res) => {
       return res.status(400).json({ message: 'Invalid or expired code' });
     }
 
-    // Update password
+    // Hash new password
     const salt = await bcrypt.genSalt(10);
     customer.password = await bcrypt.hash(newPassword, salt);
 
-    // Clear reset code after success
+    // Clear reset code
     customer.resetCode = undefined;
     customer.resetCodeExpiry = undefined;
 
