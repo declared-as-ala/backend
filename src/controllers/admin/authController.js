@@ -255,3 +255,42 @@ export const updateAdmin = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+/**
+ * @desc Update Own Profile
+ * @route PUT /api/admin/auth/update-profile
+ */
+export const updateProfile = async (req, res) => {
+  try {
+    const { name, email, password } = req.body || {};
+    const admin = await AdminUser.findById(req.admin.id);
+    if (!admin) return res.status(404).json({ message: "Admin not found" });
+
+    // Update name if provided
+    if (typeof name === "string" && name.trim()) admin.name = name.trim();
+
+    // Update email if provided and unique
+    if (typeof email === "string" && email.trim()) {
+      const exists = await AdminUser.findOne({
+        email: email.toLowerCase().trim(),
+        _id: { $ne: admin._id }, // exclude self
+      });
+      if (exists)
+        return res.status(409).json({ message: "Email already in use" });
+      admin.email = email.toLowerCase().trim();
+    }
+
+    // Update password if provided (pre-save hook will hash it)
+    if (typeof password === "string" && password.trim()) {
+      admin.password = password.trim();
+    }
+
+    await admin.save();
+    res.json({
+      success: true,
+      message: "Profile updated",
+      admin: pickAdminPublic(admin),
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

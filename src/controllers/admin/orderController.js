@@ -1,170 +1,133 @@
+// orderController.js
+
 import Order from "../../models/Order.js";
 
-const parsePagination = (q) => {
-  const page = Math.max(parseInt(q.page) || 1, 1);
-  const limit = Math.min(parseInt(q.limit) || 20, 100);
-  const skip = (page - 1) * limit;
-  return { page, limit, skip };
-};
-
-// ✅ Get all orders (with filters + pagination)
-export const getAllOrders = async (req, res) => {
+// GET /api/admin/orders?page=1&limit=10
+export const getOrders = async (req, res) => {
   try {
-    const { page, limit, skip } = parsePagination(req.query);
-    const { status, pickupType, paymentMethod, email, from, to, q } = req.query;
-    const sortBy = req.query.sortBy || "createdAt";
-    const sortDir = req.query.sortDir === "asc" ? 1 : -1;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
 
-    const filter = {};
-    if (status) filter.status = status;
-    if (pickupType) filter.pickupType = pickupType;
-    if (paymentMethod) filter.paymentMethod = paymentMethod;
-    if (email) filter["customer.email"] = email;
+    const total = await Order.countDocuments();
+    const pages = Math.ceil(total / limit);
 
-    // Date filtering
-    if (from || to) {
-      filter.createdAt = {};
-      if (from) filter.createdAt.$gte = new Date(from);
-      if (to) filter.createdAt.$lte = new Date(to);
-    }
-
-    // Search by multiple fields
-    if (q) {
-      filter.$or = [
-        { "customer.fullName": new RegExp(q, "i") },
-        { "customer.email": new RegExp(q, "i") },
-        { "items.name": new RegExp(q, "i") },
-        { discountCode: new RegExp(q, "i") },
-      ];
-    }
-
-    const [items, total] = await Promise.all([
-      Order.find(filter)
-        .sort({ [sortBy]: sortDir })
-        .skip(skip)
-        .limit(limit),
-      Order.countDocuments(filter),
-    ]);
+    const orders = await Order.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
 
     res.json({
       success: true,
-      data: items,
-      pagination: { page, limit, total, pages: Math.ceil(total / limit) },
+      data: orders,
+      pagination: { page, limit, total, pages },
     });
-  } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error fetching orders", error: err.message });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
-// ✅ Get order by ID
+// GET /api/admin/orders/:id
 export const getOrderById = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id);
-    if (!order) return res.status(404).json({ message: "Order not found" });
+    const { id } = req.params;
+    const order = await Order.findById(id).lean();
+
+    if (!order)
+      return res
+        .status(404)
+        .json({ success: false, message: "Order not found" });
 
     res.json({ success: true, data: order });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
-// ✅ Update order status
+// PUT /api/admin/orders/:id/status
 export const updateOrderStatus = async (req, res) => {
   try {
-    const { status } = req.body || {};
-    const allowedStatuses = ["en_attente", "payé", "terminé", "annulé"];
+    const { id } = req.params;
+    const { status } = req.body;
 
-    if (!allowedStatuses.includes(status)) {
-      return res.status(400).json({ message: "Invalid status" });
+    if (!["en_attente", "payé", "terminé", "annulé"].includes(status)) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid status" });
     }
 
-    const order = await Order.findById(req.params.id);
-    if (!order) return res.status(404).json({ message: "Order not found" });
+    const order = await Order.findById(id);
+    if (!order)
+      return res
+        .status(404)
+        .json({ success: false, message: "Order not found" });
 
     order.status = status;
 
-    // If status is "terminé" mark as delivered automatically
-    if (status === "terminé") order.isDelivered = true;
+    if (
+      order.pickupType === "delivery" &&
+      (status === "payé" || status === "terminé")
+    ) {
+      order.isDelivered = true;
+    }
 
     await order.save();
     res.json({ success: true, data: order });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
-// ✅ Delete order
+// PUT /api/admin/orders/:id/delivery
+export const toggleDelivery = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const order = await Order.findById(id);
+    if (!order)
+      return res
+        .status(404)
+        .json({ success: false, message: "Order not found" });
+
+    if (order.pickupType !== "delivery") {
+      return res.status(400).json({
+        success: false,
+        message: "Cannot change delivery for store pickup",
+      });
+    }
+
+    order.isDelivered = !order.isDelivered;
+
+    if (order.isDelivered) order.status = "terminé";
+    else if (!order.isDelivered && order.status === "terminé")
+      order.status = "payé";
+
+    await order.save();
+    res.json({ success: true, data: order });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
+// DELETE /api/admin/orders/:id
 export const deleteOrder = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id);
-    if (!order) return res.status(404).json({ message: "Order not found" });
+    const { id } = req.params;
 
-    await Order.findByIdAndDelete(req.params.id);
+    const order = await Order.findByIdAndDelete(id);
+    if (!order)
+      return res
+        .status(404)
+        .json({ success: false, message: "Order not found" });
+
     res.json({ success: true, message: "Order deleted successfully" });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-// 🔄 Mark order as delivered (optional helper)
-export const markDelivered = async (req, res) => {
-  try {
-    const order = await Order.findById(req.params.id);
-    if (!order) return res.status(404).json({ message: "Order not found" });
-
-    const saved = await order.marquerLivree();
-    res.json({ success: true, data: saved });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
-
-// ✍️ Update delivery address, pickup location, or notes
-export const updateLogistics = async (req, res) => {
-  try {
-    const { deliveryAddress, pickupLocation, notes, deliveryFee } =
-      req.body || {};
-
-    const order = await Order.findById(req.params.id);
-    if (!order) return res.status(404).json({ message: "Order not found" });
-
-    if (deliveryAddress)
-      order.deliveryAddress = {
-        ...order.deliveryAddress?.toObject?.(),
-        ...deliveryAddress,
-      };
-
-    if (pickupLocation)
-      order.pickupLocation = {
-        ...order.pickupLocation?.toObject?.(),
-        ...pickupLocation,
-      };
-
-    if (typeof notes === "string") order.notes = notes;
-    if (typeof deliveryFee === "number") order.deliveryFee = deliveryFee;
-
-    await order.save();
-    res.json({ success: true, data: order });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
-
-// ❌ Cancel order (optional, kept for admins)
-export const cancelOrder = async (req, res) => {
-  try {
-    const { reason } = req.body || {};
-    const order = await Order.findById(req.params.id);
-    if (!order) return res.status(404).json({ message: "Order not found" });
-
-    order.status = "annulé";
-    order.notes = [order.notes, reason].filter(Boolean).join(" | ");
-    await order.save();
-
-    res.json({ success: true, data: order });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };

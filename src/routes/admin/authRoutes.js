@@ -4,6 +4,7 @@ import {
   refreshToken,
   logout,
   me,
+  updateProfile, // <-- import the new controller
 } from "../../controllers/admin/authController.js";
 import { requireAdmin } from "../../middleware/authAdmin.js";
 
@@ -20,5 +21,8 @@ router.post("/logout", logout);
 
 // GET /api/admin/auth/me
 router.get("/me", requireAdmin, me);
+
+// PUT /api/admin/auth/update-profile
+router.put("/update-profile", requireAdmin, updateProfile);
 
 export default router;

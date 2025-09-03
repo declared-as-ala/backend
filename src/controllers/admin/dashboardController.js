@@ -1,10 +1,11 @@
-// controllers/admin/dashboardController.js
 import Order from "../../models/Order.js";
 import Customer from "../../models/Customer.js";
 import Product from "../../models/Product.js";
 import DiscountCode from "../../models/DiscountCode.js";
 
-// Existing: getDashboardStats
+// ========================
+// DASHBOARD MAIN STATS
+// ========================
 export const getDashboardStats = async (req, res) => {
   try {
     const [totalOrders, totalCustomers, totalProducts, activeDiscounts] =
@@ -90,7 +91,9 @@ export const getDashboardStats = async (req, res) => {
   }
 };
 
-// NEW: getRecentOrders
+// ========================
+// RECENT ORDERS
+// ========================
 export const getRecentOrders = async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 10;
@@ -103,5 +106,181 @@ export const getRecentOrders = async (req, res) => {
     res
       .status(500)
       .json({ message: "Error fetching recent orders", error: err.message });
+  }
+};
+
+// ========================
+// SALES BY PAYMENT METHOD
+// ========================
+export const getSalesByPaymentMethod = async (req, res) => {
+  try {
+    const sales = await Order.aggregate([
+      { $match: { status: { $in: ["payé", "terminé"] } } },
+      {
+        $group: {
+          _id: "$paymentMethod",
+          revenue: { $sum: "$amount" },
+          orders: { $sum: 1 },
+        },
+      },
+    ]);
+    res.json({ success: true, data: sales });
+  } catch (err) {
+    res
+      .status(500)
+      .json({
+        message: "Error fetching sales by payment method",
+        error: err.message,
+      });
+  }
+};
+
+// ========================
+// MONTHLY REVENUE TREND
+// ========================
+export const getMonthlyRevenue = async (req, res) => {
+  try {
+    const monthly = await Order.aggregate([
+      { $match: { status: { $in: ["payé", "terminé"] } } },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
+          revenue: { $sum: "$amount" },
+          orders: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+    res.json({ success: true, data: monthly });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error fetching monthly revenue", error: err.message });
+  }
+};
+
+// ========================
+// TOP CATEGORIES
+// ========================
+export const getTopCategories = async (req, res) => {
+  try {
+    const categories = await Order.aggregate([
+      { $unwind: "$items" },
+      {
+        $lookup: {
+          from: "products",
+          localField: "items.productId",
+          foreignField: "_id",
+          as: "product",
+        },
+      },
+      { $unwind: "$product" },
+      {
+        $group: {
+          _id: "$product.category",
+          totalQty: { $sum: "$items.quantity" },
+          revenue: { $sum: { $multiply: ["$items.price", "$items.quantity"] } },
+        },
+      },
+      { $sort: { revenue: -1 } },
+      { $limit: 5 },
+    ]);
+    res.json({ success: true, data: categories });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error fetching top categories", error: err.message });
+  }
+};
+
+// ========================
+// CUSTOMER GROWTH
+// ========================
+export const getCustomerGrowth = async (req, res) => {
+  try {
+    const growth = await Customer.aggregate([
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+    res.json({ success: true, data: growth });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error fetching customer growth", error: err.message });
+  }
+};
+
+// ========================
+// LOW STOCK PRODUCTS
+// ========================
+export const getLowStockProducts = async (req, res) => {
+  try {
+    const threshold = parseInt(req.query.threshold) || 5;
+    const products = await Product.find({
+      "variants.stock": { $lte: threshold },
+      isActive: true,
+    }).select("title variants");
+    res.json({ success: true, data: products });
+  } catch (err) {
+    res
+      .status(500)
+      .json({
+        message: "Error fetching low stock products",
+        error: err.message,
+      });
+  }
+};
+
+// ========================
+// ORDERS BY HOUR
+// ========================
+export const getOrdersByHour = async (req, res) => {
+  try {
+    const hours = await Order.aggregate([
+      {
+        $group: {
+          _id: { $hour: "$createdAt" },
+          count: { $sum: 1 },
+          revenue: { $sum: "$amount" },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+    res.json({ success: true, data: hours });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error fetching orders by hour", error: err.message });
+  }
+};
+
+// ========================
+// CUSTOMER ACTIVITY
+// ========================
+export const getCustomerActivity = async (req, res) => {
+  try {
+    const active = await Order.distinct("customer.email", {
+      createdAt: { $gte: new Date(Date.now() - 30 * 86400000) },
+    });
+    const total = await Customer.countDocuments({});
+    res.json({
+      success: true,
+      data: {
+        activeCustomers: active.length,
+        inactiveCustomers: total - active.length,
+      },
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({
+        message: "Error fetching customer activity",
+        error: err.message,
+      });
   }
 };

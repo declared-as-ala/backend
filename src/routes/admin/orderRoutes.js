@@ -1,8 +1,9 @@
 import express from "express";
 import {
-  getAllOrders,
+  getOrders,
   getOrderById,
   updateOrderStatus,
+  toggleDelivery,
   deleteOrder,
 } from "../../controllers/admin/orderController.js";
 import { requireAdmin, requireRole } from "../../middleware/authAdmin.js";
@@ -10,7 +11,7 @@ import { requireAdmin, requireRole } from "../../middleware/authAdmin.js";
 const router = express.Router();
 
 // GET /api/admin/orders
-router.get("/", requireAdmin, getAllOrders);
+router.get("/", requireAdmin, getOrders);
 
 // GET /api/admin/orders/:id
 router.get("/:id", requireAdmin, getOrderById);
@@ -21,6 +22,14 @@ router.put(
   requireAdmin,
   requireRole("admin", "manager"),
   updateOrderStatus
+);
+
+// PUT /api/admin/orders/:id/delivery
+router.put(
+  "/:id/delivery",
+  requireAdmin,
+  requireRole("admin", "manager"),
+  toggleDelivery
 );
 
 // DELETE /api/admin/orders/:id
