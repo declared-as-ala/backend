@@ -29,7 +29,7 @@ const app = express();
 app.use(helmet());
 const allowedOrigins = [
   "https://peaceful-pavlova-13c173.netlify.app",
-  "http://localhost:3000"
+  "http://localhost:3000",
 ];
 
 app.use(

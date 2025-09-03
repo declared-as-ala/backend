@@ -2,295 +2,597 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import AdminUser from "../../models/AdminUser.js";
 
+// Constants for better maintainability
+const ACCESS_TOKEN_EXPIRY = process.env.JWT_EXPIRES || "15m";
+const REFRESH_TOKEN_EXPIRY = process.env.JWT_REFRESH_EXPIRES || "30d";
+const SALT_ROUNDS = 12;
+
+// Input validation helpers
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePassword = (password) => {
+  // At least 6 characters for basic security
+  return password && password.length >= 6;
+};
+
 // Generate access token (short-lived)
-const signAccessToken = (payload) =>
-  jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES || "15m",
+const signAccessToken = (payload) => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is not configured");
+  }
+  return jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: ACCESS_TOKEN_EXPIRY,
+    issuer: "admin-api",
+    audience: "admin-dashboard",
   });
+};
 
 // Generate refresh token (long-lived)
-const signRefreshToken = (payload) =>
-  jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
-    expiresIn: process.env.JWT_REFRESH_EXPIRES || "30d",
+const signRefreshToken = (payload) => {
+  if (!process.env.JWT_REFRESH_SECRET) {
+    throw new Error("JWT_REFRESH_SECRET is not configured");
+  }
+  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
+    expiresIn: REFRESH_TOKEN_EXPIRY,
+    issuer: "admin-api",
+    audience: "admin-dashboard",
   });
+};
 
 // Helper: pick public admin data
-const pickAdminPublic = (a) => ({
-  id: a._id,
-  email: a.email,
-  name: a.name,
-  role: a.role,
-  active: a.active,
-  createdAt: a.createdAt,
+const pickAdminPublic = (admin) => ({
+  id: admin._id,
+  email: admin.email,
+  name: admin.name,
+  role: admin.role,
+  active: admin.active,
+  createdAt: admin.createdAt,
+  updatedAt: admin.updatedAt,
 });
+
+// Error response helper
+const sendErrorResponse = (res, status, message, details = null) => {
+  const response = {
+    success: false,
+    message,
+    ...(details && { details }),
+  };
+
+  return res.status(status).json(response);
+};
+
+// Success response helper
+const sendSuccessResponse = (res, data, message = null, status = 200) => {
+  const response = {
+    success: true,
+    ...(message && { message }),
+    ...data,
+  };
+
+  return res.status(status).json(response);
+};
 
 /**
  * @desc Login Admin
  * @route POST /api/admin/auth/login
+ * @access Public
  */
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body || {};
-    if (!email || !password)
-      return res.status(400).json({ message: "Email & password required" });
 
+    // Input validation
+    if (!email || !password) {
+      return sendErrorResponse(res, 400, "Email and password are required");
+    }
+
+    if (!validateEmail(email)) {
+      return sendErrorResponse(
+        res,
+        400,
+        "Please provide a valid email address"
+      );
+    }
+
+    if (!validatePassword(password)) {
+      return sendErrorResponse(
+        res,
+        400,
+        "Password must be at least 6 characters long"
+      );
+    }
+
+    // Find admin user
+    const normalizedEmail = email.toLowerCase().trim();
     const admin = await AdminUser.findOne({
-      email: email.toLowerCase().trim(),
+      email: normalizedEmail,
       active: true,
-    });
-    if (!admin) return res.status(404).json({ message: "Admin not found" });
+    }).select("+password"); // Explicitly select password field if it's set to false in schema
 
-    const isMatch = await bcrypt.compare(password, admin.password);
-    if (!isMatch)
-      return res.status(401).json({ message: "Invalid credentials" });
+    if (!admin) {
+      return sendErrorResponse(res, 401, "Invalid email or password");
+    }
 
-    const accessToken = signAccessToken({ id: admin._id, role: admin.role });
+    // Verify password
+    const isPasswordValid = await bcrypt.compare(password, admin.password);
+    if (!isPasswordValid) {
+      return sendErrorResponse(res, 401, "Invalid email or password");
+    }
+
+    // Generate tokens
+    const tokenPayload = { id: admin._id, role: admin.role };
+    const accessToken = signAccessToken(tokenPayload);
     const refreshToken = signRefreshToken({ id: admin._id });
 
-    // Save refresh token in DB
-    admin.refreshToken = refreshToken;
+    // Save refresh token in DB (hash it for security)
+    const hashedRefreshToken = await bcrypt.hash(refreshToken, SALT_ROUNDS);
+    admin.refreshToken = hashedRefreshToken;
+    admin.lastLogin = new Date();
     await admin.save();
 
-    res.json({
-      success: true,
-      accessToken,
-      refreshToken,
-      admin: pickAdminPublic(admin),
-    });
-  } catch (err) {
-    res.status(500).json({ message: "Server error", error: err.message });
+    // Remove password from response
+    const adminData = pickAdminPublic(admin);
+
+    return sendSuccessResponse(
+      res,
+      {
+        accessToken,
+        refreshToken,
+        admin: adminData,
+      },
+      "Login successful"
+    );
+  } catch (error) {
+    console.error("Login error:", error);
+    return sendErrorResponse(
+      res,
+      500,
+      "An error occurred during login. Please try again."
+    );
   }
 };
 
 /**
  * @desc Refresh Access Token
  * @route POST /api/admin/auth/refresh
+ * @access Public
  */
 export const refreshToken = async (req, res) => {
   try {
     const { refreshToken } = req.body || {};
-    if (!refreshToken)
-      return res.status(401).json({ message: "Missing refresh token" });
+
+    if (!refreshToken) {
+      return sendErrorResponse(res, 400, "Refresh token is required");
+    }
 
     // Verify refresh token
-    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+    let decoded;
+    try {
+      decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+    } catch (jwtError) {
+      if (jwtError.name === "TokenExpiredError") {
+        return sendErrorResponse(
+          res,
+          401,
+          "Refresh token has expired. Please login again."
+        );
+      } else if (jwtError.name === "JsonWebTokenError") {
+        return sendErrorResponse(res, 401, "Invalid refresh token format");
+      } else {
+        return sendErrorResponse(res, 401, "Invalid refresh token");
+      }
+    }
 
+    // Find admin and validate refresh token
     const admin = await AdminUser.findById(decoded.id);
-    if (!admin || admin.refreshToken !== refreshToken) {
-      return res.status(403).json({ message: "Invalid refresh token" });
+    if (!admin || !admin.active) {
+      return sendErrorResponse(res, 401, "Admin account not found or inactive");
+    }
+
+    if (!admin.refreshToken) {
+      return sendErrorResponse(
+        res,
+        401,
+        "Refresh token not found. Please login again."
+      );
+    }
+
+    // Compare refresh token (it's hashed in DB)
+    const isRefreshTokenValid = await bcrypt.compare(
+      refreshToken,
+      admin.refreshToken
+    );
+    if (!isRefreshTokenValid) {
+      return sendErrorResponse(res, 401, "Invalid refresh token");
     }
 
     // Generate new access token
     const newAccessToken = signAccessToken({ id: admin._id, role: admin.role });
-    res.json({ success: true, accessToken: newAccessToken });
-  } catch (err) {
-    res.status(403).json({ message: "Invalid or expired refresh token" });
+
+    return sendSuccessResponse(
+      res,
+      {
+        accessToken: newAccessToken,
+      },
+      "Token refreshed successfully"
+    );
+  } catch (error) {
+    console.error("Token refresh error:", error);
+    return sendErrorResponse(
+      res,
+      500,
+      "An error occurred during token refresh"
+    );
   }
 };
 
 /**
  * @desc Logout Admin
  * @route POST /api/admin/auth/logout
+ * @access Private
  */
 export const logout = async (req, res) => {
   try {
+    // Get refresh token from request body or from authenticated user's stored token
     const { refreshToken } = req.body || {};
-    if (!refreshToken)
-      return res.status(400).json({ message: "Refresh token required" });
 
-    const admin = await AdminUser.findOne({ refreshToken });
-    if (!admin) {
-      return res.status(200).json({ success: true, message: "Logged out" });
+    // If no refresh token provided, still allow logout (clear server-side session)
+    if (!refreshToken) {
+      // If we have authenticated user from middleware, clear their refresh token
+      if (req.admin && req.admin.id) {
+        try {
+          await AdminUser.findByIdAndUpdate(req.admin.id, {
+            $unset: { refreshToken: 1 },
+            lastLogout: new Date(),
+          });
+        } catch (updateError) {
+          console.warn(
+            "Failed to clear refresh token for user:",
+            req.admin.id,
+            updateError
+          );
+        }
+      }
+
+      return sendSuccessResponse(res, {}, "Logged out successfully");
     }
 
-    // Invalidate refresh token
-    admin.refreshToken = null;
-    await admin.save();
+    // Find admin with matching refresh token and clear it
+    const admin = await AdminUser.findOne({ refreshToken: { $exists: true } });
 
-    res.json({ success: true, message: "Logged out successfully" });
-  } catch (err) {
-    res.status(500).json({ message: "Server error", error: err.message });
+    if (admin && admin.refreshToken) {
+      // Check if the provided refresh token matches the stored one
+      const isValidToken = await bcrypt.compare(
+        refreshToken,
+        admin.refreshToken
+      );
+
+      if (isValidToken) {
+        // Clear refresh token and update logout time
+        admin.refreshToken = undefined;
+        admin.lastLogout = new Date();
+        await admin.save();
+      }
+    }
+
+    return sendSuccessResponse(res, {}, "Logged out successfully");
+  } catch (error) {
+    console.error("Logout error:", error);
+    // Even if there's an error, we should still indicate successful logout
+    // to prevent the client from being stuck in an authenticated state
+    return sendSuccessResponse(res, {}, "Logged out successfully");
   }
 };
 
 /**
  * @desc Get Current Admin Profile
  * @route GET /api/admin/auth/me
+ * @access Private
  */
 export const me = async (req, res) => {
   try {
-    const admin = await AdminUser.findById(req.admin.id);
-    if (!admin) return res.status(404).json({ message: "Admin not found" });
-    res.json({ success: true, data: pickAdminPublic(admin) });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-/**
- * @desc Change Own Password
- * @route PUT /api/admin/auth/change-password
- */
-export const changePassword = async (req, res) => {
-  try {
-    const { currentPassword, newPassword } = req.body || {};
-    if (!currentPassword || !newPassword) {
-      return res.status(400).json({
-        message: "currentPassword & newPassword required",
-      });
+    if (!req.admin || !req.admin.id) {
+      return sendErrorResponse(res, 401, "Authentication required");
     }
+
     const admin = await AdminUser.findById(req.admin.id);
-    if (!admin) return res.status(404).json({ message: "Admin not found" });
 
-    const ok = await bcrypt.compare(currentPassword, admin.password);
-    if (!ok)
-      return res.status(401).json({ message: "Current password incorrect" });
+    if (!admin) {
+      return sendErrorResponse(res, 404, "Admin profile not found");
+    }
 
-    admin.password = newPassword; // hashed by pre('save')
-    await admin.save();
-    res.json({ success: true, message: "Password updated" });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+    if (!admin.active) {
+      return sendErrorResponse(res, 403, "Admin account is deactivated");
+    }
 
-/**
- * @desc Create a New Admin (Admins Only)
- * @route POST /api/admin/auth/create
- */
-export const createAdmin = async (req, res) => {
-  try {
-    if (!["admin"].includes(req.admin.role))
-      return res.status(403).json({ message: "Forbidden" });
-
-    const {
-      email,
-      password,
-      name,
-      role = "manager",
-      active = true,
-    } = req.body || {};
-
-    if (!email || !password)
-      return res.status(400).json({ message: "Email & password required" });
-
-    const exists = await AdminUser.findOne({
-      email: email.toLowerCase().trim(),
+    return sendSuccessResponse(res, {
+      admin: pickAdminPublic(admin),
     });
-    if (exists)
-      return res.status(409).json({ message: "Email already in use" });
-
-    const created = await AdminUser.create({
-      email,
-      password,
-      name,
-      role,
-      active,
-    });
-    res.status(201).json({ success: true, data: pickAdminPublic(created) });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (error) {
+    console.error("Get profile error:", error);
+    return sendErrorResponse(
+      res,
+      500,
+      "An error occurred while fetching profile"
+    );
   }
 };
 
-/**
- * @desc List Admins (Admins Only)
- * @route GET /api/admin/auth/list
- */
-export const listAdmins = async (req, res) => {
-  try {
-    if (!["admin"].includes(req.admin.role))
-      return res.status(403).json({ message: "Forbidden" });
-
-    const page = Math.max(parseInt(req.query.page) || 1, 1);
-    const limit = Math.min(parseInt(req.query.limit) || 20, 100);
-    const skip = (page - 1) * limit;
-    const q = req.query.q?.trim();
-    const active = req.query.active;
-
-    const filter = {};
-    if (q)
-      filter.$or = [
-        { email: new RegExp(q, "i") },
-        { name: new RegExp(q, "i") },
-      ];
-    if (active === "true") filter.active = true;
-    if (active === "false") filter.active = false;
-
-    const [items, total] = await Promise.all([
-      AdminUser.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
-      AdminUser.countDocuments(filter),
-    ]);
-
-    res.json({
-      success: true,
-      data: items.map(pickAdminPublic),
-      pagination: { page, limit, total, pages: Math.ceil(total / limit) },
-    });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-/**
- * @desc Update Admin (Admins Only)
- * @route PUT /api/admin/auth/:id
- */
-export const updateAdmin = async (req, res) => {
-  try {
-    if (!["admin"].includes(req.admin.role))
-      return res.status(403).json({ message: "Forbidden" });
-
-    const { name, role, active } = req.body || {};
-    const admin = await AdminUser.findById(req.params.id);
-    if (!admin) return res.status(404).json({ message: "Admin not found" });
-
-    if (typeof name === "string") admin.name = name;
-    if (role) admin.role = role;
-    if (typeof active === "boolean") admin.active = active;
-
-    await admin.save();
-    res.json({ success: true, data: pickAdminPublic(admin) });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
 /**
  * @desc Update Own Profile
  * @route PUT /api/admin/auth/update-profile
+ * @access Private
  */
 export const updateProfile = async (req, res) => {
   try {
-    const { name, email, password } = req.body || {};
-    const admin = await AdminUser.findById(req.admin.id);
-    if (!admin) return res.status(404).json({ message: "Admin not found" });
-
-    // Update name if provided
-    if (typeof name === "string" && name.trim()) admin.name = name.trim();
-
-    // Update email if provided and unique
-    if (typeof email === "string" && email.trim()) {
-      const exists = await AdminUser.findOne({
-        email: email.toLowerCase().trim(),
-        _id: { $ne: admin._id }, // exclude self
-      });
-      if (exists)
-        return res.status(409).json({ message: "Email already in use" });
-      admin.email = email.toLowerCase().trim();
+    if (!req.admin || !req.admin.id) {
+      return sendErrorResponse(res, 401, "Authentication required");
     }
 
-    // Update password if provided (pre-save hook will hash it)
-    if (typeof password === "string" && password.trim()) {
-      admin.password = password.trim();
+    const { name, email, password, currentPassword } = req.body || {};
+
+    // Find current admin
+    const admin = await AdminUser.findById(req.admin.id).select("+password");
+    if (!admin) {
+      return sendErrorResponse(res, 404, "Admin profile not found");
     }
+
+    const updates = {};
+    const validationErrors = [];
+
+    // Validate and prepare name update
+    if (name !== undefined) {
+      if (typeof name !== "string" || name.trim().length === 0) {
+        validationErrors.push("Name must be a non-empty string");
+      } else if (name.trim().length > 100) {
+        validationErrors.push("Name must be less than 100 characters");
+      } else {
+        updates.name = name.trim();
+      }
+    }
+
+    // Validate and prepare email update
+    if (email !== undefined) {
+      if (!validateEmail(email)) {
+        validationErrors.push("Please provide a valid email address");
+      } else {
+        const normalizedEmail = email.toLowerCase().trim();
+
+        // Check if email is already in use by another admin
+        if (normalizedEmail !== admin.email) {
+          const existingAdmin = await AdminUser.findOne({
+            email: normalizedEmail,
+            _id: { $ne: admin._id },
+          });
+
+          if (existingAdmin) {
+            validationErrors.push("Email is already in use by another admin");
+          } else {
+            updates.email = normalizedEmail;
+          }
+        }
+      }
+    }
+
+    // Validate and prepare password update
+    if (password !== undefined) {
+      if (!validatePassword(password)) {
+        validationErrors.push("Password must be at least 6 characters long");
+      } else {
+        // Require current password for security
+        if (!currentPassword) {
+          validationErrors.push(
+            "Current password is required to change password"
+          );
+        } else {
+          const isCurrentPasswordValid = await bcrypt.compare(
+            currentPassword,
+            admin.password
+          );
+          if (!isCurrentPasswordValid) {
+            validationErrors.push("Current password is incorrect");
+          } else {
+            // Hash new password
+            const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
+            updates.password = hashedPassword;
+          }
+        }
+      }
+    }
+
+    // Return validation errors if any
+    if (validationErrors.length > 0) {
+      return sendErrorResponse(res, 422, "Validation failed", validationErrors);
+    }
+
+    // Check if there are any updates
+    if (Object.keys(updates).length === 0) {
+      return sendErrorResponse(res, 400, "No valid updates provided");
+    }
+
+    // Apply updates
+    Object.assign(admin, updates);
+    admin.updatedAt = new Date();
+
+    // Save changes
+    await admin.save();
+
+    // If password was updated, invalidate all existing refresh tokens for security
+    if (updates.password) {
+      admin.refreshToken = undefined;
+      await admin.save();
+    }
+
+    return sendSuccessResponse(
+      res,
+      {
+        admin: pickAdminPublic(admin),
+      },
+      "Profile updated successfully"
+    );
+  } catch (error) {
+    console.error("Update profile error:", error);
+
+    // Handle specific MongoDB errors
+    if (error.code === 11000) {
+      return sendErrorResponse(res, 409, "Email is already in use");
+    }
+
+    return sendErrorResponse(
+      res,
+      500,
+      "An error occurred while updating profile"
+    );
+  }
+};
+
+/**
+ * @desc Change Password (Alternative endpoint with better security)
+ * @route PUT /api/admin/auth/change-password
+ * @access Private
+ */
+export const changePassword = async (req, res) => {
+  try {
+    if (!req.admin || !req.admin.id) {
+      return sendErrorResponse(res, 401, "Authentication required");
+    }
+
+    const { currentPassword, newPassword, confirmPassword } = req.body || {};
+
+    // Validation
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      return sendErrorResponse(
+        res,
+        400,
+        "Current password, new password, and confirmation are required"
+      );
+    }
+
+    if (newPassword !== confirmPassword) {
+      return sendErrorResponse(
+        res,
+        400,
+        "New password and confirmation do not match"
+      );
+    }
+
+    if (!validatePassword(newPassword)) {
+      return sendErrorResponse(
+        res,
+        400,
+        "New password must be at least 6 characters long"
+      );
+    }
+
+    if (currentPassword === newPassword) {
+      return sendErrorResponse(
+        res,
+        400,
+        "New password must be different from current password"
+      );
+    }
+
+    // Find admin and verify current password
+    const admin = await AdminUser.findById(req.admin.id).select("+password");
+    if (!admin) {
+      return sendErrorResponse(res, 404, "Admin profile not found");
+    }
+
+    const isCurrentPasswordValid = await bcrypt.compare(
+      currentPassword,
+      admin.password
+    );
+    if (!isCurrentPasswordValid) {
+      return sendErrorResponse(res, 401, "Current password is incorrect");
+    }
+
+    // Hash and save new password
+    const hashedNewPassword = await bcrypt.hash(newPassword, SALT_ROUNDS);
+    admin.password = hashedNewPassword;
+    admin.updatedAt = new Date();
+
+    // Invalidate all refresh tokens for security
+    admin.refreshToken = undefined;
 
     await admin.save();
-    res.json({
-      success: true,
-      message: "Profile updated",
-      admin: pickAdminPublic(admin),
+
+    return sendSuccessResponse(
+      res,
+      {},
+      "Password changed successfully. Please login again with your new password."
+    );
+  } catch (error) {
+    console.error("Change password error:", error);
+    return sendErrorResponse(
+      res,
+      500,
+      "An error occurred while changing password"
+    );
+  }
+};
+
+/**
+ * @desc Invalidate all sessions (logout from all devices)
+ * @route POST /api/admin/auth/logout-all
+ * @access Private
+ */
+export const logoutAll = async (req, res) => {
+  try {
+    if (!req.admin || !req.admin.id) {
+      return sendErrorResponse(res, 401, "Authentication required");
+    }
+
+    // Clear refresh token to invalidate all sessions
+    await AdminUser.findByIdAndUpdate(req.admin.id, {
+      $unset: { refreshToken: 1 },
+      lastLogout: new Date(),
     });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+
+    return sendSuccessResponse(
+      res,
+      {},
+      "Logged out from all devices successfully"
+    );
+  } catch (error) {
+    console.error("Logout all error:", error);
+    return sendErrorResponse(res, 500, "An error occurred while logging out");
+  }
+};
+
+/**
+ * @desc Verify token (for middleware or client-side checks)
+ * @route GET /api/admin/auth/verify
+ * @access Private
+ */
+export const verifyToken = async (req, res) => {
+  try {
+    if (!req.admin || !req.admin.id) {
+      return sendErrorResponse(res, 401, "Invalid or expired token");
+    }
+
+    // Optionally fetch fresh admin data
+    const admin = await AdminUser.findById(req.admin.id);
+    if (!admin || !admin.active) {
+      return sendErrorResponse(res, 401, "Admin account not found or inactive");
+    }
+
+    return sendSuccessResponse(
+      res,
+      {
+        valid: true,
+        admin: pickAdminPublic(admin),
+      },
+      "Token is valid"
+    );
+  } catch (error) {
+    console.error("Verify token error:", error);
+    return sendErrorResponse(
+      res,
+      500,
+      "An error occurred while verifying token"
+    );
   }
 };
