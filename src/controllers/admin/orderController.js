@@ -93,12 +93,7 @@ export const toggleDelivery = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Order not found" });
 
-    if (order.pickupType !== "delivery") {
-      return res.status(400).json({
-        success: false,
-        message: "Cannot change delivery for store pickup",
-      });
-    }
+  
 
     order.isDelivered = !order.isDelivered;
 
