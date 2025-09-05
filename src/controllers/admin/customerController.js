@@ -1,5 +1,6 @@
 import Customer from "../../models/Customer.js";
 
+// Helper: parse pagination info
 const parsePagination = (q) => {
   const page = Math.max(parseInt(q.page) || 1, 1);
   const limit = Math.min(parseInt(q.limit) || 20, 100);
@@ -7,6 +8,7 @@ const parsePagination = (q) => {
   return { page, limit, skip };
 };
 
+// Helper: pick only public fields
 const pickPublic = (c) => ({
   id: c._id,
   firstName: c.firstName,
@@ -18,24 +20,33 @@ const pickPublic = (c) => ({
   createdAt: c.createdAt,
 });
 
+/**
+ * @desc Get paginated customers list
+ * @route GET /api/customers?search=&limit=&page=&active=
+ */
 export const listCustomers = async (req, res) => {
   try {
     const { page, limit, skip } = parsePagination(req.query);
-    const q = req.query.q?.trim();
+    const search = req.query.search?.trim(); // 🔹 use `search`
     const active = req.query.active;
 
     const filter = {};
-    if (q) {
+
+    // 🔍 Search by name, email, or phone
+    if (search) {
       filter.$or = [
-        { firstName: new RegExp(q, "i") },
-        { lastName: new RegExp(q, "i") },
-        { email: new RegExp(q, "i") },
-        { phone: new RegExp(q, "i") },
+        { firstName: new RegExp(search, "i") },
+        { lastName: new RegExp(search, "i") },
+        { email: new RegExp(search, "i") },
+        { phone: new RegExp(search, "i") },
       ];
     }
+
+    // ✅ Active status filter if provided
     if (active === "true") filter.active = true;
     if (active === "false") filter.active = false;
 
+    // Fetch paginated customers and total count
     const [items, total] = await Promise.all([
       Customer.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
       Customer.countDocuments(filter),
@@ -51,6 +62,10 @@ export const listCustomers = async (req, res) => {
   }
 };
 
+/**
+ * @desc Get customer by ID
+ * @route GET /api/customers/:id
+ */
 export const getCustomerById = async (req, res) => {
   try {
     const c = await Customer.findById(req.params.id);
@@ -61,16 +76,17 @@ export const getCustomerById = async (req, res) => {
   }
 };
 
+/**
+ * @desc Create new customer
+ * @route POST /api/customers
+ */
 export const createCustomer = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, phone, active } =
-      req.body || {};
+    const { firstName, lastName, email, password, phone, active } = req.body || {};
     if (!email || !password)
       return res.status(400).json({ message: "Email & password required" });
 
-    const exists = await Customer.findOne({
-      email: email.toLowerCase().trim(),
-    });
+    const exists = await Customer.findOne({ email: email.toLowerCase().trim() });
     if (exists)
       return res.status(409).json({ message: "Email already registered" });
 
@@ -82,12 +98,17 @@ export const createCustomer = async (req, res) => {
       phone,
       active,
     });
+
     res.status(201).json({ success: true, data: pickPublic(c) });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
 
+/**
+ * @desc Update customer info
+ * @route PUT /api/customers/:id
+ */
 export const updateCustomer = async (req, res) => {
   try {
     const { firstName, lastName, phone, active } = req.body || {};
@@ -106,7 +127,10 @@ export const updateCustomer = async (req, res) => {
   }
 };
 
-// Adjust loyalty points (+/-)
+/**
+ * @desc Adjust customer loyalty points
+ * @route PATCH /api/customers/:id/loyalty
+ */
 export const adjustLoyalty = async (req, res) => {
   try {
     const { delta } = req.body || {};
@@ -124,7 +148,10 @@ export const adjustLoyalty = async (req, res) => {
   }
 };
 
-// Deactivate instead of hard delete
+/**
+ * @desc Deactivate customer instead of deleting
+ * @route PATCH /api/customers/:id/deactivate
+ */
 export const deactivateCustomer = async (req, res) => {
   try {
     const c = await Customer.findById(req.params.id);
@@ -137,7 +164,10 @@ export const deactivateCustomer = async (req, res) => {
   }
 };
 
-// 🆕 Hard delete customer (admin-only)
+/**
+ * @desc Permanently delete customer
+ * @route DELETE /api/customers/:id
+ */
 export const deleteCustomer = async (req, res) => {
   try {
     const c = await Customer.findById(req.params.id);

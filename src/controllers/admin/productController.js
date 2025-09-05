@@ -3,25 +3,31 @@ import Product from "../../models/Product.js";
 import { v4 as uuidv4 } from "uuid";
 
 // ✅ Get all products with search, filter, sort, pagination
+// ✅ Get all products with search, filter, sort, pagination
 export const getAllProducts = async (req, res) => {
   try {
     const page = Math.max(parseInt(req.query.page) || 1, 1);
     const limit = Math.min(parseInt(req.query.limit) || 20, 100);
     const skip = (page - 1) * limit;
 
+    // Both q and search work for searching
     const q = req.query.q?.trim();
+    const search = req.query.search?.trim(); 
     const category = req.query.category;
     const active = req.query.active;
     const sortBy = req.query.sortBy || "createdAt";
     const sortDir = req.query.sortDir === "asc" ? 1 : -1;
 
     const filter = {};
-    if (q) {
+
+    if (q || search) {
+      const term = q || search;
       filter.$or = [
-        { title: new RegExp(q, "i") },
-        { tags: new RegExp(q, "i") },
+        { title: new RegExp(term, "i") },
+        { tags: new RegExp(term, "i") },
       ];
     }
+
     if (category) filter.category = category;
     if (active === "true") filter.isActive = true;
     if (active === "false") filter.isActive = false;
@@ -45,6 +51,7 @@ export const getAllProducts = async (req, res) => {
       .json({ message: "Error fetching products", error: err.message });
   }
 };
+
 
 // ✅ Get single product by ID
 export const getProductById = async (req, res) => {
