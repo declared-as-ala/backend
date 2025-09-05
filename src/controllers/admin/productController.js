@@ -10,9 +10,7 @@ export const getAllProducts = async (req, res) => {
     const limit = Math.min(parseInt(req.query.limit) || 20, 100);
     const skip = (page - 1) * limit;
 
-    // Both q and search work for searching
-    const q = req.query.q?.trim();
-    const search = req.query.search?.trim(); 
+    const search = req.query.search?.trim() || req.query.q?.trim();
     const category = req.query.category;
     const active = req.query.active;
     const sortBy = req.query.sortBy || "createdAt";
@@ -20,11 +18,10 @@ export const getAllProducts = async (req, res) => {
 
     const filter = {};
 
-    if (q || search) {
-      const term = q || search;
+    if (search) {
       filter.$or = [
-        { title: new RegExp(term, "i") },
-        { tags: new RegExp(term, "i") },
+        { title: { $regex: search, $options: "i" } },
+        { tags: { $in: [new RegExp(search, "i")] } }, // ✅ search inside array
       ];
     }
 
@@ -46,11 +43,13 @@ export const getAllProducts = async (req, res) => {
       pagination: { page, limit, total, pages: Math.ceil(total / limit) },
     });
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error fetching products", error: err.message });
+    res.status(500).json({
+      message: "Error fetching products",
+      error: err.message,
+    });
   }
 };
+
 
 
 // ✅ Get single product by ID

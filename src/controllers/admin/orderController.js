@@ -1,155 +1,188 @@
-import Order from "../../models/Order.js";
+import Customer from "../../models/Customer.js";
+
+const parsePagination = (query) => {
+  const page = Math.max(parseInt(query.page) || 1, 1);
+  const limit = Math.min(parseInt(query.limit) || 20, 100);
+  const skip = (page - 1) * limit;
+  return { page, limit, skip };
+};
+
+const pickPublic = (customer) => ({
+  id: customer._id.toString(),
+  firstName: customer.firstName,
+  lastName: customer.lastName,
+  email: customer.email,
+  phone: customer.phone,
+  active: customer.active,
+  loyaltyPoints: customer.loyaltyPoints,
+  createdAt: customer.createdAt,
+});
 
 /**
- * @desc Get all orders with pagination + search
- * @route GET /api/admin/orders?search=&page=&limit=
+ * @desc List customers with search, active filter, pagination
+ * @route GET /api/admin/customers?search=&active=&page=&limit=
  */
-export const getOrders = async (req, res) => {
+export const listCustomers = async (req, res) => {
   try {
-    const page = Math.max(parseInt(req.query.page) || 1, 1);
-    const limit = Math.min(parseInt(req.query.limit) || 10, 100);
-    const skip = (page - 1) * limit;
-
+    const { page, limit, skip } = parsePagination(req.query);
     const search = req.query.search?.trim();
+    const active = req.query.active;
 
     const filter = {};
 
-    // 🔍 Search by customer name, email, phone, or order ID
     if (search) {
+      const regex = new RegExp(search, "i");
       filter.$or = [
-        { customerName: new RegExp(search, "i") },
-        { customerEmail: new RegExp(search, "i") },
-        { customerPhone: new RegExp(search, "i") },
-        { orderId: new RegExp(search, "i") },
+        { firstName: regex },
+        { lastName: regex },
+        { email: regex },
+        { phone: regex },
       ];
     }
 
-    // Fetch paginated orders and total count
-    const [orders, total] = await Promise.all([
-      Order.find(filter)
-        .sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(limit)
-        .lean(),
-      Order.countDocuments(filter),
+    if (active === "true") filter.active = true;
+    if (active === "false") filter.active = false;
+
+    const [items, total] = await Promise.all([
+      Customer.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
+      Customer.countDocuments(filter),
     ]);
 
     res.json({
       success: true,
-      data: orders,
+      data: items.map(pickPublic),
       pagination: { page, limit, total, pages: Math.ceil(total / limit) },
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Server Error" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };
 
 /**
- * @desc Get single order by ID
- * @route GET /api/admin/orders/:id
+ * @desc Get single customer by ID
+ * @route GET /api/admin/customers/:id
  */
-export const getOrderById = async (req, res) => {
+export const getCustomerById = async (req, res) => {
   try {
-    const { id } = req.params;
-    const order = await Order.findById(id).lean();
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
 
-    if (!order)
-      return res
-        .status(404)
-        .json({ success: false, message: "Order not found" });
-
-    res.json({ success: true, data: order });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Server Error" });
+    res.json({ success: true, data: pickPublic(customer) });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };
 
 /**
- * @desc Update order status
- * @route PUT /api/admin/orders/:id/status
+ * @desc Create a new customer
+ * @route POST /api/admin/customers
  */
-export const updateOrderStatus = async (req, res) => {
+export const createCustomer = async (req, res) => {
   try {
-    const { id } = req.params;
-    const { status } = req.body;
+    const { firstName, lastName, email, password, phone, active } = req.body;
 
-    if (!["en_attente", "payé", "terminé", "annulé"].includes(status)) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid status" });
-    }
+    if (!email || !password)
+      return res.status(400).json({ message: "Email & password required" });
 
-    const order = await Order.findById(id);
-    if (!order)
-      return res
-        .status(404)
-        .json({ success: false, message: "Order not found" });
+    const exists = await Customer.findOne({ email: email.toLowerCase().trim() });
+    if (exists)
+      return res.status(409).json({ message: "Email already registered" });
 
-    order.status = status;
+    const customer = await Customer.create({
+      firstName,
+      lastName,
+      email,
+      password,
+      phone,
+      active,
+    });
 
-    // Auto-update delivery status
-    if (
-      order.pickupType === "delivery" &&
-      (status === "payé" || status === "terminé")
-    ) {
-      order.isDelivered = true;
-    }
-
-    await order.save();
-    res.json({ success: true, data: order });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Server Error" });
+    res.status(201).json({ success: true, data: pickPublic(customer) });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
   }
 };
 
 /**
- * @desc Toggle delivery status
- * @route PUT /api/admin/orders/:id/delivery
+ * @desc Update customer info
+ * @route PUT /api/admin/customers/:id
  */
-export const toggleDelivery = async (req, res) => {
+export const updateCustomer = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { firstName, lastName, phone, active } = req.body;
 
-    const order = await Order.findById(id);
-    if (!order)
-      return res
-        .status(404)
-        .json({ success: false, message: "Order not found" });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
 
-    order.isDelivered = !order.isDelivered;
+    if (typeof firstName === "string") customer.firstName = firstName;
+    if (typeof lastName === "string") customer.lastName = lastName;
+    if (typeof phone === "string") customer.phone = phone;
+    if (typeof active === "boolean") customer.active = active;
 
-    if (order.isDelivered) order.status = "terminé";
-    else if (!order.isDelivered && order.status === "terminé")
-      order.status = "payé";
-
-    await order.save();
-    res.json({ success: true, data: order });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Server Error" });
+    await customer.save();
+    res.json({ success: true, data: pickPublic(customer) });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
   }
 };
 
 /**
- * @desc Delete order by ID
- * @route DELETE /api/admin/orders/:id
+ * @desc Adjust loyalty points (+/-)
+ * @route PATCH /api/admin/customers/:id/loyalty
  */
-export const deleteOrder = async (req, res) => {
+export const adjustLoyalty = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { delta } = req.body;
+    if (typeof delta !== "number")
+      return res.status(400).json({ message: "delta must be a number" });
 
-    const order = await Order.findByIdAndDelete(id);
-    if (!order)
-      return res
-        .status(404)
-        .json({ success: false, message: "Order not found" });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
 
-    res.json({ success: true, message: "Order deleted successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Server Error" });
+    customer.loyaltyPoints = Math.max(0, (customer.loyaltyPoints || 0) + delta);
+    await customer.save();
+
+    res.json({ success: true, data: pickPublic(customer) });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+/**
+ * @desc Deactivate customer (soft delete)
+ * @route PATCH /api/admin/customers/:id/deactivate
+ */
+export const deactivateCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
+
+    customer.active = false;
+    await customer.save();
+
+    res.json({ success: true, data: pickPublic(customer) });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+/**
+ * @desc Hard delete customer (admin-only)
+ * @route DELETE /api/admin/customers/:id
+ */
+export const deleteCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
+
+    await Customer.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: "Customer deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };
