@@ -4,6 +4,9 @@ import Order from "../../models/Order.js";
  * @desc Get all orders with pagination + search
  * @route GET /api/admin/orders?search=&page=&limit=
  */
+import mongoose from "mongoose";
+import Order from "../../models/Order.js";
+
 export const getOrders = async (req, res) => {
   try {
     const page = Math.max(parseInt(req.query.page) || 1, 1);
@@ -11,21 +14,31 @@ export const getOrders = async (req, res) => {
     const skip = (page - 1) * limit;
 
     const search = req.query.search?.trim();
+    const status = req.query.status?.trim();
+    const paymentMethod = req.query.paymentMethod?.trim();
 
     const filter = {};
 
-    // 🔍 Search by customer fullName, email, phone, or order _id
+    // 🔍 Search by customer or order ID
     if (search) {
       const regex = new RegExp(search, "i");
-      filter.$or = [
+      const orFilters = [
         { "customer.fullName": regex },
         { "customer.email": regex },
         { "customer.phone": regex },
-        { _id: regex }, // search by order ID
       ];
+
+      // Only include _id search if search is a valid ObjectId
+      if (mongoose.Types.ObjectId.isValid(search)) {
+        orFilters.push({ _id: search });
+      }
+
+      filter.$or = orFilters;
     }
 
-    // Fetch paginated orders and total count
+    if (status) filter.status = status;
+    if (paymentMethod) filter.paymentMethod = paymentMethod;
+
     const [orders, total] = await Promise.all([
       Order.find(filter)
         .sort({ createdAt: -1 })

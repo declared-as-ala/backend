@@ -2,26 +2,29 @@
 import Product from "../../models/Product.js";
 import { v4 as uuidv4 } from "uuid";
 
-// ✅ Get all products with search, filter, sort, pagination
-// ✅ Get all products with search, filter, sort, pagination
+import Product from "../../models/Product.js";
+import { v4 as uuidv4 } from "uuid";
+
 export const getAllProducts = async (req, res) => {
   try {
     const page = Math.max(parseInt(req.query.page) || 1, 1);
     const limit = Math.min(parseInt(req.query.limit) || 20, 100);
     const skip = (page - 1) * limit;
 
-    const search = req.query.search?.trim() || req.query.q?.trim();
-    const category = req.query.category;
+    const search = req.query.search?.trim();
+    const category = req.query.category?.trim();
     const active = req.query.active;
     const sortBy = req.query.sortBy || "createdAt";
     const sortDir = req.query.sortDir === "asc" ? 1 : -1;
 
     const filter = {};
 
+    // 🔍 Search by title or tags
     if (search) {
+      const regex = new RegExp(search, "i");
       filter.$or = [
-        { title: { $regex: search, $options: "i" } },
-        { tags: { $in: [new RegExp(search, "i")] } }, // ✅ search inside array
+        { title: regex },
+        { tags: { $elemMatch: { $regex: regex } } }, // search inside array
       ];
     }
 
@@ -43,12 +46,14 @@ export const getAllProducts = async (req, res) => {
       pagination: { page, limit, total, pages: Math.ceil(total / limit) },
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({
       message: "Error fetching products",
       error: err.message,
     });
   }
 };
+
 
 
 
