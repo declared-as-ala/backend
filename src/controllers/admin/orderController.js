@@ -1,5 +1,9 @@
 import Order from "../../models/Order.js";
-
+import mongoose from "mongoose";
+/**
+ * @desc Get all orders with pagination + search
+ * @route GET /api/admin/orders?search=&page=&limit=
+ */
 
 
 export const getOrders = async (req, res) => {
