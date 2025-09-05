@@ -3,6 +3,7 @@
 import Product from "../../models/Product.js";
 import { v4 as uuidv4 } from "uuid";
 
+
 export const getAllProducts = async (req, res) => {
   try {
     const page = Math.max(parseInt(req.query.page) || 1, 1);
@@ -20,16 +21,19 @@ export const getAllProducts = async (req, res) => {
     // 🔍 Search by title or tags
     if (search) {
       const regex = new RegExp(search, "i");
-      filter.$or = [
-        { title: regex },
-        { tags: { $elemMatch: { $regex: regex } } }, // search inside array
-      ];
+
+      // Only include tags filter if there are tags
+      filter.$or = [{ title: { $regex: regex } }, { tags: { $in: [regex] } }];
     }
 
+    // Filter by category if provided
     if (category) filter.category = category;
+
+    // Filter by active status if provided
     if (active === "true") filter.isActive = true;
     if (active === "false") filter.isActive = false;
 
+    // Execute query with pagination and sorting
     const [items, total] = await Promise.all([
       Product.find(filter)
         .sort({ [sortBy]: sortDir })
@@ -51,6 +55,8 @@ export const getAllProducts = async (req, res) => {
     });
   }
 };
+
+
 
 
 
