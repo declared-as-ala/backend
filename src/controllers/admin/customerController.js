@@ -1,52 +1,48 @@
 import Customer from "../../models/Customer.js";
 
-// Helper: parse pagination info
-const parsePagination = (q) => {
-  const page = Math.max(parseInt(q.page) || 1, 1);
-  const limit = Math.min(parseInt(q.limit) || 20, 100);
+const parsePagination = (query) => {
+  const page = Math.max(parseInt(query.page) || 1, 1);
+  const limit = Math.min(parseInt(query.limit) || 20, 100);
   const skip = (page - 1) * limit;
   return { page, limit, skip };
 };
 
-// Helper: pick only public fields
-const pickPublic = (c) => ({
-  id: c._id,
-  firstName: c.firstName,
-  lastName: c.lastName,
-  email: c.email,
-  phone: c.phone,
-  active: c.active,
-  loyaltyPoints: c.loyaltyPoints,
-  createdAt: c.createdAt,
+const pickPublic = (customer) => ({
+  id: customer._id.toString(),
+  firstName: customer.firstName,
+  lastName: customer.lastName,
+  email: customer.email,
+  phone: customer.phone,
+  active: customer.active,
+  loyaltyPoints: customer.loyaltyPoints,
+  createdAt: customer.createdAt,
 });
 
 /**
- * @desc Get paginated customers list
- * @route GET /api/customers?search=&limit=&page=&active=
+ * @desc List customers with search, active filter, pagination
+ * @route GET /api/admin/customers?search=&active=&page=&limit=
  */
 export const listCustomers = async (req, res) => {
   try {
     const { page, limit, skip } = parsePagination(req.query);
-    const search = req.query.search?.trim(); // 🔹 use `search`
+    const search = req.query.search?.trim();
     const active = req.query.active;
 
     const filter = {};
 
-    // 🔍 Search by name, email, or phone
     if (search) {
+      const regex = new RegExp(search, "i");
       filter.$or = [
-        { firstName: new RegExp(search, "i") },
-        { lastName: new RegExp(search, "i") },
-        { email: new RegExp(search, "i") },
-        { phone: new RegExp(search, "i") },
+        { firstName: regex },
+        { lastName: regex },
+        { email: regex },
+        { phone: regex },
       ];
     }
 
-    // ✅ Active status filter if provided
     if (active === "true") filter.active = true;
     if (active === "false") filter.active = false;
 
-    // Fetch paginated customers and total count
     const [items, total] = await Promise.all([
       Customer.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
       Customer.countDocuments(filter),
@@ -63,26 +59,29 @@ export const listCustomers = async (req, res) => {
 };
 
 /**
- * @desc Get customer by ID
- * @route GET /api/customers/:id
+ * @desc Get single customer by ID
+ * @route GET /api/admin/customers/:id
  */
 export const getCustomerById = async (req, res) => {
   try {
-    const c = await Customer.findById(req.params.id);
-    if (!c) return res.status(404).json({ message: "Customer not found" });
-    res.json({ success: true, data: pickPublic(c) });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
+
+    res.json({ success: true, data: pickPublic(customer) });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
 /**
- * @desc Create new customer
- * @route POST /api/customers
+ * @desc Create a new customer
+ * @route POST /api/admin/customers
  */
 export const createCustomer = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, phone, active } = req.body || {};
+    const { firstName, lastName, email, password, phone, active } = req.body;
+
     if (!email || !password)
       return res.status(400).json({ message: "Email & password required" });
 
@@ -90,7 +89,7 @@ export const createCustomer = async (req, res) => {
     if (exists)
       return res.status(409).json({ message: "Email already registered" });
 
-    const c = await Customer.create({
+    const customer = await Customer.create({
       firstName,
       lastName,
       email,
@@ -99,7 +98,7 @@ export const createCustomer = async (req, res) => {
       active,
     });
 
-    res.status(201).json({ success: true, data: pickPublic(c) });
+    res.status(201).json({ success: true, data: pickPublic(customer) });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -107,71 +106,79 @@ export const createCustomer = async (req, res) => {
 
 /**
  * @desc Update customer info
- * @route PUT /api/customers/:id
+ * @route PUT /api/admin/customers/:id
  */
 export const updateCustomer = async (req, res) => {
   try {
-    const { firstName, lastName, phone, active } = req.body || {};
-    const c = await Customer.findById(req.params.id);
-    if (!c) return res.status(404).json({ message: "Customer not found" });
+    const { firstName, lastName, phone, active } = req.body;
 
-    if (typeof firstName === "string") c.firstName = firstName;
-    if (typeof lastName === "string") c.lastName = lastName;
-    if (typeof phone === "string") c.phone = phone;
-    if (typeof active === "boolean") c.active = active;
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
 
-    await c.save();
-    res.json({ success: true, data: pickPublic(c) });
+    if (typeof firstName === "string") customer.firstName = firstName;
+    if (typeof lastName === "string") customer.lastName = lastName;
+    if (typeof phone === "string") customer.phone = phone;
+    if (typeof active === "boolean") customer.active = active;
+
+    await customer.save();
+    res.json({ success: true, data: pickPublic(customer) });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
 
 /**
- * @desc Adjust customer loyalty points
- * @route PATCH /api/customers/:id/loyalty
+ * @desc Adjust loyalty points (+/-)
+ * @route PATCH /api/admin/customers/:id/loyalty
  */
 export const adjustLoyalty = async (req, res) => {
   try {
-    const { delta } = req.body || {};
+    const { delta } = req.body;
     if (typeof delta !== "number")
       return res.status(400).json({ message: "delta must be a number" });
 
-    const c = await Customer.findById(req.params.id);
-    if (!c) return res.status(404).json({ message: "Customer not found" });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
 
-    c.loyaltyPoints = Math.max(0, (c.loyaltyPoints || 0) + delta);
-    await c.save();
-    res.json({ success: true, data: pickPublic(c) });
+    customer.loyaltyPoints = Math.max(0, (customer.loyaltyPoints || 0) + delta);
+    await customer.save();
+
+    res.json({ success: true, data: pickPublic(customer) });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
 
 /**
- * @desc Deactivate customer instead of deleting
- * @route PATCH /api/customers/:id/deactivate
+ * @desc Deactivate customer (soft delete)
+ * @route PATCH /api/admin/customers/:id/deactivate
  */
 export const deactivateCustomer = async (req, res) => {
   try {
-    const c = await Customer.findById(req.params.id);
-    if (!c) return res.status(404).json({ message: "Customer not found" });
-    c.active = false;
-    await c.save();
-    res.json({ success: true, data: pickPublic(c) });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
+
+    customer.active = false;
+    await customer.save();
+
+    res.json({ success: true, data: pickPublic(customer) });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
 /**
- * @desc Permanently delete customer
- * @route DELETE /api/customers/:id
+ * @desc Hard delete customer (admin-only)
+ * @route DELETE /api/admin/customers/:id
  */
 export const deleteCustomer = async (req, res) => {
   try {
-    const c = await Customer.findById(req.params.id);
-    if (!c) return res.status(404).json({ message: "Customer not found" });
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
 
     await Customer.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: "Customer deleted successfully" });
