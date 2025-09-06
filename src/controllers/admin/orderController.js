@@ -119,7 +119,6 @@ export const updateOrderStatus = async (req, res) => {
 };
 
 /**
- * @desc Toggle delivery status
  * @route PUT /api/admin/orders/:id/delivery
  */
 export const toggleDelivery = async (req, res) => {
@@ -132,14 +131,33 @@ export const toggleDelivery = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Order not found" });
 
-    order.isDelivered = !order.isDelivered;
+    // Calculate the new values first
+    const newIsDelivered = !order.isDelivered;
+    let newStatus = order.status;
 
-    if (order.isDelivered) order.status = "terminé";
-    else if (!order.isDelivered && order.status === "terminé")
-      order.status = "payé";
+    if (newIsDelivered) {
+      newStatus = "terminé";
+    } else if (!newIsDelivered && order.status === "terminé") {
+      newStatus = "payé";
+    }
 
-    await order.save();
-    res.json({ success: true, data: order });
+    // Use findByIdAndUpdate to bypass the pre-save hook completely
+    const updatedOrder = await Order.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          isDelivered: newIsDelivered,
+          status: newStatus,
+          updatedAt: new Date()
+        }
+      },
+      {
+        new: true, // Return the updated document
+        runValidators: true // Run schema validators but not pre-save hooks
+      }
+    );
+
+    res.json({ success: true, data: updatedOrder });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Server Error" });
