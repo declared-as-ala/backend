@@ -1,23 +1,35 @@
-import fs from 'fs';
-import path from 'path';
+// convert_to_products_json.js
+import { readFileSync, writeFileSync } from "fs";
+import { v4 as uuidv4 } from "uuid";
 
-// Paths
-const inputFile = path.join(process.cwd(), 'aa.json');
-const outputFile = path.join(process.cwd(), 'aa_clean.json');
+const inputFile = "aa.json";
+const outputFile = "products.json";
 
-// Read JSON file
-const rawData = fs.readFileSync(inputFile, 'utf-8');
-const products = JSON.parse(rawData);
+const rawData = JSON.parse(readFileSync(inputFile, "utf-8"));
 
-// Clean image URLs
-const cleanedProducts = products.map((product) => {
-  if (product.image && typeof product.image === 'string') {
-    product.image = product.image.trim();
-  }
-  return product;
+const cleanProducts = rawData.map(p => {
+  const now = new Date().toISOString();
+
+  const variants = (p.variants || []).map(v => ({
+    variant_id: v.variant_id || uuidv4(),
+    variant_name: v.variant_name || "",
+    price: v.price_eur || 0,
+    unit_type: v.unit_type || "weight",
+    grams: v.grams != null ? v.grams : null,
+    options: v.options || []
+  }));
+
+  return {
+    id: uuidv4(), // unique product id
+    Image: (p.image || "").trim(),
+    title: p.title || "",
+    category: p.category || "Uncategorized",
+    description: p.description || "",
+    variants,
+    createdAt: now,
+    updatedAt: now
+  };
 });
 
-// Write cleaned JSON
-fs.writeFileSync(outputFile, JSON.stringify(cleanedProducts, null, 2), 'utf-8');
-
-console.log(`Cleaned JSON saved to ${outputFile}`);
+writeFileSync(outputFile, JSON.stringify(cleanProducts, null, 2), "utf-8");
+console.log(`Saved ${cleanProducts.length} products to ${outputFile}`);

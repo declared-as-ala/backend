@@ -1,0 +1,5886 @@
+[
+  {
+    "id": "c297fbeb-24dd-4d0e-8836-215fd010a88f",
+    "Image": "https://images.sumup.com/img_0F7RFBPQKJ9NZV1N1H6PYF7B9Q/image.png",
+    "title": "Citron jaune",
+    "category": "Argumes",
+    "variants": [
+      {
+        "variant_id": "24CA972B-8B37-4FA4-8C9F-88B923BDD904",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "abd71448-3de5-4abd-82f3-ce7790835a26",
+        "variant_name": "1 kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.145Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "07ed48c6-313b-468f-b836-893e2a219925",
+    "Image": "https://images.sumup.com/img_5A94R8JMTY910VWNG9EQD49K44/image.png",
+    "title": "Citron jaune bio",
+    "category": "Argumes",
+    "variants": [
+      {
+        "variant_id": "B5857194-4F05-4BAD-B268-BC9B8628F05B",
+        "variant_name": "500g",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "174d875b-7e74-427d-b537-df015b6ad4ec",
+        "variant_name": "1kg",
+        "price": 6.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "d46d0d18-7921-461e-afe2-f2ab2b6e26d0",
+    "Image": "https://images.sumup.com/img_7F802RGTB68EZV8BBW0AQ4EESH/image.png",
+    "title": "Citron vert",
+    "category": "Argumes",
+    "variants": [
+      {
+        "variant_id": "e73e705a-8db4-4afc-a7e2-d73bc9c99d44",
+        "variant_name": "250g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      },
+      {
+        "variant_id": "099CBCFF-41D5-494E-889C-9985735F0DA3",
+        "variant_name": "500g",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "54ab3577-3e4b-4480-9762-08735a67c698",
+    "Image": "https://images.sumup.com/img_251PTDWMGM96STVQFFZ8B2241Q/image.png",
+    "title": "Clémentine socculete",
+    "category": "Argumes",
+    "variants": [
+      {
+        "variant_id": "55B2A059-6D52-4A87-98AA-00AA15607A2E",
+        "variant_name": "500g",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "704484d2-a49d-43f5-ae7f-47bd84dbeb02",
+        "variant_name": "1 kg",
+        "price": 7.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2b80c171-04a2-4fe0-a5b1-e0daa134a8ea",
+    "Image": "https://images.sumup.com/img_4XE125C96J93387NMM7VBSHWRZ/image.png",
+    "title": "Orange sanguine",
+    "category": "Argumes",
+    "variants": [
+      {
+        "variant_id": "10FD2073-000E-44B5-8294-3428B00FF85C",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "bc9f6a65-ce72-4ecb-a14d-c323723b44ec",
+        "variant_name": "1 kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c646506a-26a4-4de2-a16a-43c0c2684b83",
+    "Image": "https://images.sumup.com/img_5AXB8KJ8E09G1T2B80DQCRRK5J/image.png",
+    "title": "Orange succulente",
+    "category": "Argumes",
+    "variants": [
+      {
+        "variant_id": "E479FDB0-DF96-4B2E-B062-476867EAA592",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "fb4c1c4c-71e7-476f-bb64-cace4c30c3a0",
+        "variant_name": "1 kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "cb488be4-3bf1-4761-8aad-db75fa8877ac",
+    "Image": "https://images.sumup.com/img_46F5HWSWHZ8KDSCMMZ5VZ5GTD5/image.png",
+    "title": "Pamplemousse",
+    "category": "Argumes",
+    "variants": [
+      {
+        "variant_id": "25159490-8099-43BB-BC4C-C564770116C9",
+        "variant_name": "",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4e2b0d2a-46b6-460f-a58e-06413de9722f",
+    "Image": "https://images.sumup.com/img_0G9KT9NWSV9SHBFYZA43TFQKCY/image.png",
+    "title": "Anchois (76g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "B36F606C-6CB4-4CE9-B4CC-1D120E3DC271",
+        "variant_name": "",
+        "price": 5.98,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "dda65576-cd5b-43e3-9e3b-eafe20877976",
+    "Image": "https://images.sumup.com/img_0PYN0X0XNW8SDTMQC25BK405XQ/image.png",
+    "title": "Asperges (200g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "090EB192-C4F0-44D7-8E9E-0536DFF5A6CA",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "ecabfe58-c9f8-4c2a-92bc-ee7fd03ff196",
+    "Image": "https://images.sumup.com/img_1TRVJBK8859YXV1Q3A7ZZAE5PR/image.png",
+    "title": "Beurre ÉCHIRÉ",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "E41C2FE6-B15E-4C67-8040-693DAA45A444",
+        "variant_name": "Beurre doux",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Beurre doux"
+          }
+        ]
+      },
+      {
+        "variant_id": "4f926b31-c9e9-4baa-8e13-11686c862a2d",
+        "variant_name": "Beurre demi-sel ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Beurre demi-sel "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4f833397-132e-477a-96e8-caa0b0f70cb7",
+    "Image": "https://images.sumup.com/img_4YKN5JW3ZV8BHA0JMK76X94R2A/image.png",
+    "title": "Biscottes artisanales",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "A3796CDF-E0DC-4BDA-A113-F7F55B67ABC8",
+        "variant_name": "sans sucre ajouté ",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Type",
+            "value": "sans sucre ajouté "
+          }
+        ]
+      },
+      {
+        "variant_id": "10bd9d2d-0a8b-4022-aac6-8961363bfb75",
+        "variant_name": "Authentique ",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Type",
+            "value": "Authentique "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2c5a58a5-25a4-4075-bbdd-2c002d6522ee",
+    "Image": "https://images.sumup.com/img_0BFWANNSF58J69D905205HGA93/image.png",
+    "title": "Boissons Traditionnelles Gazéifiée aux arômes de Mandarine (75cl)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "66A19900-6CFE-408C-B593-B92366972171",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "8cf80906-48a3-4932-992b-9ff7eb0c2ecc",
+    "Image": "https://images.sumup.com/img_2JYP8Z8TGW9QSTTC5A6FV9KFD7/image.png",
+    "title": "Boisson Traditionnelle Gazéifiée aux arômes de citron (75cl)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "22418487-1ACB-43BD-B0E5-A1C7FC4930DA",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "e5e97bd7-95b5-47ef-ac32-da611914e761",
+    "Image": "https://images.sumup.com/img_3H84G28C599ZVASRMWXXXWMERE/image.png",
+    "title": "Boisson Traditionnelle gazéifiée aux arômes de fruits de bois(75cl)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "B029DE15-3170-4C78-B043-E727C9A9F77D",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "e1ae0719-de69-4b0e-9919-492c3c71b9f4",
+    "Image": "https://images.sumup.com/img_71YXNSYHQY85Q9HDPJCKGC0YX0/image.png",
+    "title": "Boisson traditionnelle gazéifiée aux arômes de Litchi (75cl)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "6A8C56FA-6D06-4A0A-AB19-B9583AC91E98",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "8874288a-fb65-461e-ac9f-aa21962899ef",
+    "Image": "https://images.sumup.com/img_4S2648XFDR9CPBXYNF15YTPX9H/image.png",
+    "title": "Boisson Traditionnelle Gazéifiés aux arômes de Pêche Abricot (75cl)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "95C1F304-B19D-4C30-B30A-F2592865F866",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "e93d80d9-8d0c-4d62-ab80-39351afccd74",
+    "Image": "https://images.sumup.com/img_3N2JCGXQVB9WWAFG29C2H9D9YS/image.png",
+    "title": "Bolero",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "C3099278-A253-4E8C-9922-1B4FDCD7F4A0",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "cda860d3-c798-4c43-85ee-41910dd8b681",
+    "Image": "https://images.sumup.com/img_2TVGN0ZW9Z877VYW8T0CVHMY9X/image.png",
+    "title": "Bretzels salés",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "0A80755C-6759-46C6-8D23-C7308109D965",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "07f60495-4dc7-49ec-9b7b-8f74976cf2d9",
+    "Image": "https://images.sumup.com/img_286XERF9V69EQ845XG718WZW32/image.png",
+    "title": "Cake à l’écorce d’orange",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "DF141EDF-4793-4052-9745-CC8A5F85FA18",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "3b4824f4-1e06-49d5-b489-8d3d49ac86f7",
+    "Image": "https://images.sumup.com/img_4JSHVDBXX29EZTC2VMKAZF745C/image.png",
+    "title": "Chips au sel de guérande",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "3D73AE09-63F1-4043-AA85-70FE5178A0B3",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "7c6c4aac-5001-4b91-8245-4e56301009ea",
+    "Image": "https://images.sumup.com/img_3FP7GAC5RY98VTCNKQCCGKZYYY/image.png",
+    "title": "Chips de légumes (200g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "564AEB16-10EC-4C41-8500-49BF1B228B36",
+        "variant_name": "",
+        "price": 5.8,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "d54eb639-1a5e-4586-9569-000b3e9dc86c",
+    "Image": "https://images.sumup.com/img_4B2RP9QNFG9QWRVP6MTSFTYDA5/image.png",
+    "title": "Compote pomme poire Jean d’Audignac",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "41E5AB3F-2018-4038-B9FE-68FF4EF33CA9",
+        "variant_name": "",
+        "price": 4,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "32dcc05f-74ed-4b10-b88a-a6d89701b829",
+    "Image": "https://images.sumup.com/img_0PQ018581P9SE9GK00N8YR7R3R/image.png",
+    "title": "Confit Jean d’Audignac",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "EBE187E0-C025-45C3-B32A-602A06F71C31",
+        "variant_name": "Confit de figues",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Confit de figues"
+          }
+        ]
+      },
+      {
+        "variant_id": "e114e4e5-982d-4cc8-ada0-2a9335aab5b6",
+        "variant_name": "Confit d’oignons ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Confit d’oignons "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4444c87d-ebba-496d-b046-22ace98276c4",
+    "Image": "https://images.sumup.com/img_52YC5QYWTM9CPAVRTCH9EZF91T/image.png",
+    "title": "Confiture d’abricot",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "1A7BFA5E-FA76-4DC8-9F55-6BE9588D7249",
+        "variant_name": "",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "adbdb071-1b48-4e32-9bf0-bf2451d2a98b",
+    "Image": "https://images.sumup.com/img_0EV141V80599QTFKFA5Q33HR68/image.png",
+    "title": "Confiture de fraises",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "B41184AA-25AC-4DA0-A9D9-458B84F9534F",
+        "variant_name": "",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "6738ad36-8f96-42ef-95b0-3973d4488ff6",
+    "Image": "https://images.sumup.com/img_3MF2NWBXGZ91E8T7ZW1SYGQ8HW/image.png",
+    "title": "Confiture de mirabelle",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "8A077811-AACE-4817-A313-27D45D6F27E0",
+        "variant_name": "",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c59b12ec-edb1-4a9d-a731-bd9f1052b97a",
+    "Image": "https://images.sumup.com/img_6SYJEBC767980B9C80D3B23ETX/image.png",
+    "title": "Cookies à l’avoine",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "0112294E-339C-4605-AD37-44621080CEFF",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "91f48875-054a-4969-bff0-f9d3d5335c61",
+    "Image": "https://images.sumup.com/img_10YDABJ0V298W8QM8D8W0CBD44/image.png",
+    "title": "Coulis Jean d’Audignac",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "F2D9BE1E-BBAB-4D17-A4FE-26F4F64D6233",
+        "variant_name": "Coulis d’abricot ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Coulis d’abricot "
+          }
+        ]
+      },
+      {
+        "variant_id": "c60cffef-bae9-4bf5-9a2d-5166fcfd463f",
+        "variant_name": "Coulis 4 fruits rouges",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Coulis 4 fruits rouges"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "59579797-82eb-4cd6-9ce8-6e4926dca250",
+    "Image": "https://images.sumup.com/img_714W00WDZ09T5T39GKH8Q8NXWW/image.png",
+    "title": "Crabe royal de l’antarctique chatka",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "5893440B-5D33-4BED-B768-C670CC30A463",
+        "variant_name": "",
+        "price": 39.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "8a8fe9df-e4b4-4fe8-82e0-61ffc2965cf9",
+    "Image": "https://images.sumup.com/img_3EWSAKWC0381BVYJC52MYFZN71/image.png",
+    "title": "Crème fouettée à la vanille",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "7538F2C6-78F2-40D2-A21B-B498FCAF3CEF",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "8c06822a-eece-40d1-a0b6-ad6ca8500fe3",
+    "Image": "https://images.sumup.com/img_2FWREC55T192SAEWPY2FNRK1V2/image.png",
+    "title": "Épinards (420g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "40BE40D2-B34C-4427-9114-C4697BCD5944",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "fbe0fe8f-341d-4a08-91bd-23ca6b2229bc",
+    "Image": "https://images.sumup.com/img_37R9MCCXHV8129MZ8H268652GD/image.png",
+    "title": "Extrait naturelle (spray)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "AD48E908-EA68-42D5-838F-85EFDCCC4280",
+        "variant_name": "Ail",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Ail"
+          }
+        ]
+      },
+      {
+        "variant_id": "1b66a6f9-3105-4dd8-9791-06a33f424990",
+        "variant_name": "Basilic ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Basilic "
+          }
+        ]
+      },
+      {
+        "variant_id": "16bfab82-bc6e-4bce-a23d-09d78051cc80",
+        "variant_name": "Piment ",
+        "price": 0,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Piment "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9feab509-f3f9-4878-a9f1-59a09e04dcc7",
+    "Image": "https://images.sumup.com/img_70C6AVWX7T9RG8CAZ45XD6A66F/image.png",
+    "title": "Feuilleté aux choix",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "DE27B101-0455-41BF-A788-7B67B3206F0B",
+        "variant_name": "Fourme/ chorizo ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Les variétés ",
+            "value": "Fourme/ chorizo "
+          }
+        ]
+      },
+      {
+        "variant_id": "91d28503-9872-43c8-a437-503434c650e2",
+        "variant_name": "Chèvre miel",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Les variétés ",
+            "value": "Chèvre miel"
+          }
+        ]
+      },
+      {
+        "variant_id": "c081cbe8-3546-4f3b-aac8-0e3d626a1ac1",
+        "variant_name": "Jambon emmental ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Les variétés ",
+            "value": "Jambon emmental "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "8db716ed-b09f-4943-9ec3-24eb994b147d",
+    "Image": "https://images.sumup.com/img_50ZJ7FRYQW8RV9J0XHW0W0ENFF/image.png",
+    "title": "Filets de Hareng fumés Richter",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "14733414-F614-46A6-9FAA-5A47996A171D",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "bc2ba470-42df-4938-a196-a79fc98206ea",
+    "Image": "https://images.sumup.com/img_1FM2ZS7BYM9X8S78JK09GEPW1P/image.png",
+    "title": "Filets de Thon Tonnara",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "4272BB55-AAB3-4CAB-9DDC-E87D66BABC08",
+        "variant_name": "",
+        "price": 9.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "3a3e5389-03b1-4e95-9e53-15798f226a6f",
+    "Image": "https://images.sumup.com/img_4CVC7Z1BNG8HRVDSKFVZDNSKFX/image.png",
+    "title": "Foie gras de canard du sud-ouest mi-cuit",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "F35107B3-106D-4727-9B0C-2A87B7F5C4BA",
+        "variant_name": "",
+        "price": 44,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "7d66d52c-f0b2-4456-8626-30761fc68276",
+    "Image": "https://images.sumup.com/img_4Z0R3FK1E4895ST3DPMKT6HDGF/image.png",
+    "title": "Gâche",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "AFDEA895-6661-40E7-A3D5-48457F9A3E68",
+        "variant_name": "",
+        "price": 7.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "61b1dee5-8d15-43ee-8e22-c0c22b259ae1",
+    "Image": "https://images.sumup.com/img_1GKHF1J7GN8ZVS4GGVCRXKBQV5/image.png",
+    "title": "Gaspacho traditionnel",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "F404B1A7-89AE-40F8-A059-FA698C0FE452",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "88c321e5-e184-4497-b7f5-6ffbe6069874",
+    "Image": "https://images.sumup.com/img_7BFZV7S8TX9WRTFNAW5A7EXFJM/image.png",
+    "title": "Gaufres fines",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "89387165-3738-438F-B034-C9DFF637F403",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "7c54d554-c313-4a3a-9d0d-824f40a86a0d",
+    "Image": "https://images.sumup.com/img_4K106VW6PP8W082KV5THR8D34P/image.png",
+    "title": "Gaufrettes amusantes",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "7DFA767C-8CF4-4110-BBFC-970A44CB8564",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "a214fb19-ae00-4319-b03a-3e971f5422d8",
+    "Image": "https://images.sumup.com/img_7FJ68CC77X91PVVJSTPDQ5T7W4/image.png",
+    "title": "Gourmandise marines",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "EF822B81-F50D-4C33-8F06-6BE5D9AD3C99",
+        "variant_name": "Cabillaud façon Aïoli",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Cabillaud façon Aïoli"
+          }
+        ]
+      },
+      {
+        "variant_id": "28e6280b-6c3f-4971-a4c1-71214a048eb6",
+        "variant_name": "Rillettes de Truite Fumée",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Rillettes de Truite Fumée"
+          }
+        ]
+      },
+      {
+        "variant_id": "c8a3c9cc-f091-4553-b350-ad0deeb4a498",
+        "variant_name": "Duo de Saumons au Citron Vert et Sel de Guérande",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Duo de Saumons au Citron Vert et Sel de Guérande"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "d9060699-6a93-41c1-ab0a-36fb7d87d3d3",
+    "Image": "https://images.sumup.com/img_4PCND8S7Z39SPAWBYZRPKANM4V/image.png",
+    "title": "Gressins au sesame",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "EAA958C2-19E2-4B5C-BA10-75BE9FD15494",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "7705856a-d7fa-4f83-8953-4b84296f755b",
+    "Image": "https://images.sumup.com/img_4085HPDWDZ820V0NXTR2TXK33P/image.png",
+    "title": "Huile d’olive extra vierge bio",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "A268766C-B058-4516-8505-5628D5893884",
+        "variant_name": "",
+        "price": 17.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "a263979d-b28b-414b-82c7-e6c77c849785",
+    "Image": "https://images.sumup.com/img_0QSZ19GYHG9DKBWF8943KGNHG8/image.png",
+    "title": "Mayonnaise à l’huile de Tournesol",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "C51D5BF1-E9F3-45C7-82BB-FCDD5A39637B",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "230bb78e-9401-45b5-81be-f9313ed51493",
+    "Image": "https://images.sumup.com/img_4Z4HJY0NC78429025YZA0DHFRD/image.png",
+    "title": "Miel d’acacia",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "63DE3E9D-823B-482B-948D-1C0B62A87170",
+        "variant_name": "",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "edbd93ee-1cb1-4e6a-a015-2bffbe4fd302",
+    "Image": "https://images.sumup.com/img_7W3QXJH3E8966BHH52DCZXAXWR/image.png",
+    "title": "Miel de lavande",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "C954C02C-B6C3-4A0F-A9FC-2A1D2ED15B65",
+        "variant_name": "",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "5af343d1-49f4-4a05-a36a-e7300ffc86a4",
+    "Image": "https://images.sumup.com/img_4TWY8XVXC39S4V2KGS5M92EN2C/image.png",
+    "title": "Mini Madeleine de Bretagne",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "177B8141-8C88-4298-AB20-F088174700CA",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "82890ba1-e04c-4517-ae81-3bbf76e15eea",
+    "Image": "https://images.sumup.com/img_7D1V86FG1H9J0RBAQ92X1WRZCH/image.png",
+    "title": "Moutarde de Dijon (Jean d’Audignac )",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "34AB7364-B312-4CF1-A66D-659DD92C0DF0",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "53d35976-79a4-42b3-a433-18fe9545e79c",
+    "Image": "https://images.sumup.com/img_7747TH28K78E1AK6XHVGP3WC1W/image.png",
+    "title": "Pain de mie gourmet",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "C006E613-0E83-4CA3-BCAE-496329B6B6BB",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "88f3d643-989f-42c9-bcf9-4c4d0757d35d",
+    "Image": "https://images.sumup.com/img_216SG7T6VQ8GDAKE16FB656820/image.png",
+    "title": "Pain d’épices au Miel",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "81F925B8-D72B-4BCB-8505-BB69CE8D25D7",
+        "variant_name": "",
+        "price": 7.98,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "ec3ab919-f13c-4306-8d96-bce8a2bf676b",
+    "Image": "https://images.sumup.com/img_5JWGD7E3DG8Z0VXY41KKS3NTQT/image.png",
+    "title": "Pâte à tartiner lait feuilletine (200g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "FD5D1D39-9365-4E95-9FE7-B5492D4BE0B2",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "96d9db10-0450-4b23-a21c-64f85737f237",
+    "Image": "https://images.sumup.com/img_3RPJD619EN8W6RHSD2TQVRZ2J8/image.png",
+    "title": "Pesto Rosso (180g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "5CED70CA-6ADC-486C-8985-084B9448B921",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "996923bd-1959-4928-a42e-1a189069f20e",
+    "Image": "https://images.sumup.com/img_63MNTBMJGT9X9TECW4SY4JA29X/image.png",
+    "title": "Petit beurre breton",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "FC52ECA5-8A59-4EC8-9A36-EE08BA413B47",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "73948992-e52b-4b5c-be2d-61ce90a32442",
+    "Image": "https://images.sumup.com/img_181DBKTJH98E6AP7F2X78XH71D/image.png",
+    "title": "Petits Citrons Sauvages d'Égypte - Confit chez Jaun d'Audiganc",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "F53A8409-AB50-4147-A570-EE4E4040C6C6",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "0fd1fd0a-4c6b-4325-9a37-d0e2f71faf8a",
+    "Image": "https://images.sumup.com/img_6009A4E2JV804VYEK7SBK5A1P8/image.png",
+    "title": "Petits pois (445g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "F29EE9E2-6E36-4D2C-AF90-811B1147D99C",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "11decec8-bcc8-49d5-b15f-37deef84c81c",
+    "Image": "https://images.sumup.com/img_3QA1XQQ6CK97B80GNGCVFWE2R3/image.png",
+    "title": "Piment d’espelette (40g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "AE6EF074-014B-4175-BCB5-28A04C093AE5",
+        "variant_name": "",
+        "price": 12.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "b49fa612-1756-4d2b-a867-3ebfcc25324c",
+    "Image": "https://images.sumup.com/img_106V7X22PE8NCRAMFSCM5XDMYM/image.png",
+    "title": "Pois chiche (400g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "C2B465D9-5D2B-4BA0-99EF-F1D6980B2391",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "f612b810-1f06-41cc-86bd-0a2278dc2c8c",
+    "Image": "https://images.sumup.com/img_4610H0PK4Y97JRF3JN780QVANJ/image.png",
+    "title": "Pomme de terre grenaille île de ré",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "6A56FCD3-7332-4A63-9C36-C6C026657C67",
+        "variant_name": "",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4a3929b1-3e00-471e-9af0-a7882d99f92d",
+    "Image": "https://images.sumup.com/img_5RF2T71BD99RM8B1SVQWHNFSQW/image.png",
+    "title": "Ratatouille (630g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "1D980AFF-F0A8-4E3F-8B33-7F1CC0F49B51",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4c72de29-a003-404f-bc4e-5db13522d1b9",
+    "Image": "https://images.sumup.com/img_1KGWYEB33G8ZZ9A8HJE68CDQDH/image.png",
+    "title": "Ravioli à la provençale (800g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "40DD11C4-6049-4F37-92FD-EC36DCA1FCAD",
+        "variant_name": "",
+        "price": 11.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "69c65385-9eb7-4fed-b169-6143fdfaac39",
+    "Image": "https://images.sumup.com/img_6DZRH2GTS08WJ8J61EH5VV8VEA/image.png",
+    "title": "Rillettes (90g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "071A3B49-DFD5-49F7-9051-F62A7F5FEEA8",
+        "variant_name": "Rillettes de Thon à la Créole  ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos Variétés de Rillettes ",
+            "value": "Rillettes de Thon à la Créole  "
+          }
+        ]
+      },
+      {
+        "variant_id": "45781955-19c6-4723-8418-91278fc25a1f",
+        "variant_name": "Rillettes de Saumon ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos Variétés de Rillettes ",
+            "value": "Rillettes de Saumon "
+          }
+        ]
+      },
+      {
+        "variant_id": "af7bb4de-2cef-4cfe-af00-a4c9eda67780",
+        "variant_name": "Rillettes de Coquille st Jacques ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos Variétés de Rillettes ",
+            "value": "Rillettes de Coquille st Jacques "
+          }
+        ]
+      },
+      {
+        "variant_id": "058963f3-2add-4a78-9eeb-78f64ab19032",
+        "variant_name": "Rillettes de Dorade à la Créole",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos Variétés de Rillettes ",
+            "value": "Rillettes de Dorade à la Créole"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "29c7f51f-bfb5-4c17-9af0-3cca0c111f14",
+    "Image": "https://images.sumup.com/img_65HNMM233E9PQT41JZ43612EAN/image.png",
+    "title": "Risotto aux cèpes (400g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "0616AE59-3D91-4B5D-94F6-8ABF7B4D1CF0",
+        "variant_name": "",
+        "price": 8.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c29538f4-dd28-4f3d-b4c1-4e2ddc484743",
+    "Image": "https://images.sumup.com/img_4RXTM8EMJN9N1RZJ0HPF029R0R/image.png",
+    "title": "Risotto aux légumes (400g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "910F8838-4807-4F41-95EA-3312C89B62D3",
+        "variant_name": "",
+        "price": 7.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "6c344148-8ea8-4590-bc75-732c78ec9d3a",
+    "Image": "https://images.sumup.com/img_7ZDBG9NM009TCS6VJ2QSR2ZYP2/image.png",
+    "title": "Sardines Mouettes d’Arvor",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "002E79BF-277E-4B26-A408-CAEFD4E52F37",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "489b052d-6eeb-4626-aa02-d85d21c9cffa",
+    "Image": "https://images.sumup.com/img_1FTAS35FNF9KN9C7NAGZFNTHHZ/image.png",
+    "title": "Sauce Tartare Les Impeccables",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "F10EBC42-A4D9-4D47-A356-DAF4E695B976",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "80ebc865-2a93-49e3-bc5e-31160c89788f",
+    "Image": "https://images.sumup.com/img_26EBFS4VST82FTJV92SHYFC6GN/image.png",
+    "title": "Sauce Tomates Les Impeccables",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "2F610764-A249-4F0C-B086-A7A5C1C01649",
+        "variant_name": "",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "d92e582e-7517-4083-8679-07df58fe3768",
+    "Image": "https://images.sumup.com/img_2N1D3HKEAN8QV8GMNF84492M2Z/image.png",
+    "title": "Sel Jean D’Audignac",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "A6995464-6F37-4B5B-A7C2-60B5667B403A",
+        "variant_name": "Sel rose de l’Himalaya ",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Variétés de sel",
+            "value": "Sel rose de l’Himalaya "
+          }
+        ]
+      },
+      {
+        "variant_id": "3a289cea-7063-4f87-a31d-ec313022e54c",
+        "variant_name": "Sel bleu de Perse",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Variétés de sel",
+            "value": "Sel bleu de Perse"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "7a10cc55-64ff-455a-a622-8f6b9831d7c1",
+    "Image": "https://images.sumup.com/img_6CMW8H840197FVPKMGVQEAGQK9/image.png",
+    "title": "Soupe paysanne aux légumes (500ml)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "CADB0B5C-4CF4-4890-84F8-9727247C7D3B",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "f18a6c34-6735-4622-b792-fa8aba8dc9a0",
+    "Image": "https://images.sumup.com/img_53X2D4W5A29RQRFCMR3QBTHDBB/image.png",
+    "title": "Soupes et veloutés (680ml)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "568B624C-DBD4-4339-B399-951EE3DF9482",
+        "variant_name": "Soupe d’asperges",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés de soupes et veloutés ",
+            "value": "Soupe d’asperges"
+          }
+        ]
+      },
+      {
+        "variant_id": "9a15c693-24c7-4deb-90e1-8b555d142188",
+        "variant_name": "Velouté de poireaux et pommes de terre",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés de soupes et veloutés ",
+            "value": "Velouté de poireaux et pommes de terre"
+          }
+        ]
+      },
+      {
+        "variant_id": "9ff77c87-0743-404a-a902-7f6df2eb04d9",
+        "variant_name": "Velouté de courgettes",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés de soupes et veloutés ",
+            "value": "Velouté de courgettes"
+          }
+        ]
+      },
+      {
+        "variant_id": "92a5b4e3-836a-4519-93ea-23d5ae1a3b88",
+        "variant_name": "Soupe de légumes vert à la ciboulette ",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés de soupes et veloutés ",
+            "value": "Soupe de légumes vert à la ciboulette "
+          }
+        ]
+      },
+      {
+        "variant_id": "5fdd65ea-aa08-4202-ad0d-6e597a48d8a6",
+        "variant_name": "Velouté de potimarron et potiron ",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés de soupes et veloutés ",
+            "value": "Velouté de potimarron et potiron "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4597f0f8-679d-4697-a421-acad32b4c404",
+    "Image": "https://images.sumup.com/img_6HK8MGB6ZR83RSC58ZYSH9M263/image.png",
+    "title": "Sparts fumés Riga Gold",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "FA6650FA-0590-4FE3-82B5-B44FB9A8A6E8",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "b1f5f0f8-6a65-4152-85dc-a5f7f2379c78",
+    "Image": "https://images.sumup.com/img_7TETC1CVXR9N7B31ERGR62Z2MW/image.png",
+    "title": "Speculoos",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "5800A11D-D408-4F91-B0F2-E8D83E442B6C",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2982ac14-1cca-4fc9-8fdf-f0b10e762fd0",
+    "Image": "https://images.sumup.com/img_2Q8Q8Z9PXC9DXSAS6PX4FX8Q6T/image.png",
+    "title": "Tapenade Artisanale (90g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "7B577856-1CB0-42F8-87FF-AD6285CBAB19",
+        "variant_name": "Tapenade Noir aux olives de Pays",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés de tapenade",
+            "value": "Tapenade Noir aux olives de Pays"
+          }
+        ]
+      },
+      {
+        "variant_id": "2a863485-191c-4b18-8aab-5b1159bf370d",
+        "variant_name": "Tapenade verte aux olives de Pays",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés de tapenade",
+            "value": "Tapenade verte aux olives de Pays"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9024e63b-e06c-41ca-b2ab-3695de68f3ae",
+    "Image": "https://images.sumup.com/img_7NT5YSBZ5W8TEV9TDQCZTAMYNW/image.png",
+    "title": "Thon Al Manar",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "10C6C946-DC6C-45AF-A9A0-E218F893ECDE",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "25634f50-fadd-4f54-80f3-ac385682ba11",
+    "Image": "https://images.sumup.com/img_6M38MR05MP8K29GDWCHE49JWQQ/image.png",
+    "title": "Toasts apéritifs aux 7 céréales (140g)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "11B68398-DF1A-44A2-9729-BEAED144B600",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4d734e0d-ed9e-4d9c-bae6-14d9a0092b1f",
+    "Image": "https://images.sumup.com/img_2H0WZSFSRC8NRBCPWYN0PAAE2P/image.png",
+    "title": "Vanille de Madagascar (tube)",
+    "category": "Épicerie Fine",
+    "variants": [
+      {
+        "variant_id": "91DB7F25-03B1-4D41-B910-F428294E250D",
+        "variant_name": "",
+        "price": 12.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "b4d4a6ec-ecfe-4b92-b27a-6b3e7f822357",
+    "Image": "https://images.sumup.com/img_2C7RHSA1MX8C1V3HB62BR3C587/image.png",
+    "title": "Ananas barquette",
+    "category": "Fruits coupés",
+    "variants": [
+      {
+        "variant_id": "BC65E1F9-F932-4086-8EFB-10BAA61329B7",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "acb31cae-289f-4e6a-a28b-ada99891c29a",
+    "Image": "https://images.sumup.com/img_2RBRHS655R8G7SXY4CTBDXNM01/image.png",
+    "title": "Abricot extra",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "3AE487DF-B693-493B-8B62-CB40972F6D7B",
+        "variant_name": "500g",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "e55b2c31-2cb5-4f55-bd9a-91d772a99af7",
+        "variant_name": "1 kg",
+        "price": 13.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "fa39b3f8-b468-4030-b3cd-7b24edd053c3",
+    "Image": "https://images.sumup.com/img_4MBDA7T6R48C5RF5QQEYY9G14N/image.png",
+    "title": "Abricot promo",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "98C8B11C-527E-4858-ABE8-1A2130BDDC04",
+        "variant_name": "500g",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "9615f483-3386-4e42-b5b5-2c3e22dec0dc",
+        "variant_name": "1 kg",
+        "price": 7.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "6d0fabd8-4777-449c-8458-2e04758f2540",
+    "Image": "https://images.sumup.com/img_6YSZ80P6QS9R999EVDNSY0CYSK/image.png",
+    "title": "Melon",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "2F125274-E913-42DC-B153-2834181E704C",
+        "variant_name": "",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c4a88674-df57-4427-9d9f-ce31f81316c8",
+    "Image": "https://images.sumup.com/img_2JX8W5E2GW9ZV8F92P02GD47AV/image.png",
+    "title": "Melon Philibon",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "BBE31C13-E877-482C-82A2-B003F234BC43",
+        "variant_name": "",
+        "price": 12,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "83c00a8b-9a20-42d6-9039-73f895112385",
+    "Image": "https://images.sumup.com/img_48303VRFYC80GV9R56C76W1HW3/image.png",
+    "title": "Nectarine blanche",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "2629FB1D-98AB-4893-844E-B1410E1BC119",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "6ea347c6-18b4-4513-979b-95eae57572e4",
+        "variant_name": "1 kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "50fffe25-3e12-4bd3-abdc-ea04b86f0132",
+    "Image": "https://images.sumup.com/img_57N3DJR1XY92R8R8PCANKNDY3F/image.png",
+    "title": "Nectarine jaune",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "67906B18-9C59-415B-99CB-073F2E6FB6E6",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "f9d19504-0f90-4e9a-91dc-29c8a02d9ebc",
+        "variant_name": "1 kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9720c8c2-7480-4d1b-910f-b9b9d7bdd0d3",
+    "Image": "https://images.sumup.com/img_2EWXY1GRTR9K8VD7GQA6DJSQRM/image.png",
+    "title": "Orange à jus",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "19CB9E62-6B4E-4B2F-979C-14A350BAED24",
+        "variant_name": "500g",
+        "price": 1.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "b94a75de-587a-49da-81e7-cfb1df1c074f",
+        "variant_name": "1 kg",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2dd18419-b78e-4cb1-bf0e-636bb5b8f054",
+    "Image": "https://images.sumup.com/img_64098D1RGD8MBTGBM3KKYNK3ZD/image.png",
+    "title": "Pastèque 1,7 kg (1/4)",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "30619C9A-7404-4244-BE66-ACFCE4659ABD",
+        "variant_name": "",
+        "price": 7.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "a288a445-a5c4-48fd-8fa3-1a8c6465dd95",
+    "Image": "https://images.sumup.com/img_5XDXEZFR478RW8S1XD3Y1HE62W/image.png",
+    "title": "Pêche blanche",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "EED59C7A-F341-443F-82B7-263C85FBD839",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "666c25f0-31ac-422c-a9e2-347bd26e1bde",
+        "variant_name": "1 kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c38e8ca9-387b-4d1f-a32f-cc0c7114b499",
+    "Image": "https://images.sumup.com/img_63BSTZMNE385ARA3AWQYXXZ0KT/image.png",
+    "title": "Pêche jaune",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "F54BCBD4-EAFF-401E-B1ED-B988A7662807",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "1f5f7030-ae6d-49a6-8e59-145f341ecc56",
+        "variant_name": "1 kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "7c028649-34e1-4316-8e5a-f3862f4fa69e",
+    "Image": "https://images.sumup.com/img_0YJ5NXTK9N9CDRQ4S6CV8662H0/image.png",
+    "title": "Pêche plate",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "833DC304-1847-49BC-AD98-B4FEEA2E7F35",
+        "variant_name": "500g",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "c58cc645-0969-4176-9f70-17ee614385b9",
+        "variant_name": "1 kg",
+        "price": 11.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "258f4b0b-fafb-4d57-bc17-0c9f3c5103c1",
+    "Image": "https://images.sumup.com/img_3M77DM71H69F89E49H71J9NB44/image.png",
+    "title": "Poire Comice",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "60BA5FF5-6FC2-474D-9213-51A88A6658CC",
+        "variant_name": "500g",
+        "price": 3.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "81c58dde-4e98-4063-ac98-f29e313d78fd",
+        "variant_name": "1kg",
+        "price": 6.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "1c833548-a8b8-4d10-ac62-4054645a2924",
+    "Image": "https://images.sumup.com/img_3AADQPD5WT8CVRSFQ01T2Z8GE9/image.png",
+    "title": "Poire Conférence",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "4C8ED5F2-4C39-4B4C-B025-77052B303827",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "13cd8e22-2765-4b25-8806-61110408ac9d",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "da68fd1f-956d-48f9-a97c-0102d702f0dd",
+    "Image": "https://images.sumup.com/img_6QP6N89GFC8VXR3K8N0BWXRZH9/image.png",
+    "title": "Poire William",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "A7EFAEFD-9CFE-43F3-A983-4C965A6FC2F2",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "de49ea75-f92a-476d-a39e-ea0abeb120ee",
+        "variant_name": "1 kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "d7c26f36-52f1-4e71-8ba9-07c97e5bb7a3",
+    "Image": "https://images.sumup.com/img_2EKKR7RE658KJV9A9W21P9AB6E/image.png",
+    "title": "Pomme Boskoop",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "B61A7DAE-B317-47CC-B462-344C163DD41F",
+        "variant_name": "500g",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "9a962d7d-dd41-4995-ae6a-4d5dbf344eef",
+        "variant_name": "1kg",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "3c64f086-c3cb-48e1-8e29-2c2a96202405",
+    "Image": "https://images.sumup.com/img_6WFKP476CH9TS873TJEGD7BCHM/image.png",
+    "title": "Pomme Canada",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "4F571E78-B05B-4B88-82FB-1BD98AFFA7DE",
+        "variant_name": "500g",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "0a6db9c3-a798-4458-a15c-14feeaba6742",
+        "variant_name": "1kg",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "d160888e-2afc-4491-acc0-3de80f565456",
+    "Image": "https://images.sumup.com/img_1PVEHAJ1GM9RCS8KWKBQNCAVND/image.png",
+    "title": "Pomme Chantecler",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "A2679D5A-C7FA-43BB-A6A0-8B7AEB8EB37E",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "d9abbf28-972e-4e79-acce-37d2b8903248",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "cebd5e5c-01f2-4fbf-aedc-077846ff5321",
+    "Image": "https://images.sumup.com/img_0HV8V50K069Q1B2MFNV7WPQMYX/image.png",
+    "title": "Pomme Fuji",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "0A6C5A3E-9423-4208-BF3C-C941174B1A8A",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "9a8c0f41-ed13-4e84-b751-567163f928c4",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "d004a63a-8c31-44ab-b898-44622495e901",
+    "Image": "https://images.sumup.com/img_527EVHGZBR8NPBHWQFTWXY7YZ9/image.png",
+    "title": "Pomme Gala",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "8CBC9270-5DCF-40DD-8A0E-8E135901FC90",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "345837d9-0290-4f5d-97e7-0a6852a2adb9",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c6da380d-7370-47c1-bd30-55171d2ddaea",
+    "Image": "https://images.sumup.com/img_38VJGAQ1DC8F6BJ458PJMYZ7DF/image.png",
+    "title": "Pomme Golden",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "43A25BB1-F7B4-4B76-838F-C9D146659487",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "7630fa52-68eb-4f5c-9db5-093320ce45c4",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "5d80b008-fea7-4d70-923a-5561f7417a2a",
+    "Image": "https://images.sumup.com/img_60H413VRMK976SGRYRR7TKEW67/image.png",
+    "title": "Pomme Granny",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "3D036D2B-13BB-46B2-B81B-7BA835D75E79",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "45e9a612-ef00-49ce-ad2c-d7c5c9ee20b6",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "f1ddf33c-80c9-4c23-b8f8-70b8070e5d86",
+    "Image": "https://images.sumup.com/img_0P2B45R9S59JHV0MH9GQ5DNKRR/image.png",
+    "title": "Pomme Jazz",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "417DCED7-AB50-4F46-A4F4-80BCA5889B1E",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids ",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "d1e5775c-c1fd-4273-9e3c-ec09f1aa82ee",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids ",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "79a7afa6-f4e3-4a8f-8811-5936fe7c64d5",
+    "Image": "https://images.sumup.com/img_41JNFWBATB9G0TF41BNV1PWK6Y/image.png",
+    "title": "Pomme Juliet bio",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "C8E2C592-5A3C-405B-A91D-30977F651111",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "22ac2149-03d3-4d77-af46-77bbf9915441",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "aeac0b4e-10da-45a1-b60a-2edf536e354c",
+    "Image": "https://images.sumup.com/img_08NEEGKR698DQR57QS4TDE2SYF/image.png",
+    "title": "Pomme Pink Lady",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "B701BC49-4092-42E9-91EC-0269855A84B5",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "ce8cbd63-0fa7-43ea-a041-d6cfcc0ae209",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "a191eb98-74c1-44f9-aab3-1812aa93d14b",
+    "Image": "https://images.sumup.com/img_1C9ASRPEX2829BKMN8YMXD3ACN/image.png",
+    "title": "Prunes jaune",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "DF9C91AA-324E-48A3-9687-3BE70DFBEE97",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "a905a1f0-0f98-4f05-96de-0f354d2d5adc",
+        "variant_name": "1 kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "7fec0e42-f684-49db-aa64-8b363871420d",
+    "Image": "https://images.sumup.com/img_3V4PXRYNPX94RAXQ4C8RRGR8WP/image.png",
+    "title": "Prunes violette",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "75475506-B015-40EA-9820-B737FE40854F",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "0762968a-494a-480c-9839-4bb8413ae8bd",
+        "variant_name": "1 kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "edb6551c-8621-41eb-9114-e702302aba78",
+    "Image": "https://images.sumup.com/img_05YRKJR7PD8HCR167RHG1VR775/image.png",
+    "title": "Raisins blanc sans pépins",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "745C123D-D724-47A5-8726-27F8D37CC331",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "b8902c48-d6fd-4461-bfbf-b4d1305e178b",
+        "variant_name": "1 kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "efe85f99-53dd-4dfe-a29f-f7b8f075aaff",
+    "Image": "https://images.sumup.com/img_4YVCS034S79NDAE4TPQQ14ZS64/image.png",
+    "title": "Raisins rouge sans pépins",
+    "category": "Fruits De Saison",
+    "variants": [
+      {
+        "variant_id": "0057E05D-CC5B-414C-83AF-31D61F7116DC",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "d6afb4c1-a6f5-4989-bb3f-b2a424322e68",
+        "variant_name": "1 kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2a0671f2-c79c-4cbf-9fc8-f1427bf3518a",
+    "Image": "https://images.sumup.com/img_3098J52BR78C9B1K4R87QPZ67P/image.png",
+    "title": "Ananas Costa Rica",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "3C992948-84E0-427D-A36D-F29C2850D956",
+        "variant_name": "",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2439fa7f-f2bf-40fe-ac08-ea8d399e06e1",
+    "Image": "https://images.sumup.com/img_1RN8HNR9RM92YAMXZP1MFTMTQ2/image.png",
+    "title": "Ananas Pain de sucre",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "3EF837F5-75A5-4B46-A7C2-23E83F6528A3",
+        "variant_name": "",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "73247f33-da9e-4038-ab3e-ca420c7c205d",
+    "Image": "https://images.sumup.com/img_7AP7FQVJ8T8XPA7J1M13F8RFNP/image.png",
+    "title": "Ananas Victoria",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "DF4BE7DA-BC0C-4F1B-A965-8B1EBE2F4165",
+        "variant_name": "",
+        "price": 8.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "ef6d2115-39ee-47dd-adb2-6746caf7fbfb",
+    "Image": "https://images.sumup.com/img_6ZNN28Y2039F4RTTZB8ATFDKKR/image.png",
+    "title": "Avocat",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "BF7E49F4-FF07-4679-931B-8B834E7B3504",
+        "variant_name": "Une pièce ",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "Une pièce "
+          }
+        ]
+      },
+      {
+        "variant_id": "d2539ccd-2854-4eb6-98ae-670335f9f7ba",
+        "variant_name": "Deux pièces ",
+        "price": 5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "Deux pièces "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "43dc2cde-6705-4afe-b965-af7cd25cf555",
+    "Image": "https://images.sumup.com/img_1P9YH497949PAS0CFCWBFRYZB5/image.png",
+    "title": "Banane Martinique",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "7BF16011-E4BE-44B8-8474-8F08229A978F",
+        "variant_name": "500g",
+        "price": 1.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "dcd3c5ec-7867-487a-a051-16b363a0d00c",
+        "variant_name": "1kg",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "b3307935-6783-45e4-a922-0aea687c1e18",
+    "Image": "https://images.sumup.com/img_68F0JEBD3E863SZPZD43FKB2G7/image.png",
+    "title": "Datte d’Algérie",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "6C2D8607-BF1F-441C-A608-AE199C016220",
+        "variant_name": "250g",
+        "price": 3.25,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      },
+      {
+        "variant_id": "32e9ee3a-72b0-4566-ae99-47b69991bc4e",
+        "variant_name": "500",
+        "price": 6.5,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2b4da5d5-fb2d-41d8-868a-93182609e5eb",
+    "Image": "https://images.sumup.com/img_75BKTW4G619NGSRGGPXGDAH148/image.png",
+    "title": "Datte Medjoul",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "3AFC0EE7-6E08-459A-AF3A-66D0B13D9396",
+        "variant_name": "250g",
+        "price": 5.75,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids ",
+            "value": "250g"
+          }
+        ]
+      },
+      {
+        "variant_id": "172baf75-6ab7-4389-b4d2-fd7321345102",
+        "variant_name": "500g",
+        "price": 11.5,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids ",
+            "value": "500g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "1be093c9-d618-4165-bd1b-a2a7403195ef",
+    "Image": "https://images.sumup.com/img_4HX36FWQ5J82YTYX6PPF23AVHB/image.png",
+    "title": "Fruits de la passion",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "B78EBA01-3EB0-43F2-8AAE-88228BC6BF17",
+        "variant_name": "250g",
+        "price": 6,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      },
+      {
+        "variant_id": "13d8b7af-344d-4ca0-9b96-be8120dd79de",
+        "variant_name": "500g",
+        "price": 12,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "5602d71e-9c20-4a53-a9be-100baf37665c",
+    "Image": "https://images.sumup.com/img_25V144AHC09A98ZRMY3BQJDBST/image.png",
+    "title": "Kiwi jaune",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "47AE2C15-D805-4E4E-BD92-1E9375F9B3E9",
+        "variant_name": "1 pièce ",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "1 pièce "
+          }
+        ]
+      },
+      {
+        "variant_id": "560b9351-d942-47cc-b5a0-ba2c55959736",
+        "variant_name": "3 pièces ",
+        "price": 5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "3 pièces "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "515052b0-25f6-491d-8828-677ffc33ac0f",
+    "Image": "https://images.sumup.com/img_19HVNWCJVS9PX99C1BQT71R096/image.png",
+    "title": "Kiwi vert",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "32CB564C-790A-4C5E-8A34-23903D5B5940",
+        "variant_name": "1 pièce ",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "1 pièce "
+          }
+        ]
+      },
+      {
+        "variant_id": "528281f0-bfe7-443c-8faa-7ea5e1eabeaf",
+        "variant_name": "3 pièces ",
+        "price": 4,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "3 pièces "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "50440f97-ad00-441d-94d4-9cab5ad46c82",
+    "Image": "https://images.sumup.com/img_7RC9QHS2HE8P1BZTTERKKS312D/image.png",
+    "title": "Mangue Kent (par avion)",
+    "category": "Fruits exotiques",
+    "variants": [
+      {
+        "variant_id": "845AC63A-16C8-45D2-B584-04C6ED91F2C3",
+        "variant_name": "",
+        "price": 8.6,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "508c8f86-aa32-4477-bc56-204e0379029c",
+    "Image": "https://images.sumup.com/img_2PMNVQWF118QMAGDD4DRS4FYC0/image.png",
+    "title": "Fraise Clery (BRQ 500g)",
+    "category": "Fruits rouges",
+    "variants": [
+      {
+        "variant_id": "939023C7-7F4F-4BA5-8BA3-687FCF4EBEE7",
+        "variant_name": "1 barquette ",
+        "price": 7.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "1 barquette "
+          }
+        ]
+      },
+      {
+        "variant_id": "1d4fab19-48f1-4be5-a4bb-f3e2fa3e6e6f",
+        "variant_name": "2 barquettes ",
+        "price": 15,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "2 barquettes "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "fc1d6aba-3ce1-440c-906a-7597cac3f2a1",
+    "Image": "https://images.sumup.com/img_3W7K0J673W91XV9C88GX5N2XB7/image.png",
+    "title": "Fraise mara des bois (brq 250g)",
+    "category": "Fruits rouges",
+    "variants": [
+      {
+        "variant_id": "E1C1F10B-7F48-42C3-BDDC-507F0B8BBF59",
+        "variant_name": "",
+        "price": 7.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9f98ff7a-f7f5-4479-834f-c515892baf66",
+    "Image": "https://images.sumup.com/img_2B4HVGZBAJ9FEA74GATFP1RY02/image.png",
+    "title": "Framboise (BRQ 125g)",
+    "category": "Fruits rouges",
+    "variants": [
+      {
+        "variant_id": "59ffd7d9-d5f2-4d78-9070-2a282fd064be",
+        "variant_name": "1 Barquette",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo ",
+            "value": "1 Barquette"
+          }
+        ]
+      },
+      {
+        "variant_id": "861F9A2B-3DD5-4861-88E9-C22CFF658AF5",
+        "variant_name": "2 Barquettes ",
+        "price": 7,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo ",
+            "value": "2 Barquettes "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "65ce60d2-df29-423a-8eff-8349b065ac7c",
+    "Image": "https://images.sumup.com/img_33663JM0B889MV60FESQ146HC0/image.png",
+    "title": "Groseille barquette (125g)",
+    "category": "Fruits rouges",
+    "variants": [
+      {
+        "variant_id": "31249A3E-CC88-421E-B897-17A75FF5334F",
+        "variant_name": "125g",
+        "price": 6.9,
+        "unit_type": "weight",
+        "grams": 125,
+        "options": [
+          {
+            "name": "Barquette ",
+            "value": "125g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "47b6c00a-a946-45bd-8cd1-e26e90974aac",
+    "Image": "https://images.sumup.com/img_0684HEKHD78TCSFV6MX7SK42HB/image.png",
+    "title": "Mure 125g",
+    "category": "Fruits rouges",
+    "variants": [
+      {
+        "variant_id": "FD5CCF03-31CA-49FD-B9E1-5BB34EFD8196",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "ec20a98d-bf8e-40a5-97f7-28b8a4680acc",
+    "Image": "https://images.sumup.com/img_2ERZNTCYED9TVSKX9GWG6CR9VW/image.png",
+    "title": "Mûre barquette ( 125g)",
+    "category": "Fruits rouges",
+    "variants": [
+      {
+        "variant_id": "95551ADF-80CB-4CAD-A31E-06A5E3945692",
+        "variant_name": "125g",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 125,
+        "options": [
+          {
+            "name": "Barquette ",
+            "value": "125g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c0da23d5-677a-488b-af2c-578bcdc290d7",
+    "Image": "https://images.sumup.com/img_5PRRG20JMQ8KSSW7Z6M777D4NK/image.png",
+    "title": "Myrtille barquette (125g)",
+    "category": "Fruits rouges",
+    "variants": [
+      {
+        "variant_id": "CE9E9FA3-DC6F-43CD-9A58-84E08B7FF93A",
+        "variant_name": "",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "05b7cf8a-a3b0-418a-bac9-b0b3a4628775",
+    "Image": "https://images.sumup.com/img_72SD9T81CT9GSA9KS0R3HKG1TW/image.png",
+    "title": "Abricot sec (200g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "36472184-0BA6-4CEB-9911-D35B9EDBD747",
+        "variant_name": "",
+        "price": 5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "5196771e-76e3-46cc-9022-e879121dafcf",
+    "Image": "https://images.sumup.com/img_2R2FKP1YV39GP8YZTKTXR3CGN3/image.png",
+    "title": "Amande naturelle (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "83CD785E-501B-42C2-BBBF-86C8BFD6A81C",
+        "variant_name": "",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4ef6bbed-4314-4d85-9fae-3eee56b3758d",
+    "Image": "https://images.sumup.com/img_3FVPZH4JXE8CKBDWV1AEDJ4HTZ/image.png",
+    "title": "Amandes au piment (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "BE3A1D10-EC72-4E71-A8E8-55B86CAE69F3",
+        "variant_name": "",
+        "price": 4.45,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "6821dc44-3040-47f7-86f6-644eed394978",
+    "Image": "https://images.sumup.com/img_25F4WPKD429NBSPEQYMK2TD7VY/image.png",
+    "title": "Amandes aux sésames (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "B4EEBE78-4B8D-4CBB-9F33-0821318E3999",
+        "variant_name": "",
+        "price": 4.45,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "2740a2ab-6151-44cb-91b4-04430029fa3d",
+    "Image": "https://images.sumup.com/img_3KM9GRWHX29P4B7MPT1J1VDPSA/image.png",
+    "title": "Amandes fumées nature (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "F5AC0A22-F8CE-49C7-8F2B-8F495FD9EB0E",
+        "variant_name": "",
+        "price": 4.45,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "a8187be6-708e-4d43-8b9a-14e014f5ff33",
+    "Image": "https://images.sumup.com/img_68G7563T02813SBDNTS6HV2M45/image.png",
+    "title": "Cerneaux de noix (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "D12DE1EF-2605-4561-AD7A-A638D3E2B669",
+        "variant_name": "",
+        "price": 5.85,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4c94d101-8cf1-4942-a6a8-9d8719124e54",
+    "Image": "https://images.sumup.com/img_2DH0307D908JFBA6QV6NPHN3Z5/image.png",
+    "title": "Figues séchées (200g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "F41E1FBA-3CF9-4EE7-A7A1-0A98C19B06CF",
+        "variant_name": "",
+        "price": 5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "162a05b3-8f47-42d5-957b-c5bb985f0bc0",
+    "Image": "https://images.sumup.com/img_7HC13HJNGT956VNT6VF6MAX050/image.png",
+    "title": "Gingembre confit en lamelles (200g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "F4304C8C-0F1C-44F9-B2A4-E7FEE896167E",
+        "variant_name": "",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "f518a17e-c98a-4ed0-8116-0747d3171103",
+    "Image": "https://images.sumup.com/img_694EMA2KPM9WF8211GGAMAJ2CV/image.png",
+    "title": "Mélange fruits secs (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "0D431A37-8509-4D4F-AA95-424F8CCAFED3",
+        "variant_name": "",
+        "price": 4.45,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9d1b01a5-3d07-4db2-89d4-de036401dae4",
+    "Image": "https://images.sumup.com/img_2ZAHDHA5F288Q9DRYSYCA1ZDVX/image.png",
+    "title": "Noisette décortiquée (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "FA0CCEC4-3E46-44CC-81CE-BAFB2702A24D",
+        "variant_name": "",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "3bebf7f6-266b-4231-ace3-fe28f1a689fa",
+    "Image": "https://images.sumup.com/img_4QMH3692BJ8ERA799QR7MYTM2J/image.png",
+    "title": "Noix de Brésil",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "CAF472A5-170D-4DBB-AAF7-788038305781",
+        "variant_name": "",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "97b73e2e-d355-479a-98da-96f670149da3",
+    "Image": "https://images.sumup.com/img_7N8870JNEK8GGSGBQFG09MAZXC/image.png",
+    "title": "Noix de cajou grillé nature (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "4267AD0C-6A1F-488C-87E1-483E4F81FDA4",
+        "variant_name": "",
+        "price": 4.45,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "67b66023-d55a-4809-a5a6-8ffa8ca1359d",
+    "Image": "https://images.sumup.com/img_2FZTNQ0SW7884BE1MFA5P9AQ8B/image.png",
+    "title": "Noix de macadamia frite salé (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "5F6DEA84-5700-4882-92DB-150FDD8E14B1",
+        "variant_name": "",
+        "price": 9.75,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9838863b-f55d-48ea-976b-6e4bd0dffd62",
+    "Image": "https://images.sumup.com/img_1R7VEPXGFB86EAKPHD0M72F9DR/image.png",
+    "title": "Pistaches grillées nature (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "28534B35-C9A9-43DD-BF08-4B07778AC238",
+        "variant_name": "",
+        "price": 4.45,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "33af1419-be0e-41ca-be1b-34d7669ed2f9",
+    "Image": "https://images.sumup.com/img_7M8HYNQYEH8YZVVSEEWX8ZPNX7/image.png",
+    "title": "Pruneaux (200g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "236A183F-D49B-4BC5-B5C0-7F4692A0850D",
+        "variant_name": "",
+        "price": 4,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "b1dc0ba9-3932-4c53-8533-1e34db62f156",
+    "Image": "https://images.sumup.com/img_0G2XG8SQEZ84J8D765VVDEC67R/image.png",
+    "title": "Raisins secs (150g)",
+    "category": "Fruits secs",
+    "variants": [
+      {
+        "variant_id": "347C4094-CCB7-4943-9C36-482ED1C73BD1",
+        "variant_name": "",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "16de516d-2b60-4f55-860b-5e0ccc1965ce",
+    "Image": "https://images.sumup.com/img_7FVNC70NJD8M6VKCTPXGRVVD65/image.png",
+    "title": "Aneth botte",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "995086D7-12F1-4D4C-B3DD-FA05D763F037",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "87a09811-c8a4-41bd-9b32-1ad1c7e80560",
+    "Image": "https://images.sumup.com/img_25QHWKE7HE949RRTAG846N277Q/image.png",
+    "title": "Bouquet garni en botte",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "7A73D884-290A-4774-AF87-1D17769E8250",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "1ab4d9db-ce40-49b9-b18f-0b9629445dac",
+    "Image": "https://images.sumup.com/img_6R4V9X894E8VTANAR9GBBRYRCV/image.png",
+    "title": "Ciboulette botte",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "47CBD933-9EF4-4D85-9B2A-F61308EDBC71",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "cf48e341-ba3d-4df1-bdc2-f3ea7bbc1927",
+    "Image": "https://images.sumup.com/img_1XP6PRS7YH8QABZ5274YHW0TA8/image.png",
+    "title": "Coriandre (botte)",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "D30663EB-D264-42B4-87AB-A4EDD8ACABDD",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "c014fa6c-3ad2-4e53-a5b7-2f3355113d1b",
+    "Image": "https://images.sumup.com/img_1Y1ZX2P3CW8ET9Y72GH3H6JQWP/image.png",
+    "title": "Estragon botte",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "541C5B13-C3B8-47F8-A581-4D3C82788979",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "658b02b9-181c-4eb7-b97b-b7092f0cb479",
+    "Image": "https://images.sumup.com/img_20XQNATBY18ZSS7298BSKVTYSV/image.png",
+    "title": "Menthe (botte)",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "1B60FB23-FC1A-40BA-83C0-693291310D69",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "e7042d32-7827-4142-86e4-4c7abd6801c9",
+    "Image": "https://images.sumup.com/img_66G7RRESNP80ZVXXPACTQ94V3T/image.png",
+    "title": "Persil botte",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "C7BBB430-215F-4B64-A741-8A219E941089",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "144cc7e5-848a-4bf6-a2c2-9b061febc0ce",
+    "Image": "https://images.sumup.com/img_5D41DS29S09YFS4N2ZZHSK0486/image.png",
+    "title": "Romarin botte",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "4BD6AD37-A706-4829-A20F-5B1D7B5FC38E",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "1b9a7898-52e9-4b8f-852b-5dda38742403",
+    "Image": "https://images.sumup.com/img_1GGB3WFT6Y9KCTSXZ29A22Y88N/image.png",
+    "title": "Thym botte",
+    "category": "Herbes harmonique",
+    "variants": [
+      {
+        "variant_id": "98A037FC-DBAE-43F4-94C6-86F5E46EC682",
+        "variant_name": "",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "acdd873d-c490-480b-b13f-d0cd96aed79c",
+    "Image": "https://images.sumup.com/img_099MRRXEZN8ZSST31R73ZRG1D1/image.png",
+    "title": "Citronnade au citron jaune",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "23B17EA6-6CB6-45A2-A5F1-96076708626B",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "68d544d7-3ea3-4006-a06d-2b27562ab7b0",
+    "Image": "https://images.sumup.com/img_0A1CZ150AM8D0RGNY5ENDZ0WG8/image.png",
+    "title": "Jus de poire de la Vallée de Rhône (1L)",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "12CBCEBE-38AD-4573-BB69-6049EFCD55E6",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "375c80be-5c06-48d3-90b9-901332f3d533",
+    "Image": "https://images.sumup.com/img_66K1KCG47C9HT99A82FSDSC0SX/image.png",
+    "title": "Jus orange carotte citron (1L)",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "6DC35784-1A23-4C3D-917F-E5AE4948C02C",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "b4976e7e-78a3-46f5-b0e4-677ad4580bc4",
+    "Image": "https://images.sumup.com/img_2G4EW4GSSR83BT2SXZAYT274YK/image.png",
+    "title": "Pur jus d’ananas du Costa Rica",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "315B5447-B1ED-4AE5-9054-57AA9E1CEEE9",
+        "variant_name": "",
+        "price": 6.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "5f464f23-6866-4962-bfc5-e6d75ca61885",
+    "Image": "https://images.sumup.com/img_1B8EWMHN9F96XRSR81E5CEAGMP/image.png",
+    "title": "Pur jus de pamplemousse",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "4FFF3B3D-3056-4057-BD0E-C44FE50F7A9A",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "1b540aff-3cbd-49a0-8a0c-2e6f35901aff",
+    "Image": "https://images.sumup.com/img_2J76H3JMYY81K8W0E4592GNBZE/image.png",
+    "title": "Pur jus de pomme Reinette de France (1L)",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "5DBB0FA4-A94B-4F64-947B-5268351B1465",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "1a071275-1901-4a4a-b3ba-fb1ffeab48c7",
+    "Image": "https://images.sumup.com/img_08JFRG2WCM9TGSWATX6BZTZMZY/image.png",
+    "title": "Pur jus de raisin ( rouge muscaté 15%) 1L",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "C09C24CA-DCF6-4B15-B915-E3352AF96AAD",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "3823e076-f361-400d-b9ba-5f20d72d29da",
+    "Image": "https://images.sumup.com/img_56DTS8EW5W811B1ENACQATY8GK/image.png",
+    "title": "Pur jus d’orange",
+    "category": "Jus De Fruits",
+    "variants": [
+      {
+        "variant_id": "888C97D3-E570-4D80-BFBA-09C024579BCB",
+        "variant_name": "",
+        "price": 5.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "1eaba4b8-9e93-48aa-b702-ac4a6e5ade5f",
+    "Image": "https://images.sumup.com/img_6JJ0MJA5X2987V1VYTS7VRDDRV/image.png",
+    "title": "Artichaut",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "4A7B86D6-9177-46B9-83A4-15B3E3D4CC40",
+        "variant_name": "",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "435933d0-4c4a-4ac5-af4e-7cc8b6cb4cfa",
+    "Image": "https://images.sumup.com/img_6CRNNARD2187P8CGB19J0CMNYA/image.png",
+    "title": "Asperge blanche",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "4F4DA541-AD2F-43E1-A00F-8075728FABA4",
+        "variant_name": "500g",
+        "price": 7.5,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "00560c88-3b64-468a-93f4-d15d8a8c5228",
+        "variant_name": "1kg",
+        "price": 15,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "75577e2b-11cf-494c-979f-bfcc5bad9ba1",
+    "Image": "https://images.sumup.com/img_48JX9B3SGF96VTVT768B8VWB33/image.png",
+    "title": "Asperge verte Botte",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "E7DDD86A-0A8E-4983-9361-7E05189B5D24",
+        "variant_name": "",
+        "price": 7.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9bfc0117-a304-45df-94c9-8a7fa3bb4b08",
+    "Image": "https://images.sumup.com/img_56BGS61PZS8FHRD1GD2TW2ZV82/image.png",
+    "title": "Aubergine",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "E4BA6A64-8227-440B-A7A0-C90D730F32F3",
+        "variant_name": "500g",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "b8301f1c-ecb3-4fdb-8df4-0c2830d76791",
+        "variant_name": "1kg",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "f6133281-6953-41d3-9de6-f77d4c02d16d",
+    "Image": "https://images.sumup.com/img_6MGPFVRZAD8KQR0F9YBJHKAKBT/image.png",
+    "title": "Betterave cuite",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "78261EBC-9AED-4439-8D8F-B4743A736058",
+        "variant_name": "",
+        "price": 2.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "01b0d3ca-0555-4966-9a49-53b94edb778f",
+    "Image": "https://images.sumup.com/img_2XX36CJZX383BSAAGWR1PAS9TJ/image.png",
+    "title": "Betternut",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "9CE784C8-3BD8-4682-8C99-FD73F67E02FF",
+        "variant_name": "",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "53e8a471-9517-4d75-b611-57c55d9a55bd",
+    "Image": "https://images.sumup.com/img_3ETXAAVDYS82N915Y2T0QEFK2Q/image.png",
+    "title": "Blette botte",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "12CBA017-5C33-46E4-BB7E-A291D2785309",
+        "variant_name": "",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "9aa7d6ca-eb8a-44aa-b753-df85070cf5b1",
+    "Image": "https://images.sumup.com/img_30YABKM49380396HBSTPRPB9JX/image.png",
+    "title": "Brocoli",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "566CAC0C-6AFD-42A9-859E-1FFEE84D9973",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "bbdef326-7c33-44b9-8974-9904443a55d7",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "50d6c673-f86d-4df5-8109-74a4e423797d",
+    "Image": "https://images.sumup.com/img_6633BMEA0H90ASY742G7CSHXFV/image.png",
+    "title": "Carotte lavée",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "0D8FE659-30A1-4E3E-AACF-1F1C1B0E3E4E",
+        "variant_name": "500g",
+        "price": 1.25,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "c260e742-e163-4c1d-90e8-135504522d38",
+        "variant_name": "1kg",
+        "price": 2.5,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "79e8120a-14f7-406e-bbf0-b83f0504b900",
+    "Image": "https://images.sumup.com/img_2Z087G25D789AT49GWG6W5XQWD/image.png",
+    "title": "Carotte sable",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "6C9CF20F-783B-4A9A-B14D-8B9433E3095D",
+        "variant_name": "500g",
+        "price": 1.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "b6d39ce0-33ba-40bc-9325-224da6a9b6f9",
+        "variant_name": "1kg",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "07188fb5-1990-4c87-a474-0229b0c04ddc",
+    "Image": "https://images.sumup.com/img_321F8SCFYH9JPBZTKS75GRKA8T/image.png",
+    "title": "Céleri blanche demi-pied",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "9CBCEE69-C1EF-4809-840C-D645DBA69A85",
+        "variant_name": "",
+        "price": 2.2,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "8763da09-2f2f-467a-8e25-32e9b944ff60",
+    "Image": "https://images.sumup.com/img_5J6ZF70MNP90JR46WB39J777D5/image.png",
+    "title": "Céleri rave",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "89A85F40-242D-4B01-B410-FE30098628A4",
+        "variant_name": "",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "b1f30f63-65c1-4c92-8f3d-b6932278be6e",
+    "Image": "https://images.sumup.com/img_1YCWPRQ9T58T1TV4VNX0EE40BW/image.png",
+    "title": "Champignon de Paris",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "6DE449A3-8157-4E5E-B977-29737401FB07",
+        "variant_name": "250g  · Brun",
+        "price": 1.75,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g "
+          },
+          {
+            "name": "Couleur ",
+            "value": "Brun"
+          }
+        ]
+      },
+      {
+        "variant_id": "246ec6d5-3ba9-4779-a803-94b78852a2c7",
+        "variant_name": "250g  · Blanc ",
+        "price": 1.75,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g "
+          },
+          {
+            "name": "Couleur ",
+            "value": "Blanc "
+          }
+        ]
+      },
+      {
+        "variant_id": "882e9dfc-88cb-4bd6-b191-929a4f9e4fa4",
+        "variant_name": "500g · Brun",
+        "price": 3.5,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur ",
+            "value": "Brun"
+          }
+        ]
+      },
+      {
+        "variant_id": "bf5f7bcd-21bf-4c39-8a65-ff6075c7935b",
+        "variant_name": "500g · Blanc ",
+        "price": 3.5,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur ",
+            "value": "Blanc "
+          }
+        ]
+      },
+      {
+        "variant_id": "cde91f2e-363d-4915-a544-9a0db1be0afd",
+        "variant_name": "1 kg · Brun",
+        "price": 7,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          },
+          {
+            "name": "Couleur ",
+            "value": "Brun"
+          }
+        ]
+      },
+      {
+        "variant_id": "438a56bf-5957-4b67-9a4b-b03b453d54f1",
+        "variant_name": "1 kg · Blanc ",
+        "price": 7,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          },
+          {
+            "name": "Couleur ",
+            "value": "Blanc "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "97edc6db-dea0-4f06-9884-af39cb988f19",
+    "Image": "https://images.sumup.com/img_5HJE6Z265B96V9Z6HN6G24NC6D/image.png",
+    "title": "Choux fleur",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "D0A5BAA4-AD04-4C3E-9155-8D82191A3406",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "078561ed-0ca1-4231-a192-e9a92b052c76",
+    "Image": "https://images.sumup.com/img_4ZZM4CH0HA8WK8SEWR7H3YGDHY/image.png",
+    "title": "Choux rouge/blanc",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "15F611ED-F4CE-418F-BA7E-46AF557F81E9",
+        "variant_name": "Rouge",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Couleur",
+            "value": "Rouge"
+          }
+        ]
+      },
+      {
+        "variant_id": "58b2899e-9c4f-41a7-b898-7530f9fc4685",
+        "variant_name": "Blanc",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Couleur",
+            "value": "Blanc"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.150Z",
+    "updatedAt": "2025-09-07T13:41:25.150Z"
+  },
+  {
+    "id": "4154d072-751f-48cf-b422-20639e62a9e4",
+    "Image": "https://images.sumup.com/img_3JY3AYNBD798FSSSJK84YSXY0R/image.png",
+    "title": "Choux vert",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "272195DB-D21C-482F-96F7-92964226C9EA",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "226d43e0-92ca-4030-ac77-51545bdc06ae",
+    "Image": "https://images.sumup.com/img_0792SKGFW989RRN0S6XDJDZYMX/image.png",
+    "title": "Concombre",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "A9EA7357-7AAE-4FF2-8BF2-52943CF6BBC2",
+        "variant_name": "Une pièce ",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "Une pièce "
+          }
+        ]
+      },
+      {
+        "variant_id": "5e22a77a-a01c-486b-a37d-71978f2e59f2",
+        "variant_name": "Deux pièces ",
+        "price": 3.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Promo",
+            "value": "Deux pièces "
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "ecf106f9-8d2e-4892-b2d2-dd8c8456cbda",
+    "Image": "https://images.sumup.com/img_6Y4Z94Y6BT9A99X948KEQENJK1/image.png",
+    "title": "Courgette",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "1D1A3E26-B2EB-43F9-AE5B-849E2520F903",
+        "variant_name": "500g",
+        "price": 1.9,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "bc7f9f45-dde0-4c50-be4c-9d2070a1383d",
+        "variant_name": "1kg",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "6e952c91-b407-44ab-83eb-2d0c90330095",
+    "Image": "https://images.sumup.com/img_41GRZVF66P93JA6W12T4BS9BS8/image.png",
+    "title": "Courgettes jaune",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "DEA1B972-55D4-4065-9088-757BBFE1A8AE",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "58c1109d-aa80-4e7c-a534-ea56f4c21dc5",
+        "variant_name": "1kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "c759ce5c-45ef-4814-b174-8d8c453a4786",
+    "Image": "https://images.sumup.com/img_6MMEW4WEJ89FAA588ZXMT4ZJJM/image.png",
+    "title": "Endive rouge",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "468F7F90-F073-4A2F-893D-BE54277E5AF3",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "b6f76ab4-18ce-4130-a99f-e9e5c6c0f38d",
+        "variant_name": "1kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "497244c3-9048-4a8e-89a7-341c77eead86",
+    "Image": "https://images.sumup.com/img_04N6QC8Q028G59WC7MKTG2MN5N/image.png",
+    "title": "Épinards",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "2736BD0D-83B9-4819-8388-FC26C8C86CD0",
+        "variant_name": "250g",
+        "price": 1.5,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      },
+      {
+        "variant_id": "18421edb-a139-4607-8502-1609527fb8c2",
+        "variant_name": "500g",
+        "price": 3,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "29f8a477-702a-474a-a827-7c061a25a5b9",
+    "Image": "https://images.sumup.com/img_5SWHN175NK9PB9FCX28R9D92TV/image.png",
+    "title": "Fenouil",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "8EB02951-73D9-4DB0-BD90-87C7E4F7152B",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "b285acff-0c9d-40bd-8bdb-6cd4ec4c6ac6",
+        "variant_name": "1kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "c8ec05df-fc80-47aa-b2ce-e85054d151a3",
+    "Image": "https://images.sumup.com/img_0N5TG99G94977AB8Z1BH8WM92Q/image.png",
+    "title": "Fève",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "E834B307-BF80-4703-BED6-BEDD65F3B87C",
+        "variant_name": "500g",
+        "price": 3.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "1a7dcb25-1de1-40d2-9b2c-4afa9b387b3b",
+        "variant_name": "1kg",
+        "price": 6.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "71aa5917-4905-49c3-8a20-2954a586eadc",
+    "Image": "https://images.sumup.com/img_12K17MK2N48CPVNGD0WHQJGJMJ/image.png",
+    "title": "Haricot vert extra fin kenya",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "D6209AB0-2D05-46EC-904B-07C772E1E8CB",
+        "variant_name": "500g",
+        "price": 7.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "b6721ed4-2106-445b-9501-bbcb7772b8ff",
+        "variant_name": "1 kg",
+        "price": 14.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "02b4285e-e95e-4700-b42d-17261d3956cb",
+    "Image": "https://images.sumup.com/img_2WMBQ7JHMJ8CCVTBGTBGM1N56B/image.png",
+    "title": "Haricot verts barquette (250g)",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "262999B2-7EDB-4C93-B108-BCA6C1716861",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "3c28d15c-7173-454d-b2ad-02a1519ac37c",
+    "Image": "https://images.sumup.com/img_6H2BEEB9AQ812RD1R0THQ4EG9Q/image.png",
+    "title": "Navet",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "D661ADF8-B780-4CB2-9D7F-45B37A48C9A9",
+        "variant_name": "500g",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "977a58d5-9e31-43f0-9d7c-e36eb532049e",
+        "variant_name": "1kg",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "a31d6963-1cb5-4f56-a59e-0a9896cc8ab2",
+    "Image": "https://images.sumup.com/img_4ZYJ1BVDS28Q0VKCV0D7JD7AW7/image.png",
+    "title": "Oignon botte",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "D6DC8C3B-6D15-42CF-8A31-02F5FF166497",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "1b7a1a31-b30b-46e8-998b-334b954938eb",
+    "Image": "https://images.sumup.com/img_55KMT1SPVM8FAVNR67T0PM7Y99/image.png",
+    "title": "Oignon cébette (botte)",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "5451C279-D682-46BB-BC80-E38DD08F6FBD",
+        "variant_name": "",
+        "price": 2.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "5c776c13-f6ba-4d87-928d-b9ad3addb3df",
+    "Image": "https://images.sumup.com/img_1CXPAFG3FR8WTBE5TNHWQSD13V/image.png",
+    "title": "Oignon jaune",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "1A8BCFA0-04ED-4926-A356-282ABA38928E",
+        "variant_name": "500g",
+        "price": 1.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "f658d37e-8a88-4a07-ba22-ecef68569f22",
+        "variant_name": "1kg",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "95b92914-c9b9-4c13-97f6-b40d3c9f0bd1",
+    "Image": "https://images.sumup.com/img_4FT35ZCZKG9TCSFWJ7P2GX1KR0/image.png",
+    "title": "Oignon rouge/blanc",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "FD4EB2CC-C013-4071-B7BE-1E72FDC71796",
+        "variant_name": "500g · Blanc",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur",
+            "value": "Blanc"
+          }
+        ]
+      },
+      {
+        "variant_id": "01c0a2e0-4103-4661-b95e-eb70ccf14761",
+        "variant_name": "500g · Rouge",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur",
+            "value": "Rouge"
+          }
+        ]
+      },
+      {
+        "variant_id": "90636ae2-f41f-41df-8cf3-205ab62c80ae",
+        "variant_name": "500g · Mixte",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur",
+            "value": "Mixte"
+          }
+        ]
+      },
+      {
+        "variant_id": "41fc35b6-4027-49cb-bf14-fe7d96168eb5",
+        "variant_name": "1 kg · Blanc",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          },
+          {
+            "name": "Couleur",
+            "value": "Blanc"
+          }
+        ]
+      },
+      {
+        "variant_id": "2aae9a86-a232-46b8-9a07-e05183f7d286",
+        "variant_name": "1 kg · Rouge",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          },
+          {
+            "name": "Couleur",
+            "value": "Rouge"
+          }
+        ]
+      },
+      {
+        "variant_id": "77cc62d9-b8cb-42e9-9aa1-56a09ff67324",
+        "variant_name": "1 kg · Mixte",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          },
+          {
+            "name": "Couleur",
+            "value": "Mixte"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "10630bb4-9059-4f79-8345-d78d8dfb345d",
+    "Image": "https://images.sumup.com/img_5ZBDC9RV6D99NA28ZADK74S38Y/image.png",
+    "title": "Panais",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "AFAD6E1D-1227-4516-839E-CE5DE1D14F6F",
+        "variant_name": "500g",
+        "price": 2.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "5642b715-cdb7-4e0c-8238-69cd34c1251d",
+        "variant_name": "1kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "25b5b98a-aeff-442c-aff6-7ea5c449a3b9",
+    "Image": "https://images.sumup.com/img_0M5DTWRP1D8CPV199M9HX6KD1M/image.png",
+    "title": "Patate douce",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "0742DECB-F9F9-49B7-8461-187AECF5429E",
+        "variant_name": "500g",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "bdace7f9-8e29-4acc-a1fd-09d43a895a57",
+        "variant_name": "1kg",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "0c813bf1-3f49-4767-86dc-28f256048500",
+    "Image": "https://images.sumup.com/img_77CRBTPTN696YT4BAN9P26BCHJ/image.png",
+    "title": "Petit poids",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "33AD64D9-9903-4C9A-847C-4DB19CA19E9C",
+        "variant_name": "500g",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "f8991122-c4bb-4ad6-9643-70bda4e163d4",
+        "variant_name": "1kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "ec8cfd1d-5278-4272-a196-c5228c4f73ae",
+    "Image": "https://images.sumup.com/img_36PBT2YYY98EQRVMEETMXXNJSF/image.png",
+    "title": "Petit pois",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "363B0758-A9B9-4847-86CC-5D0539F2C0FB",
+        "variant_name": "500g ",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g "
+          }
+        ]
+      },
+      {
+        "variant_id": "1c7117a9-67c5-4bc8-9b3b-fe1044bb6cc3",
+        "variant_name": "1 kg",
+        "price": 9.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "90982d1b-2f3e-4b14-b3bd-46cc71ca6b30",
+    "Image": "https://images.sumup.com/img_69PKC69DKT8VMAC3GSDTA9BGSA/image.png",
+    "title": "Piment vert",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "8A93A954-1F32-4967-80F9-84248F0668E7",
+        "variant_name": "500g",
+        "price": 4,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "86628bb4-701e-42c6-8580-4f0897eb0458",
+        "variant_name": "250g",
+        "price": 2,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "61a4c9f7-c962-4db5-93f7-995c307dfd08",
+    "Image": "https://images.sumup.com/img_07Q2XDA31E9SQBNKK0PNQPE2JS/image.png",
+    "title": "Poireau",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "07EA1BB8-2A6E-4CB2-97F5-7644B22E9EEE",
+        "variant_name": "500g",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "a7c653d3-e6fa-49e0-a9d6-8dfc4eb9b313",
+        "variant_name": "1kg",
+        "price": 3.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "a0af0519-5dfc-47c7-93e7-9387591efa75",
+    "Image": "https://images.sumup.com/img_3R5KAWYQPQ8WZV7GSXXW3DVEJQ/image.png",
+    "title": "Poivrons couleur",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "2A6F6935-0846-4D17-95E3-9D955001D0B8",
+        "variant_name": "500g · Jaune",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur",
+            "value": "Jaune"
+          }
+        ]
+      },
+      {
+        "variant_id": "eaa888eb-934e-43bb-a87f-6be833610201",
+        "variant_name": "500g · Rouge",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur",
+            "value": "Rouge"
+          }
+        ]
+      },
+      {
+        "variant_id": "5e63d5c2-8d44-4207-a1d5-98652151fa7f",
+        "variant_name": "500g · Vert",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          },
+          {
+            "name": "Couleur",
+            "value": "Vert"
+          }
+        ]
+      },
+      {
+        "variant_id": "d51e5db1-53e6-43a3-bbc4-6213be1f6aa3",
+        "variant_name": "1kg · Jaune",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          },
+          {
+            "name": "Couleur",
+            "value": "Jaune"
+          }
+        ]
+      },
+      {
+        "variant_id": "4dd54403-1553-4200-a739-c5053f4566ec",
+        "variant_name": "1kg · Rouge",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          },
+          {
+            "name": "Couleur",
+            "value": "Rouge"
+          }
+        ]
+      },
+      {
+        "variant_id": "d8cc3633-5d71-4b1d-8208-ffcf2afb5e34",
+        "variant_name": "1kg · Vert",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          },
+          {
+            "name": "Couleur",
+            "value": "Vert"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "1be1ff9b-b6a0-4e52-9e71-1a44e946ec47",
+    "Image": "https://images.sumup.com/img_5T6REAVGY78PXABAEPWZPG4DJV/image.png",
+    "title": "Pomme de terre bintje",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "7AC7AF21-C04B-4884-84DC-FE9365BFE337",
+        "variant_name": "500g",
+        "price": 0.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "d775fb75-699d-4762-aaa0-961b1e631488",
+        "variant_name": "1kg",
+        "price": 1.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "ea268446-747c-4a8d-bdaa-b2fde5aa8384",
+    "Image": "https://images.sumup.com/img_2AFFRVXGGQ8B5R97MERRBGYDWD/image.png",
+    "title": "Pomme de terre Charlotte",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "CC2F44C4-10BB-40DE-A0B0-46A25DE6A0E0",
+        "variant_name": "500g",
+        "price": 1.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "24feec26-2875-4dd1-bdc3-3b5b052f27f1",
+        "variant_name": "1kg",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "caa1f9fb-24cb-4b83-b169-1a0d502955c5",
+    "Image": "https://images.sumup.com/img_7Y2W2FB5DZ87CVC1R2S54GXQ1T/image.png",
+    "title": "Pomme de terre Roseval",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "9AE08D7D-585C-43C5-B347-8D218064F7D5",
+        "variant_name": "500g",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "2d9cdf6e-5a7b-4a25-92c5-d83655c955f8",
+        "variant_name": "1kg",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "8791e248-e5d1-4c1a-972e-075fd31fc10b",
+    "Image": "https://images.sumup.com/img_3YMKCKJ09Z86ZT05VYXSP1TKTE/image.png",
+    "title": "Potimarron",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "07FC455E-34D3-431C-A745-806F25D8B157",
+        "variant_name": "",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "ff804a6f-114a-4f61-a687-5b1fb959b6e0",
+    "Image": "https://images.sumup.com/img_6Y4A32EK4R9TWTWCX16A05GHQP/image.png",
+    "title": "Potiron",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "74CBE784-628C-47B4-9327-30B5C9187767",
+        "variant_name": "500g",
+        "price": 1.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids ",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "ce24a741-98b5-4f93-bf9e-37e5e81ba8f4",
+        "variant_name": "1kg",
+        "price": 2.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids ",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "751b5d5a-8959-45a3-80fa-5e6543eb01d6",
+    "Image": "https://images.sumup.com/img_3DQ8BG6YA3997AFRTGXVVZJBYS/image.png",
+    "title": "Radis noir",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "26257A8F-9DCF-476A-934F-34F7E975B13A",
+        "variant_name": "",
+        "price": 2.5,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "e5a809a6-a4d7-42bd-b573-2ba2fbd0a33c",
+    "Image": "https://images.sumup.com/img_1D4EH30WC386KTRAJ53ENAQ7A0/image.png",
+    "title": "Radis rose botte",
+    "category": "Légumes",
+    "variants": [
+      {
+        "variant_id": "2EFF7EAF-C18C-41F5-8130-59FA914F2477",
+        "variant_name": "",
+        "price": 1.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "48e09b09-1341-46ec-ac11-59b78416ea42",
+    "Image": "https://images.sumup.com/img_4S7F4VE5SD8DBTJ0X2TKK2KCP3/image.png",
+    "title": "Feta A.O.P",
+    "category": "Produits laitiers",
+    "variants": [
+      {
+        "variant_id": "36F863E5-C72A-43A5-A05E-68CDB298AC66",
+        "variant_name": "",
+        "price": 4.95,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "967920b8-c206-472e-b152-31273088ad4f",
+    "Image": "https://images.sumup.com/img_1MMHD7NTDM8558BN23R9B3SMBY/image.png",
+    "title": "Le Lait d’excellence",
+    "category": "Produits laitiers",
+    "variants": [
+      {
+        "variant_id": "452E74CD-8812-4E91-9384-D580DF92A22F",
+        "variant_name": "Demi-écrémé ",
+        "price": 2.2,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Type",
+            "value": "Demi-écrémé "
+          }
+        ]
+      },
+      {
+        "variant_id": "f86879e6-7b21-4f2b-a752-74ed3605c2c3",
+        "variant_name": "Entier",
+        "price": 2.2,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Type",
+            "value": "Entier"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "78d3fb9f-5dcc-4a50-8e3d-1655e90f9bd1",
+    "Image": "https://images.sumup.com/img_0EBAN4JWR69CSRFZEHQTSAQFJT/image.png",
+    "title": "Yaourt Fierbois (180g)",
+    "category": "Produits laitiers",
+    "variants": [
+      {
+        "variant_id": "D84D8F1C-480A-4525-ADB2-4744E01C0311",
+        "variant_name": "Myrtille ",
+        "price": 2.3,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Myrtille "
+          }
+        ]
+      },
+      {
+        "variant_id": "9d0cb689-75ef-4c31-bd16-76bbfc55b217",
+        "variant_name": "Framboise ",
+        "price": 2.3,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Framboise "
+          }
+        ]
+      },
+      {
+        "variant_id": "c5abc88e-25f2-457e-a08d-eaf2e9a1d689",
+        "variant_name": "Vanille bourbon ",
+        "price": 2.3,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Vanille bourbon "
+          }
+        ]
+      },
+      {
+        "variant_id": "c4424f19-2b53-40a0-9c65-8a003d203545",
+        "variant_name": "Mandarine amandes ",
+        "price": 2.3,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Mandarine amandes "
+          }
+        ]
+      },
+      {
+        "variant_id": "73c5e45d-612b-4f63-8eee-161ffc4dfb5f",
+        "variant_name": "Pamplemousse ",
+        "price": 2.3,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Pamplemousse "
+          }
+        ]
+      },
+      {
+        "variant_id": "acb8d207-bfab-40ab-9416-bc64117c25a7",
+        "variant_name": "Citron",
+        "price": 2.3,
+        "unit_type": "weight",
+        "grams": null,
+        "options": [
+          {
+            "name": "Nos variétés ",
+            "value": "Citron"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "2d41dee7-7ab3-4ab2-8a2e-8a88a63accf1",
+    "Image": "https://images.sumup.com/img_1CMG1CMZ7S8K9RV49WKXPFQBFM/image.png",
+    "title": "Batavia",
+    "category": "salades",
+    "variants": [
+      {
+        "variant_id": "D6DB1E53-DC2D-4871-899D-49FDA6FDF80A",
+        "variant_name": "",
+        "price": 2.25,
+        "unit_type": "weight",
+        "grams": null,
+        "options": []
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "2ec8e807-640e-41b8-8273-d607961841ae",
+    "Image": "https://images.sumup.com/img_2C4FVCS14P9Y3R62QV43B6EXJK/image.png",
+    "title": "Endive",
+    "category": "salades",
+    "variants": [
+      {
+        "variant_id": "6ADB54DD-CB77-4B52-8A00-F768BDFAACF0",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "1c86a49b-b5dd-43e3-a62e-6deddfcd3e76",
+        "variant_name": "1kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "3216408d-4c23-47d4-ad82-e438e7f60853",
+    "Image": "https://images.sumup.com/img_452DB26CJ49SCBGTVKJBDHPCFB/image.png",
+    "title": "Tomate noir",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "94A91E29-B161-41B0-BC19-D86BC376F65B",
+        "variant_name": "500g",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "16083322-2a35-4966-8033-3127572a52f1",
+        "variant_name": "1kg",
+        "price": 7.95,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "63dbdf07-ee5e-48d1-8f23-a136d9445d80",
+    "Image": "https://images.sumup.com/img_3DV9P9AN7784M80P00Y8QA3B8V/image.png",
+    "title": "Tomates à farcir",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "70AB6A0D-A71D-4313-A5DE-47ABDE453FA9",
+        "variant_name": "500g",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "eba15b0d-e004-44e1-8b8c-2c29dcfc28d7",
+        "variant_name": "1 kg",
+        "price": 4.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1 kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "2e3884ae-cae8-42ff-ad98-c0b9c7fc85cb",
+    "Image": "https://images.sumup.com/img_326J524BJZ97Z88QD0WMRQ3P5Q/image.png",
+    "title": "Tomates anciennes",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "7A662E0C-8390-413A-A006-474A745D36DF",
+        "variant_name": "500g",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "f0f049e8-648f-4f33-8798-fa007e001b58",
+        "variant_name": "1kg",
+        "price": 7.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "f77ec5a7-792b-4535-a7af-3eb2e03a2ee1",
+    "Image": "https://images.sumup.com/img_0N6JZ90D3Z8X8BHFKHPGD3VAP9/image.png",
+    "title": "Tomates cerises Méli Mélo",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "69EE3E02-92B2-4547-95CD-5CCDC2E69AEA",
+        "variant_name": "250g",
+        "price": 3.25,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      },
+      {
+        "variant_id": "f13095b0-3c00-441c-90cb-3355b5dc87d1",
+        "variant_name": "500g",
+        "price": 6.5,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "f0d8326e-94db-42b2-abbb-0916dc3d4390",
+    "Image": "https://images.sumup.com/img_5MJGGAF6PS8FYV8X4AXRCWNY43/image.png",
+    "title": "Tomates cerises Rabelais",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "1FBE211A-FB63-41A1-BC58-8D632E020153",
+        "variant_name": "500g",
+        "price": 14.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "6709db41-55d6-4db4-ba87-b322de3ccf68",
+        "variant_name": "250g",
+        "price": 7.5,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "4534c4f6-3c16-476d-9b68-f37bda2a6c3c",
+    "Image": "https://images.sumup.com/img_0AV63JZHYG8YJAPXAQM7J8GNA3/image.png",
+    "title": "Tomates coeur de bœuf",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "4CD7DCFD-9676-4318-94CC-8EB449642C0B",
+        "variant_name": "500g",
+        "price": 3.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "37541a70-d53c-4e34-8d3f-07df4903a880",
+        "variant_name": "1kg",
+        "price": 7.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "5cd6d2ee-bd56-49b7-a541-1bfbd63ad5f8",
+    "Image": "https://images.sumup.com/img_7P8NHFMCG595F8W16SK9QMMQT3/image.png",
+    "title": "Tomates grappes",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "827F20F4-40FB-43A3-933E-9CD3EEC82954",
+        "variant_name": "500g",
+        "price": 2.95,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "d6f40aa2-624b-41af-863d-897d87f876f9",
+        "variant_name": "1kg",
+        "price": 5.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "85c0fb87-af9a-4ca3-8659-e4a361eed6ef",
+    "Image": "https://images.sumup.com/img_48NCC8KC4V9JGSTZVY00REC693/image.png",
+    "title": "Tomates jouno",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "C38BAB59-52DA-4850-B8A0-D96C12146AC8",
+        "variant_name": "500g",
+        "price": 8.99,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "2dbde7a6-c343-45da-9b96-b24749de3331",
+        "variant_name": "250g",
+        "price": 4.5,
+        "unit_type": "weight",
+        "grams": 250,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "250g"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  },
+  {
+    "id": "1bbd170c-630f-43a7-b7fb-2414e757bedd",
+    "Image": "https://images.sumup.com/img_5RT35DMHPQ9WHTYBHHA6C73EQW/image.png",
+    "title": "Tomate Torino",
+    "category": "Tomates",
+    "variants": [
+      {
+        "variant_id": "35CDA319-F7B8-4C20-9CE3-F7720E8E62F8",
+        "variant_name": "500g",
+        "price": 3.45,
+        "unit_type": "weight",
+        "grams": 500,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "500g"
+          }
+        ]
+      },
+      {
+        "variant_id": "81d3d373-f344-4d6a-8e24-eba97594a976",
+        "variant_name": "1kg",
+        "price": 6.9,
+        "unit_type": "weight",
+        "grams": 1000,
+        "options": [
+          {
+            "name": "Poids",
+            "value": "1kg"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2025-09-07T13:41:25.151Z",
+    "updatedAt": "2025-09-07T13:41:25.151Z"
+  }
+]

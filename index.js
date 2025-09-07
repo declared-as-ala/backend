@@ -225,6 +225,13 @@ async function scrapeProductPage(url) {
     image = imgEl.attr("src") || "";
   }
 
+  // Description
+  let description = "";
+  const descEl = $("[data-selector='os-theme-product-description']").first();
+  if (descEl) {
+    description = descEl.text().trim().replace(/\s+/g, " ");
+  }
+
   // Variants
   let dv = null;
   const selectors = [
@@ -268,9 +275,8 @@ async function scrapeProductPage(url) {
 
   const normalized = normalizeVariantRecords(rawVariants);
 
-  return { url, title, image, variants: normalized, rawVariantsExist: !!dv };
+  return { url, title, image, description, variants: normalized, rawVariantsExist: !!dv };
 }
-
 
 // ---------- All categories runner ----------
 const categories = [

@@ -5,7 +5,7 @@ const orderSchema = new mongoose.Schema(
     items: [
       {
         productId: { type: String, required: true },
-        variantId: { type: String, required: true },
+        variant_id: { type: String, required: true },
         name: { type: String, required: true },
         variantUnit: { type: String, required: true },
         quantity: { type: Number, required: true },
@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema(
       fullName: { type: String, required: true },
       email: { type: String, required: true },
       phone: { type: String, required: true },
-      isAdmin: { type: Boolean, default: false }, // pour vérifier admin
+
     },
 
     pickupType: {
