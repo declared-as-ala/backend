@@ -4,14 +4,17 @@ const orderSchema = new mongoose.Schema(
   {
     items: [
       {
-        productId: { type: String, required: true },
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
         variantId: { type: String, required: true },
-        name: { type: String, required: true },
-        variantUnit: { type: String, required: true },
+        productTitle: { type: String, required: true },
+        variantName: { type: String, default: '' },
+        unitType: { type: String, enum: ['weight', 'piece'], required: true },
+        grams: { type: Number, default: null },
         quantity: { type: Number, required: true },
         price: { type: Number, required: true },
+        total: { type: Number, required: true },
+        image: { type: String, required: true },
         currency: { type: String, default: 'EUR' },
-        image: { type: String },
       },
     ],
 
@@ -19,7 +22,7 @@ const orderSchema = new mongoose.Schema(
       fullName: { type: String, required: true },
       email: { type: String, required: true },
       phone: { type: String, required: true },
-      isAdmin: { type: Boolean, default: false }, // pour vérifier admin
+      isAdmin: { type: Boolean, default: false },
     },
 
     pickupType: {
@@ -64,49 +67,22 @@ const orderSchema = new mongoose.Schema(
     stripePaymentIntentId: { type: String },
     paypalOrderId: { type: String },
     notes: { type: String },
-
-    // Nouveau champ pour livraison
     isDelivered: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
 
-// Hook pour définir le statut et livraison automatiquement
+// Hook: auto-set status & delivery flag
 orderSchema.pre('save', function (next) {
   if (!this.isModified('status')) {
-    if (this.pickupType === 'delivery') {
-      this.status = this.paymentMethod === 'espèces' ? 'en_attente' : 'payé';
-      this.isDelivered = false;
-    } else if (this.pickupType === 'store') {
-      this.status = this.paymentMethod === 'espèces' ? 'en_attente' : 'payé';
-      this.isDelivered = true; // retrait magasin = considéré comme livré
-    }
+    this.status = this.paymentMethod === 'espèces' ? 'en_attente' : 'payé';
+    this.isDelivered = this.pickupType === 'store';
   }
   next();
 });
 
-// Méthode pour marquer la commande comme terminée / livrée
-orderSchema.methods.marquerLivree = function () {
-  if (this.pickupType === 'delivery') {
-    this.isDelivered = true;
-    this.status = 'terminé';
-    return this.save();
-  }
-  return Promise.resolve(this); // retrait magasin déjà livré
-};
-
-orderSchema.methods.marquerTermine = function () {
-  this.status = 'terminé';
-  if (this.pickupType === 'delivery') this.isDelivered = true;
-  return this.save();
-};
-
-// Indexes
 orderSchema.index({ 'customer.email': 1 });
 orderSchema.index({ status: 1 });
 orderSchema.index({ createdAt: -1 });
-orderSchema.index({ stripePaymentIntentId: 1 });
-orderSchema.index({ paypalOrderId: 1 });
-orderSchema.index({ discountCode: 1 });
 
 export default mongoose.model('Order', orderSchema);

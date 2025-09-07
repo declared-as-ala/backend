@@ -21,6 +21,7 @@ export const createOrder = async (req, res) => {
       paymentMethod,
     } = req.body;
 
+    // Vérification des champs obligatoires
     if (!items || items.length === 0) {
       return res.status(400).json({ message: 'Le panier est vide' });
     }
@@ -31,41 +32,47 @@ export const createOrder = async (req, res) => {
 
     let totalAmount = 0;
 
+    // Préparer les items formatés
     const formattedItems = await Promise.all(
       items.map(async (item) => {
         const product = await Product.findById(item.productId);
-        if (!product)
+        if (!product) {
           throw new Error(`Produit avec l'ID ${item.productId} introuvable`);
+        }
 
-        const variant = product.variants.find((v) => v.id === item.variant_id);
-        if (!variant)
+        const variant = product.variants.find(
+          (v) => v.variant_id === item.variantId
+        );
+        if (!variant) {
           throw new Error(
-            `Variante ${item.variant_id} introuvable pour ${product.title}`
+            `Variante ${item.variantId} introuvable pour ${product.title}`
           );
+        }
 
-        if (variant.stock < item.quantity)
-          throw new Error(
-            `Stock insuffisant pour ${product.title} (${variant.unit})`
-          );
-
+        // Calcul du sous-total
         const subtotal = variant.price * item.quantity;
         totalAmount += subtotal;
 
         return {
-          productId: product.id,
-          variantId: variant.id,
-          name: product.title,
-          variantUnit: variant.unit,
+          productId: product._id,
+          variantId: variant.variant_id,
+          productTitle: product.title,
+          variantName: variant.variant_name || '',
+          unitType: variant.unit_type,
+          grams: variant.grams || null,
           quantity: item.quantity,
           price: variant.price,
-          currency: variant.currency,
-          image: product.image,
+          total: subtotal,
+          image: product.Image,
+          currency: 'EUR',
         };
       })
     );
 
+    // Calcul du montant total
     totalAmount = totalAmount + deliveryFee - discountAmount;
 
+    // Créer la commande
     const order = await Order.create({
       items: formattedItems,
       customer,
@@ -81,9 +88,10 @@ export const createOrder = async (req, res) => {
       paymentMethod,
     });
 
-    res
-      .status(201)
-      .json({ message: 'Commande créée avec succès', data: order });
+    res.status(201).json({
+      message: 'Commande créée avec succès',
+      data: order,
+    });
   } catch (err) {
     console.error('[createOrder] Erreur :', err);
     res
@@ -170,9 +178,11 @@ export const getOrderById = async (req, res) => {
     }
 
     const order = await Order.findById(id);
-    if (!order)
+    if (!order) {
       return res.status(404).json({ message: 'Commande introuvable' });
+    }
 
+    // Vérification de l'accès
     if (
       !req.customer?.isAdmin &&
       order.customer.email !== req.customer?.email
@@ -197,8 +207,9 @@ export const updateOrderStatus = async (req, res) => {
     const { status, markDelivered } = req.body;
 
     const order = await Order.findById(id);
-    if (!order)
+    if (!order) {
       return res.status(404).json({ message: 'Commande introuvable' });
+    }
 
     if (status) order.status = status;
 
