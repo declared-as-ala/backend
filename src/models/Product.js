@@ -2,41 +2,39 @@ import { Schema, model } from 'mongoose';
 
 const variantSchema = new Schema(
   {
-    id: { type: String, required: true, trim: true }, // unique variant ID
-    quantity: { type: Number, required: true, default: 1 },
-    unit: {
+    variant_id: { type: String, required: true, trim: true },
+    variant_name: { type: String, default: '' },
+    price: { type: Number, required: true, min: 0 },
+    unit_type: {
       type: String,
-      enum: ['500g', '1kg', 'pièce', 'g', 'kg'],
+      enum: ['weight', 'piece'],
       required: true,
     },
-    price: { type: Number, required: true, min: 0 },
-    currency: { type: String, default: 'EUR' },
-    isDefault: { type: Boolean, default: false },
-    stock: { type: Number, default: 0 },
+    grams: { type: Number, default: null },
+    options: {
+      type: [{ name: String, value: String }],
+      default: [],
+    },
   },
   { _id: false } // no separate _id for variants
 );
 
 const productSchema = new Schema(
   {
+    Image: { type: String, required: true, trim: true, unique: true },
     title: { type: String, required: true, trim: true },
-    description: { type: String, default: '' },
+    category: { type: String, default: 'Uncategorized', index: true },
     variants: {
       type: [variantSchema],
       validate: {
-        validator: function (v) {
-          return v && v.length > 0;
-        },
+        validator: (v) => v && v.length > 0,
         message: 'Un produit doit avoir au moins une variante.',
       },
     },
-    image: { type: String, default: '' },
-    category: { type: String, default: 'Uncategorized' },
-    isActive: { type: Boolean, default: true },
-    tags: [{ type: String }],
+    rawVariantsExist: { type: Boolean, default: true },
   },
   {
-    timestamps: true, // auto adds createdAt & updatedAt
+    timestamps: true,
     toJSON: {
       virtuals: true,
       transform: (doc, ret) => {
