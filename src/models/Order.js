@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema(
       fullName: { type: String, required: true },
       email: { type: String, required: true },
       phone: { type: String, required: true },
-
+      isAdmin: { type: Boolean, default: false }, // pour vérifier admin
     },
 
     pickupType: {

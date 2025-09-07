@@ -37,10 +37,10 @@ export const createOrder = async (req, res) => {
         if (!product)
           throw new Error(`Produit avec l'ID ${item.productId} introuvable`);
 
-        const variant = product.variants.find((v) => v.id === item.variantId);
+        const variant = product.variants.find((v) => v.id === item.variant_id);
         if (!variant)
           throw new Error(
-            `Variante ${item.variantId} introuvable pour ${product.title}`
+            `Variante ${item.variant_id} introuvable pour ${product.title}`
           );
 
         if (variant.stock < item.quantity)
