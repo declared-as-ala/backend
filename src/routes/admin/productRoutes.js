@@ -4,7 +4,7 @@ import {
   getProductById,
   createProduct,
   updateProduct,
-  updateVariantStock,
+
   deleteProduct,
   addVariant,
   updateVariant,
@@ -71,13 +71,7 @@ router.delete(
 );
 
 // 📦 Update stock for a specific variant
-// PUT /api/admin/products/:id/variants/:variantId/stock
-router.put(
-  "/:id/variants/:variantId/stock",
-  requireAdmin,
-  requireRole("admin", "manager"),
-  updateVariantStock
-);
+
 
 // 🔄 Replace ALL variants at once (optional but very useful for dashboards)
 // PUT /api/admin/products/:id/variants

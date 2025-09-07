@@ -1,7 +1,7 @@
 import Product from '../models/Product.js';
 
 /**
- * @desc   List products with search, filter, pagination & active status
+ * @desc   List products with search, filter, pagination
  * @route  GET /api/products
  */
 export async function listProducts(req, res, next) {
@@ -11,14 +11,9 @@ export async function listProducts(req, res, next) {
       category, // filter by category
       page = 1, // pagination page
       limit = 10, // items per page
-      isActive = 'true', // default to only active products
     } = req.query;
 
     const filter = {};
-
-    // Convert isActive to boolean
-    const activeFilter = String(isActive).toLowerCase() === 'true';
-    filter.isActive = activeFilter;
 
     // Search by title or description
     if (q) {
@@ -39,14 +34,7 @@ export async function listProducts(req, res, next) {
     const skip = (pageNumber - 1) * limitNumber;
 
     // Log the filter for debugging
-    console.log(
-      '[listProducts] Filter:',
-      filter,
-      'Page:',
-      pageNumber,
-      'Limit:',
-      limitNumber
-    );
+    console.log('[listProducts] Filter:', filter, 'Page:', pageNumber, 'Limit:', limitNumber);
 
     // Fetch products with filter, pagination, and sort
     const products = await Product.find(filter)
@@ -91,14 +79,10 @@ export async function getProduct(req, res, next) {
  */
 export async function createProduct(req, res, next) {
   try {
-    const { title, description, variants, image, category, isActive, tags } =
-      req.body;
+    const { title, description, variants, image, category, tags } = req.body;
 
-    // Basic validation
     if (!title || !variants || variants.length === 0) {
-      return res
-        .status(400)
-        .json({ message: 'Le titre et au moins une variante sont requis' });
+      return res.status(400).json({ message: 'Le titre et au moins une variante sont requis' });
     }
 
     const product = new Product({
@@ -107,7 +91,6 @@ export async function createProduct(req, res, next) {
       variants,
       image,
       category,
-      isActive: isActive !== undefined ? isActive : true,
       tags,
     });
 
@@ -124,8 +107,7 @@ export async function createProduct(req, res, next) {
  */
 export async function updateProduct(req, res, next) {
   try {
-    const { title, description, variants, image, category, isActive, tags } =
-      req.body;
+    const { title, description, variants, image, category, tags } = req.body;
 
     const product = await Product.findById(req.params.id);
 
@@ -133,13 +115,11 @@ export async function updateProduct(req, res, next) {
       return res.status(404).json({ message: 'Produit introuvable' });
     }
 
-    // Update fields
     product.title = title ?? product.title;
     product.description = description ?? product.description;
     product.variants = variants ?? product.variants;
     product.image = image ?? product.image;
     product.category = category ?? product.category;
-    product.isActive = isActive !== undefined ? isActive : product.isActive;
     product.tags = tags ?? product.tags;
 
     const updatedProduct = await product.save();

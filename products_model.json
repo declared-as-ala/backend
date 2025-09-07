@@ -1,7 +1,8 @@
 [
   {
-    "url": "https://lesdelicesduverger.com/article/citron-jaune",
+    "url": "",
     "title": "Citron jaune",
+    "image": "https://lesdelicesduverger.com/article/citron-jaune",
     "category": "Argumes",
     "rawVariantsExist": true,
     "variants": [
@@ -34,8 +35,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/citron-jaune-bio",
+    "url": "",
     "title": "Citron jaune bio",
+    "image": "https://lesdelicesduverger.com/article/citron-jaune-bio",
     "category": "Argumes",
     "rawVariantsExist": true,
     "variants": [
@@ -68,8 +70,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/citron-vert",
+    "url": "",
     "title": "Citron vert",
+    "image": "https://lesdelicesduverger.com/article/citron-vert",
     "category": "Argumes",
     "rawVariantsExist": true,
     "variants": [
@@ -102,8 +105,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/clementine-socculete",
+    "url": "",
     "title": "Clémentine socculete",
+    "image": "https://lesdelicesduverger.com/article/clementine-socculete",
     "category": "Argumes",
     "rawVariantsExist": true,
     "variants": [
@@ -136,8 +140,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/orange-sanguine",
+    "url": "",
     "title": "Orange sanguine",
+    "image": "https://lesdelicesduverger.com/article/orange-sanguine",
     "category": "Argumes",
     "rawVariantsExist": true,
     "variants": [
@@ -170,8 +175,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/orange-succulente",
+    "url": "",
     "title": "Orange succulente",
+    "image": "https://lesdelicesduverger.com/article/orange-succulente",
     "category": "Argumes",
     "rawVariantsExist": true,
     "variants": [
@@ -204,8 +210,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pamplemousse",
+    "url": "",
     "title": "Pamplemousse",
+    "image": "https://lesdelicesduverger.com/article/pamplemousse",
     "category": "Argumes",
     "rawVariantsExist": true,
     "variants": [
@@ -220,8 +227,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/corbeille-de-fruits",
+    "url": "",
     "title": "Corbeille de fruits",
+    "image": "https://lesdelicesduverger.com/article/corbeille-de-fruits",
     "category": "Corbeille de fruit",
     "rawVariantsExist": true,
     "variants": [
@@ -236,8 +244,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/anchois-76g",
+    "url": "",
     "title": "Anchois (76g)",
+    "image": "https://lesdelicesduverger.com/article/anchois-76g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -252,8 +261,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/asperges-200g",
+    "url": "",
     "title": "Asperges (200g)",
+    "image": "https://lesdelicesduverger.com/article/asperges-200g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -268,8 +278,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/beurre-echire",
+    "url": "",
     "title": "Beurre ÉCHIRÉ",
+    "image": "https://lesdelicesduverger.com/article/beurre-echire",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -302,8 +313,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/biscottes-artisanales",
+    "url": "",
     "title": "Biscottes artisanales",
+    "image": "https://lesdelicesduverger.com/article/biscottes-artisanales",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -336,8 +348,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/boissons-traditionnelles-gazeifiee-aux-aromes-de-mandarine-75cl",
+    "url": "",
     "title": "Boissons Traditionnelles Gazéifiée aux arômes de Mandarine (75cl)",
+    "image": "https://lesdelicesduverger.com/article/boissons-traditionnelles-gazeifiee-aux-aromes-de-mandarine-75cl",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -352,8 +365,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifiee-aux-aromes-de-citron-75cl",
+    "url": "",
     "title": "Boisson Traditionnelle Gazéifiée aux arômes de citron (75cl)",
+    "image": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifiee-aux-aromes-de-citron-75cl",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -368,8 +382,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifiee-aux-aromes-de-fruits-de-bois-75cl",
+    "url": "",
     "title": "Boisson Traditionnelle gazéifiée aux arômes de fruits de bois(75cl)",
+    "image": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifiee-aux-aromes-de-fruits-de-bois-75cl",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -384,8 +399,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifiee-aux-aromes-de-litchi-75cl",
+    "url": "",
     "title": "Boisson traditionnelle gazéifiée aux arômes de Litchi (75cl)",
+    "image": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifiee-aux-aromes-de-litchi-75cl",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -400,8 +416,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifies-aux-aromes-de-peche-abricot-75cl",
+    "url": "",
     "title": "Boisson Traditionnelle Gazéifiés aux arômes de Pêche Abricot (75cl)",
+    "image": "https://lesdelicesduverger.com/article/boisson-traditionnelle-gazeifies-aux-aromes-de-peche-abricot-75cl",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -416,8 +433,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/bolero",
+    "url": "",
     "title": "Bolero",
+    "image": "https://lesdelicesduverger.com/article/bolero",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -432,8 +450,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/bretzels-sales",
+    "url": "",
     "title": "Bretzels salés",
+    "image": "https://lesdelicesduverger.com/article/bretzels-sales",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -448,8 +467,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/cake-a-l-ecorce-d-orange",
+    "url": "",
     "title": "Cake à l’écorce d’orange",
+    "image": "https://lesdelicesduverger.com/article/cake-a-l-ecorce-d-orange",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -464,8 +484,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/chips-au-sel-de-guerande",
+    "url": "",
     "title": "Chips au sel de guérande",
+    "image": "https://lesdelicesduverger.com/article/chips-au-sel-de-guerande",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -480,8 +501,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/chips-de-legumes-200g",
+    "url": "",
     "title": "Chips de légumes (200g)",
+    "image": "https://lesdelicesduverger.com/article/chips-de-legumes-200g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -496,8 +518,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/compote-pomme-poire-jean-d-audignac",
+    "url": "",
     "title": "Compote pomme poire Jean d’Audignac",
+    "image": "https://lesdelicesduverger.com/article/compote-pomme-poire-jean-d-audignac",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -512,8 +535,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/confit-jean-d-audignac",
+    "url": "",
     "title": "Confit Jean d’Audignac",
+    "image": "https://lesdelicesduverger.com/article/confit-jean-d-audignac",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -546,8 +570,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/confiture-d-abricot",
+    "url": "",
     "title": "Confiture d’abricot",
+    "image": "https://lesdelicesduverger.com/article/confiture-d-abricot",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -562,8 +587,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/confiture-de-fraises",
+    "url": "",
     "title": "Confiture de fraises",
+    "image": "https://lesdelicesduverger.com/article/confiture-de-fraises",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -578,8 +604,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/confiture-de-mirabelle",
+    "url": "",
     "title": "Confiture de mirabelle",
+    "image": "https://lesdelicesduverger.com/article/confiture-de-mirabelle",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -594,8 +621,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/cookies-a-l-avoine",
+    "url": "",
     "title": "Cookies à l’avoine",
+    "image": "https://lesdelicesduverger.com/article/cookies-a-l-avoine",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -610,8 +638,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/coulis-jean-d-audignac",
+    "url": "",
     "title": "Coulis Jean d’Audignac",
+    "image": "https://lesdelicesduverger.com/article/coulis-jean-d-audignac",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -644,8 +673,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/crabe-royal-de-l-antarctique-chatka",
+    "url": "",
     "title": "Crabe royal de l’antarctique chatka",
+    "image": "https://lesdelicesduverger.com/article/crabe-royal-de-l-antarctique-chatka",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -660,8 +690,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/creme-fouettee-a-la-vanille",
+    "url": "",
     "title": "Crème fouettée à la vanille",
+    "image": "https://lesdelicesduverger.com/article/creme-fouettee-a-la-vanille",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -676,8 +707,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/epinards-420g",
+    "url": "",
     "title": "Épinards (420g)",
+    "image": "https://lesdelicesduverger.com/article/epinards-420g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -692,8 +724,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/extrait-naturelle-spray",
+    "url": "",
     "title": "Extrait naturelle (spray)",
+    "image": "https://lesdelicesduverger.com/article/extrait-naturelle-spray",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -739,8 +772,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/feuillete-aux-choix",
+    "url": "",
     "title": "Feuilleté aux choix",
+    "image": "https://lesdelicesduverger.com/article/feuillete-aux-choix",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -786,8 +820,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/filets-de-hareng-fumes-richter",
+    "url": "",
     "title": "Filets de Hareng fumés Richter",
+    "image": "https://lesdelicesduverger.com/article/filets-de-hareng-fumes-richter",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -802,8 +837,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/filets-de-thon-tonnara",
+    "url": "",
     "title": "Filets de Thon Tonnara",
+    "image": "https://lesdelicesduverger.com/article/filets-de-thon-tonnara",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -818,8 +854,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/foie-gras-de-canard-du-sud-ouest-mi-cuit",
+    "url": "",
     "title": "Foie gras de canard du sud-ouest mi-cuit",
+    "image": "https://lesdelicesduverger.com/article/foie-gras-de-canard-du-sud-ouest-mi-cuit",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -834,8 +871,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/gache",
+    "url": "",
     "title": "Gâche",
+    "image": "https://lesdelicesduverger.com/article/gache",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -850,8 +888,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/gaspacho-traditionnel",
+    "url": "",
     "title": "Gaspacho traditionnel",
+    "image": "https://lesdelicesduverger.com/article/gaspacho-traditionnel",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -866,8 +905,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/gaufres-fines",
+    "url": "",
     "title": "Gaufres fines",
+    "image": "https://lesdelicesduverger.com/article/gaufres-fines",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -882,8 +922,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/gaufrettes-amusantes",
+    "url": "",
     "title": "Gaufrettes amusantes",
+    "image": "https://lesdelicesduverger.com/article/gaufrettes-amusantes",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -898,8 +939,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/gourmandise-marines",
+    "url": "",
     "title": "Gourmandise marines",
+    "image": "https://lesdelicesduverger.com/article/gourmandise-marines",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -945,8 +987,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/gressins-au-sesame",
+    "url": "",
     "title": "Gressins au sesame",
+    "image": "https://lesdelicesduverger.com/article/gressins-au-sesame",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -961,8 +1004,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/huile-d-olive-extra-vierge-bio",
+    "url": "",
     "title": "Huile d’olive extra vierge bio",
+    "image": "https://lesdelicesduverger.com/article/huile-d-olive-extra-vierge-bio",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -977,8 +1021,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/mayonnaise-a-l-huile-de-tournesol",
+    "url": "",
     "title": "Mayonnaise à l’huile de Tournesol",
+    "image": "https://lesdelicesduverger.com/article/mayonnaise-a-l-huile-de-tournesol",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -993,8 +1038,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/miel-d-acacia",
+    "url": "",
     "title": "Miel d’acacia",
+    "image": "https://lesdelicesduverger.com/article/miel-d-acacia",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1009,8 +1055,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/miel-de-lavande",
+    "url": "",
     "title": "Miel de lavande",
+    "image": "https://lesdelicesduverger.com/article/miel-de-lavande",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1025,8 +1072,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/mini-madeleine-de-bretagne",
+    "url": "",
     "title": "Mini Madeleine de Bretagne",
+    "image": "https://lesdelicesduverger.com/article/mini-madeleine-de-bretagne",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1041,8 +1089,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/moutarde-de-dijon-jean-d-audignac",
+    "url": "",
     "title": "Moutarde de Dijon (Jean d’Audignac )",
+    "image": "https://lesdelicesduverger.com/article/moutarde-de-dijon-jean-d-audignac",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1057,8 +1106,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pain-de-mie-gourmet",
+    "url": "",
     "title": "Pain de mie gourmet",
+    "image": "https://lesdelicesduverger.com/article/pain-de-mie-gourmet",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1073,8 +1123,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pain-d-epices-au-miel",
+    "url": "",
     "title": "Pain d’épices au Miel",
+    "image": "https://lesdelicesduverger.com/article/pain-d-epices-au-miel",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1089,8 +1140,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pate-a-tartiner-lait-feuilletine-200g",
+    "url": "",
     "title": "Pâte à tartiner lait feuilletine (200g)",
+    "image": "https://lesdelicesduverger.com/article/pate-a-tartiner-lait-feuilletine-200g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1105,8 +1157,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pesto-rosso-180g",
+    "url": "",
     "title": "Pesto Rosso (180g)",
+    "image": "https://lesdelicesduverger.com/article/pesto-rosso-180g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1121,8 +1174,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/petit-beurre-breton",
+    "url": "",
     "title": "Petit beurre breton",
+    "image": "https://lesdelicesduverger.com/article/petit-beurre-breton",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1137,8 +1191,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/petits-citrons-sauvages-d-egypte-confit-chez-jaun-d-audiganc",
+    "url": "",
     "title": "Petits Citrons Sauvages d'Égypte - Confit chez Jaun d'Audiganc",
+    "image": "https://lesdelicesduverger.com/article/petits-citrons-sauvages-d-egypte-confit-chez-jaun-d-audiganc",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1153,8 +1208,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/petits-pois-445g",
+    "url": "",
     "title": "Petits pois (445g)",
+    "image": "https://lesdelicesduverger.com/article/petits-pois-445g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1169,8 +1225,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/piment-d-espelette-40g",
+    "url": "",
     "title": "Piment d’espelette (40g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/piment-d-espelette-40g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1185,8 +1242,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/pois-chiche-400g",
+    "url": "",
     "title": "Pois chiche (400g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/pois-chiche-400g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1201,8 +1259,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/pomme-de-terre-grenaille-ile-de-re",
+    "url": "",
     "title": "Pomme de terre grenaille île de ré",
+    "image": "https://lesdelicesduverger.com/index.php/article/pomme-de-terre-grenaille-ile-de-re",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1217,8 +1276,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/ratatouille-630g",
+    "url": "",
     "title": "Ratatouille (630g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/ratatouille-630g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1233,8 +1293,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/ravioli-a-la-provencale-800g",
+    "url": "",
     "title": "Ravioli à la provençale (800g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/ravioli-a-la-provencale-800g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1249,8 +1310,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/rillettes-90g",
+    "url": "",
     "title": "Rillettes (90g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/rillettes-90g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1309,8 +1371,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/risotto-aux-cepes-400g",
+    "url": "",
     "title": "Risotto aux cèpes (400g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/risotto-aux-cepes-400g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1325,8 +1388,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/risotto-aux-legumes-400g",
+    "url": "",
     "title": "Risotto aux légumes (400g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/risotto-aux-legumes-400g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1341,8 +1405,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/sardines-mouettes-d-arvor",
+    "url": "",
     "title": "Sardines Mouettes d’Arvor",
+    "image": "https://lesdelicesduverger.com/index.php/article/sardines-mouettes-d-arvor",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1357,8 +1422,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/sauce-tartare-les-impeccables",
+    "url": "",
     "title": "Sauce Tartare Les Impeccables",
+    "image": "https://lesdelicesduverger.com/index.php/article/sauce-tartare-les-impeccables",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1373,8 +1439,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/sauce-tomates-les-impeccables",
+    "url": "",
     "title": "Sauce Tomates Les Impeccables",
+    "image": "https://lesdelicesduverger.com/index.php/article/sauce-tomates-les-impeccables",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1389,8 +1456,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/sel-jean-d-audignac",
+    "url": "",
     "title": "Sel Jean D’Audignac",
+    "image": "https://lesdelicesduverger.com/index.php/article/sel-jean-d-audignac",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1423,8 +1491,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/soupe-paysanne-aux-legumes-500ml",
+    "url": "",
     "title": "Soupe paysanne aux légumes (500ml)",
+    "image": "https://lesdelicesduverger.com/index.php/article/soupe-paysanne-aux-legumes-500ml",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1439,8 +1508,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/soupes-et-veloutes-680ml",
+    "url": "",
     "title": "Soupes et veloutés (680ml)",
+    "image": "https://lesdelicesduverger.com/index.php/article/soupes-et-veloutes-680ml",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1512,8 +1582,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/sparts-fumes-riga-gold",
+    "url": "",
     "title": "Sparts fumés Riga Gold",
+    "image": "https://lesdelicesduverger.com/index.php/article/sparts-fumes-riga-gold",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1528,8 +1599,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/speculoos",
+    "url": "",
     "title": "Speculoos",
+    "image": "https://lesdelicesduverger.com/index.php/article/speculoos",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1544,8 +1616,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/tapenade-artisanale-90g",
+    "url": "",
     "title": "Tapenade Artisanale (90g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/tapenade-artisanale-90g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1578,8 +1651,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/thon-al-manar",
+    "url": "",
     "title": "Thon Al Manar",
+    "image": "https://lesdelicesduverger.com/index.php/article/thon-al-manar",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1594,8 +1668,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/toasts-aperitifs-aux-7-cereales-140g",
+    "url": "",
     "title": "Toasts apéritifs aux 7 céréales (140g)",
+    "image": "https://lesdelicesduverger.com/index.php/article/toasts-aperitifs-aux-7-cereales-140g",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1610,8 +1685,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/index.php/article/vanille-de-madagascar-tube",
+    "url": "",
     "title": "Vanille de Madagascar (tube)",
+    "image": "https://lesdelicesduverger.com/index.php/article/vanille-de-madagascar-tube",
     "category": "Épicerie Fine",
     "rawVariantsExist": true,
     "variants": [
@@ -1626,8 +1702,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/ananas-barquette",
+    "url": "",
     "title": "Ananas barquette",
+    "image": "https://lesdelicesduverger.com/article/ananas-barquette",
     "category": "Fruits coupés",
     "rawVariantsExist": true,
     "variants": [
@@ -1642,8 +1719,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/ananas-barquette",
+    "url": "",
     "title": "Ananas barquette",
+    "image": "https://lesdelicesduverger.com/article/ananas-barquette",
     "category": "Fruits saison",
     "rawVariantsExist": true,
     "variants": [
@@ -1658,8 +1736,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/ananas-costa-rica",
+    "url": "",
     "title": "Ananas Costa Rica",
+    "image": "https://lesdelicesduverger.com/article/ananas-costa-rica",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1674,8 +1753,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/ananas-pain-de-sucre",
+    "url": "",
     "title": "Ananas Pain de sucre",
+    "image": "https://lesdelicesduverger.com/article/ananas-pain-de-sucre",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1690,8 +1770,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/ananas-victoria",
+    "url": "",
     "title": "Ananas Victoria",
+    "image": "https://lesdelicesduverger.com/article/ananas-victoria",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1706,8 +1787,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/avocat",
+    "url": "",
     "title": "Avocat",
+    "image": "https://lesdelicesduverger.com/article/avocat",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1740,8 +1822,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/banane-martinique",
+    "url": "",
     "title": "Banane Martinique",
+    "image": "https://lesdelicesduverger.com/article/banane-martinique",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1774,8 +1857,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/datte-d-algerie",
+    "url": "",
     "title": "Datte d’Algérie",
+    "image": "https://lesdelicesduverger.com/article/datte-d-algerie",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1808,8 +1892,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/datte-medjoul",
+    "url": "",
     "title": "Datte Medjoul",
+    "image": "https://lesdelicesduverger.com/article/datte-medjoul",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1842,8 +1927,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/fruits-de-la-passion",
+    "url": "",
     "title": "Fruits de la passion",
+    "image": "https://lesdelicesduverger.com/article/fruits-de-la-passion",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1876,8 +1962,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/kiwi-jaune",
+    "url": "",
     "title": "Kiwi jaune",
+    "image": "https://lesdelicesduverger.com/article/kiwi-jaune",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1910,8 +1997,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/kiwi-vert",
+    "url": "",
     "title": "Kiwi vert",
+    "image": "https://lesdelicesduverger.com/article/kiwi-vert",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1944,8 +2032,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/mangue-kent-par-avion",
+    "url": "",
     "title": "Mangue Kent (par avion)",
+    "image": "https://lesdelicesduverger.com/article/mangue-kent-par-avion",
     "category": "Fruits exotiques",
     "rawVariantsExist": true,
     "variants": [
@@ -1960,8 +2049,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/fraise-clery-brq-500g",
+    "url": "",
     "title": "Fraise Clery (BRQ 500g)",
+    "image": "https://lesdelicesduverger.com/article/fraise-clery-brq-500g",
     "category": "Fruits rouges",
     "rawVariantsExist": true,
     "variants": [
@@ -1994,8 +2084,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/fraise-mara-des-bois-brq-250g",
+    "url": "",
     "title": "Fraise mara des bois (brq 250g)",
+    "image": "https://lesdelicesduverger.com/article/fraise-mara-des-bois-brq-250g",
     "category": "Fruits rouges",
     "rawVariantsExist": true,
     "variants": [
@@ -2010,8 +2101,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/framboise-brq-125g",
+    "url": "",
     "title": "Framboise (BRQ 125g)",
+    "image": "https://lesdelicesduverger.com/article/framboise-brq-125g",
     "category": "Fruits rouges",
     "rawVariantsExist": true,
     "variants": [
@@ -2044,8 +2136,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/groseille-barquette-125g",
+    "url": "",
     "title": "Groseille barquette (125g)",
+    "image": "https://lesdelicesduverger.com/article/groseille-barquette-125g",
     "category": "Fruits rouges",
     "rawVariantsExist": true,
     "variants": [
@@ -2065,8 +2158,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/mure-125g",
+    "url": "",
     "title": "Mure 125g",
+    "image": "https://lesdelicesduverger.com/article/mure-125g",
     "category": "Fruits rouges",
     "rawVariantsExist": true,
     "variants": [
@@ -2081,8 +2175,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/mure-barquette-125g",
+    "url": "",
     "title": "Mûre barquette ( 125g)",
+    "image": "https://lesdelicesduverger.com/article/mure-barquette-125g",
     "category": "Fruits rouges",
     "rawVariantsExist": true,
     "variants": [
@@ -2102,8 +2197,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/myrtille-barquette-125g",
+    "url": "",
     "title": "Myrtille barquette (125g)",
+    "image": "https://lesdelicesduverger.com/article/myrtille-barquette-125g",
     "category": "Fruits rouges",
     "rawVariantsExist": true,
     "variants": [
@@ -2118,8 +2214,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/abricot-sec-200g",
+    "url": "",
     "title": "Abricot sec (200g)",
+    "image": "https://lesdelicesduverger.com/article/abricot-sec-200g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2134,8 +2231,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/amande-naturelle-150g",
+    "url": "",
     "title": "Amande naturelle (150g)",
+    "image": "https://lesdelicesduverger.com/article/amande-naturelle-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2150,8 +2248,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/amandes-au-piment-150g",
+    "url": "",
     "title": "Amandes au piment (150g)",
+    "image": "https://lesdelicesduverger.com/article/amandes-au-piment-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2166,8 +2265,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/amandes-aux-sesames-150g",
+    "url": "",
     "title": "Amandes aux sésames (150g)",
+    "image": "https://lesdelicesduverger.com/article/amandes-aux-sesames-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2182,8 +2282,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/amandes-fumees-nature-150g",
+    "url": "",
     "title": "Amandes fumées nature (150g)",
+    "image": "https://lesdelicesduverger.com/article/amandes-fumees-nature-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2198,8 +2299,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/cerneaux-de-noix-150g",
+    "url": "",
     "title": "Cerneaux de noix (150g)",
+    "image": "https://lesdelicesduverger.com/article/cerneaux-de-noix-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2214,8 +2316,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/figues-sechees-200g",
+    "url": "",
     "title": "Figues séchées (200g)",
+    "image": "https://lesdelicesduverger.com/article/figues-sechees-200g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2230,8 +2333,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/gingembre-confit-en-lamelles-200g",
+    "url": "",
     "title": "Gingembre confit en lamelles (200g)",
+    "image": "https://lesdelicesduverger.com/article/gingembre-confit-en-lamelles-200g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2246,8 +2350,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/melange-fruits-secs-150g",
+    "url": "",
     "title": "Mélange fruits secs (150g)",
+    "image": "https://lesdelicesduverger.com/article/melange-fruits-secs-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2262,8 +2367,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/noisette-decortiquee-150g",
+    "url": "",
     "title": "Noisette décortiquée (150g)",
+    "image": "https://lesdelicesduverger.com/article/noisette-decortiquee-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2278,8 +2384,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/noix-de-bresil",
+    "url": "",
     "title": "Noix de Brésil",
+    "image": "https://lesdelicesduverger.com/article/noix-de-bresil",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2294,8 +2401,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/noix-de-cajou-grille-nature-150g",
+    "url": "",
     "title": "Noix de cajou grillé nature (150g)",
+    "image": "https://lesdelicesduverger.com/article/noix-de-cajou-grille-nature-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2310,8 +2418,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/noix-de-macadamia-frite-sale-150g",
+    "url": "",
     "title": "Noix de macadamia frite salé (150g)",
+    "image": "https://lesdelicesduverger.com/article/noix-de-macadamia-frite-sale-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2326,8 +2435,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pistaches-grillees-nature-150g",
+    "url": "",
     "title": "Pistaches grillées nature (150g)",
+    "image": "https://lesdelicesduverger.com/article/pistaches-grillees-nature-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2342,8 +2452,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pruneaux-200g",
+    "url": "",
     "title": "Pruneaux (200g)",
+    "image": "https://lesdelicesduverger.com/article/pruneaux-200g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2358,8 +2469,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/raisins-secs-150g",
+    "url": "",
     "title": "Raisins secs (150g)",
+    "image": "https://lesdelicesduverger.com/article/raisins-secs-150g",
     "category": "Fruits secs",
     "rawVariantsExist": true,
     "variants": [
@@ -2374,8 +2486,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/aneth-botte",
+    "url": "",
     "title": "Aneth botte",
+    "image": "https://lesdelicesduverger.com/article/aneth-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2390,8 +2503,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/bouquet-garni-en-botte",
+    "url": "",
     "title": "Bouquet garni en botte",
+    "image": "https://lesdelicesduverger.com/article/bouquet-garni-en-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2406,8 +2520,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/ciboulette-botte",
+    "url": "",
     "title": "Ciboulette botte",
+    "image": "https://lesdelicesduverger.com/article/ciboulette-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2422,8 +2537,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/coriandre-botte",
+    "url": "",
     "title": "Coriandre (botte)",
+    "image": "https://lesdelicesduverger.com/article/coriandre-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2438,8 +2554,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/estragon-botte",
+    "url": "",
     "title": "Estragon botte",
+    "image": "https://lesdelicesduverger.com/article/estragon-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2454,8 +2571,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/menthe-botte",
+    "url": "",
     "title": "Menthe (botte)",
+    "image": "https://lesdelicesduverger.com/article/menthe-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2470,8 +2588,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/persil-botte",
+    "url": "",
     "title": "Persil botte",
+    "image": "https://lesdelicesduverger.com/article/persil-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2486,8 +2605,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/romarin-botte",
+    "url": "",
     "title": "Romarin botte",
+    "image": "https://lesdelicesduverger.com/article/romarin-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2502,8 +2622,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/thym-botte",
+    "url": "",
     "title": "Thym botte",
+    "image": "https://lesdelicesduverger.com/article/thym-botte",
     "category": "Herbes harmonique",
     "rawVariantsExist": true,
     "variants": [
@@ -2518,8 +2639,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/citronnade-au-citron-jaune",
+    "url": "",
     "title": "Citronnade au citron jaune",
+    "image": "https://lesdelicesduverger.com/article/citronnade-au-citron-jaune",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2534,8 +2656,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/jus-de-poire-de-la-vallee-de-rhone-1l",
+    "url": "",
     "title": "Jus de poire de la Vallée de Rhône (1L)",
+    "image": "https://lesdelicesduverger.com/article/jus-de-poire-de-la-vallee-de-rhone-1l",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2550,8 +2673,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/jus-orange-carotte-citron-1l",
+    "url": "",
     "title": "Jus orange carotte citron (1L)",
+    "image": "https://lesdelicesduverger.com/article/jus-orange-carotte-citron-1l",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2566,8 +2690,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pur-jus-d-ananas-du-costa-rica",
+    "url": "",
     "title": "Pur jus d’ananas du Costa Rica",
+    "image": "https://lesdelicesduverger.com/article/pur-jus-d-ananas-du-costa-rica",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2582,8 +2707,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pur-jus-de-pamplemousse",
+    "url": "",
     "title": "Pur jus de pamplemousse",
+    "image": "https://lesdelicesduverger.com/article/pur-jus-de-pamplemousse",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2598,8 +2724,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pur-jus-de-pomme-reinette-de-france-1l",
+    "url": "",
     "title": "Pur jus de pomme Reinette de France (1L)",
+    "image": "https://lesdelicesduverger.com/article/pur-jus-de-pomme-reinette-de-france-1l",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2614,8 +2741,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pur-jus-de-raisin-rouge-muscate-15-1l",
+    "url": "",
     "title": "Pur jus de raisin ( rouge muscaté 15%) 1L",
+    "image": "https://lesdelicesduverger.com/article/pur-jus-de-raisin-rouge-muscate-15-1l",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2630,8 +2758,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pur-jus-d-orange",
+    "url": "",
     "title": "Pur jus d’orange",
+    "image": "https://lesdelicesduverger.com/article/pur-jus-d-orange",
     "category": "Jus fruits",
     "rawVariantsExist": true,
     "variants": [
@@ -2646,8 +2775,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/artichaut",
+    "url": "",
     "title": "Artichaut",
+    "image": "https://lesdelicesduverger.com/article/artichaut",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2662,8 +2792,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/asperge-blanche",
+    "url": "",
     "title": "Asperge blanche",
+    "image": "https://lesdelicesduverger.com/article/asperge-blanche",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2696,8 +2827,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/asperge-verte-botte",
+    "url": "",
     "title": "Asperge verte Botte",
+    "image": "https://lesdelicesduverger.com/article/asperge-verte-botte",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2712,8 +2844,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/aubergine",
+    "url": "",
     "title": "Aubergine",
+    "image": "https://lesdelicesduverger.com/article/aubergine",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2746,8 +2879,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/betterave-cuite",
+    "url": "",
     "title": "Betterave cuite",
+    "image": "https://lesdelicesduverger.com/article/betterave-cuite",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2762,8 +2896,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/betternut",
+    "url": "",
     "title": "Betternut",
+    "image": "https://lesdelicesduverger.com/article/betternut",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2778,8 +2913,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/blette-botte",
+    "url": "",
     "title": "Blette botte",
+    "image": "https://lesdelicesduverger.com/article/blette-botte",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2794,8 +2930,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/brocoli",
+    "url": "",
     "title": "Brocoli",
+    "image": "https://lesdelicesduverger.com/article/brocoli",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2828,8 +2965,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/carotte-lavee",
+    "url": "",
     "title": "Carotte lavée",
+    "image": "https://lesdelicesduverger.com/article/carotte-lavee",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2862,8 +3000,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/carotte-sable",
+    "url": "",
     "title": "Carotte sable",
+    "image": "https://lesdelicesduverger.com/article/carotte-sable",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2896,8 +3035,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/celeri-blanche-demi-pied",
+    "url": "",
     "title": "Céleri blanche demi-pied",
+    "image": "https://lesdelicesduverger.com/article/celeri-blanche-demi-pied",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2912,8 +3052,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/celeri-rave",
+    "url": "",
     "title": "Céleri rave",
+    "image": "https://lesdelicesduverger.com/article/celeri-rave",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -2928,8 +3069,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/champignon-de-paris",
+    "url": "",
     "title": "Champignon de Paris",
+    "image": "https://lesdelicesduverger.com/article/champignon-de-paris",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3038,8 +3180,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/choux-fleur",
+    "url": "",
     "title": "Choux fleur",
+    "image": "https://lesdelicesduverger.com/article/choux-fleur",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3054,8 +3197,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/choux-rouge-blanc",
+    "url": "",
     "title": "Choux rouge/blanc",
+    "image": "https://lesdelicesduverger.com/article/choux-rouge-blanc",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3088,8 +3232,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/choux-vert",
+    "url": "",
     "title": "Choux vert",
+    "image": "https://lesdelicesduverger.com/article/choux-vert",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3104,8 +3249,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/concombre",
+    "url": "",
     "title": "Concombre",
+    "image": "https://lesdelicesduverger.com/article/concombre",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3138,8 +3284,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/courgette",
+    "url": "",
     "title": "Courgette",
+    "image": "https://lesdelicesduverger.com/article/courgette",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3172,8 +3319,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/courgettes-jaune",
+    "url": "",
     "title": "Courgettes jaune",
+    "image": "https://lesdelicesduverger.com/article/courgettes-jaune",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3206,8 +3354,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/endive-rouge",
+    "url": "",
     "title": "Endive rouge",
+    "image": "https://lesdelicesduverger.com/article/endive-rouge",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3240,8 +3389,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/epinards",
+    "url": "",
     "title": "Épinards",
+    "image": "https://lesdelicesduverger.com/article/epinards",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3274,8 +3424,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/fenouil",
+    "url": "",
     "title": "Fenouil",
+    "image": "https://lesdelicesduverger.com/article/fenouil",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3308,8 +3459,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/feve",
+    "url": "",
     "title": "Fève",
+    "image": "https://lesdelicesduverger.com/article/feve",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3342,8 +3494,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/haricot-vert-extra-fin-kenya",
+    "url": "",
     "title": "Haricot vert extra fin kenya",
+    "image": "https://lesdelicesduverger.com/article/haricot-vert-extra-fin-kenya",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3376,8 +3529,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/haricot-verts-barquette-250g",
+    "url": "",
     "title": "Haricot verts barquette (250g)",
+    "image": "https://lesdelicesduverger.com/article/haricot-verts-barquette-250g",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3392,8 +3546,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/navet",
+    "url": "",
     "title": "Navet",
+    "image": "https://lesdelicesduverger.com/article/navet",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3426,8 +3581,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-botte",
+    "url": "",
     "title": "Oignon botte",
+    "image": "https://lesdelicesduverger.com/article/oignon-botte",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3442,8 +3598,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-cebette-botte",
+    "url": "",
     "title": "Oignon cébette (botte)",
+    "image": "https://lesdelicesduverger.com/article/oignon-cebette-botte",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3458,8 +3615,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-doux",
+    "url": "",
     "title": "Oignon doux",
+    "image": "https://lesdelicesduverger.com/article/oignon-doux",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3492,8 +3650,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-jaune",
+    "url": "",
     "title": "Oignon jaune",
+    "image": "https://lesdelicesduverger.com/article/oignon-jaune",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3526,8 +3685,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-rouge-blanc",
+    "url": "",
     "title": "Oignon rouge/blanc",
+    "image": "https://lesdelicesduverger.com/article/oignon-rouge-blanc",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3636,8 +3796,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/panais",
+    "url": "",
     "title": "Panais",
+    "image": "https://lesdelicesduverger.com/article/panais",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3670,8 +3831,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/patate-douce",
+    "url": "",
     "title": "Patate douce",
+    "image": "https://lesdelicesduverger.com/article/patate-douce",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3704,8 +3866,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/petit-poids",
+    "url": "",
     "title": "Petit poids",
+    "image": "https://lesdelicesduverger.com/article/petit-poids",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3738,8 +3901,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/petit-pois",
+    "url": "",
     "title": "Petit pois",
+    "image": "https://lesdelicesduverger.com/article/petit-pois",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3772,8 +3936,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/piment-vert",
+    "url": "",
     "title": "Piment vert",
+    "image": "https://lesdelicesduverger.com/article/piment-vert",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3806,8 +3971,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/poireau",
+    "url": "",
     "title": "Poireau",
+    "image": "https://lesdelicesduverger.com/article/poireau",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3840,8 +4006,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/poivrons-couleur",
+    "url": "",
     "title": "Poivrons couleur",
+    "image": "https://lesdelicesduverger.com/article/poivrons-couleur",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3950,8 +4117,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pomme-de-terre-bintje",
+    "url": "",
     "title": "Pomme de terre bintje",
+    "image": "https://lesdelicesduverger.com/article/pomme-de-terre-bintje",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -3984,8 +4152,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pomme-de-terre-charlotte",
+    "url": "",
     "title": "Pomme de terre Charlotte",
+    "image": "https://lesdelicesduverger.com/article/pomme-de-terre-charlotte",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -4018,8 +4187,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pomme-de-terre-roseval",
+    "url": "",
     "title": "Pomme de terre Roseval",
+    "image": "https://lesdelicesduverger.com/article/pomme-de-terre-roseval",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -4052,8 +4222,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/potimarron",
+    "url": "",
     "title": "Potimarron",
+    "image": "https://lesdelicesduverger.com/article/potimarron",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -4068,8 +4239,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/potiron",
+    "url": "",
     "title": "Potiron",
+    "image": "https://lesdelicesduverger.com/article/potiron",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -4102,8 +4274,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/radis-noir",
+    "url": "",
     "title": "Radis noir",
+    "image": "https://lesdelicesduverger.com/article/radis-noir",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -4118,8 +4291,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/radis-rose-botte",
+    "url": "",
     "title": "Radis rose botte",
+    "image": "https://lesdelicesduverger.com/article/radis-rose-botte",
     "category": "Légumes",
     "rawVariantsExist": true,
     "variants": [
@@ -4134,8 +4308,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/artichaut",
+    "url": "",
     "title": "Artichaut",
+    "image": "https://lesdelicesduverger.com/article/artichaut",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4150,8 +4325,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/asperge-blanche",
+    "url": "",
     "title": "Asperge blanche",
+    "image": "https://lesdelicesduverger.com/article/asperge-blanche",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4184,8 +4360,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/asperge-verte-botte",
+    "url": "",
     "title": "Asperge verte Botte",
+    "image": "https://lesdelicesduverger.com/article/asperge-verte-botte",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4200,8 +4377,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/aubergine",
+    "url": "",
     "title": "Aubergine",
+    "image": "https://lesdelicesduverger.com/article/aubergine",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4234,8 +4412,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/betterave-cuite",
+    "url": "",
     "title": "Betterave cuite",
+    "image": "https://lesdelicesduverger.com/article/betterave-cuite",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4250,8 +4429,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/betternut",
+    "url": "",
     "title": "Betternut",
+    "image": "https://lesdelicesduverger.com/article/betternut",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4266,8 +4446,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/blette-botte",
+    "url": "",
     "title": "Blette botte",
+    "image": "https://lesdelicesduverger.com/article/blette-botte",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4282,8 +4463,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/brocoli",
+    "url": "",
     "title": "Brocoli",
+    "image": "https://lesdelicesduverger.com/article/brocoli",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4316,8 +4498,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/carotte-lavee",
+    "url": "",
     "title": "Carotte lavée",
+    "image": "https://lesdelicesduverger.com/article/carotte-lavee",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4350,8 +4533,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/carotte-sable",
+    "url": "",
     "title": "Carotte sable",
+    "image": "https://lesdelicesduverger.com/article/carotte-sable",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4384,8 +4568,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/celeri-blanche-demi-pied",
+    "url": "",
     "title": "Céleri blanche demi-pied",
+    "image": "https://lesdelicesduverger.com/article/celeri-blanche-demi-pied",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4400,8 +4585,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/celeri-rave",
+    "url": "",
     "title": "Céleri rave",
+    "image": "https://lesdelicesduverger.com/article/celeri-rave",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4416,8 +4602,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/champignon-de-paris",
+    "url": "",
     "title": "Champignon de Paris",
+    "image": "https://lesdelicesduverger.com/article/champignon-de-paris",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4526,8 +4713,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/choux-fleur",
+    "url": "",
     "title": "Choux fleur",
+    "image": "https://lesdelicesduverger.com/article/choux-fleur",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4542,8 +4730,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/choux-rouge-blanc",
+    "url": "",
     "title": "Choux rouge/blanc",
+    "image": "https://lesdelicesduverger.com/article/choux-rouge-blanc",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4576,8 +4765,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/choux-vert",
+    "url": "",
     "title": "Choux vert",
+    "image": "https://lesdelicesduverger.com/article/choux-vert",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4592,8 +4782,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/concombre",
+    "url": "",
     "title": "Concombre",
+    "image": "https://lesdelicesduverger.com/article/concombre",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4626,8 +4817,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/courgette",
+    "url": "",
     "title": "Courgette",
+    "image": "https://lesdelicesduverger.com/article/courgette",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4660,8 +4852,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/courgettes-jaune",
+    "url": "",
     "title": "Courgettes jaune",
+    "image": "https://lesdelicesduverger.com/article/courgettes-jaune",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4694,8 +4887,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/endive-rouge",
+    "url": "",
     "title": "Endive rouge",
+    "image": "https://lesdelicesduverger.com/article/endive-rouge",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4728,8 +4922,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/epinards",
+    "url": "",
     "title": "Épinards",
+    "image": "https://lesdelicesduverger.com/article/epinards",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4762,8 +4957,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/fenouil",
+    "url": "",
     "title": "Fenouil",
+    "image": "https://lesdelicesduverger.com/article/fenouil",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4796,8 +4992,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/feve",
+    "url": "",
     "title": "Fève",
+    "image": "https://lesdelicesduverger.com/article/feve",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4830,8 +5027,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/haricot-vert-extra-fin-kenya",
+    "url": "",
     "title": "Haricot vert extra fin kenya",
+    "image": "https://lesdelicesduverger.com/article/haricot-vert-extra-fin-kenya",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4864,8 +5062,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/haricot-verts-barquette-250g",
+    "url": "",
     "title": "Haricot verts barquette (250g)",
+    "image": "https://lesdelicesduverger.com/article/haricot-verts-barquette-250g",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4880,8 +5079,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/navet",
+    "url": "",
     "title": "Navet",
+    "image": "https://lesdelicesduverger.com/article/navet",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4914,8 +5114,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-botte",
+    "url": "",
     "title": "Oignon botte",
+    "image": "https://lesdelicesduverger.com/article/oignon-botte",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4930,8 +5131,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-cebette-botte",
+    "url": "",
     "title": "Oignon cébette (botte)",
+    "image": "https://lesdelicesduverger.com/article/oignon-cebette-botte",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4946,8 +5148,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-doux",
+    "url": "",
     "title": "Oignon doux",
+    "image": "https://lesdelicesduverger.com/article/oignon-doux",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -4980,8 +5183,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-jaune",
+    "url": "",
     "title": "Oignon jaune",
+    "image": "https://lesdelicesduverger.com/article/oignon-jaune",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5014,8 +5218,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/oignon-rouge-blanc",
+    "url": "",
     "title": "Oignon rouge/blanc",
+    "image": "https://lesdelicesduverger.com/article/oignon-rouge-blanc",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5124,8 +5329,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/panais",
+    "url": "",
     "title": "Panais",
+    "image": "https://lesdelicesduverger.com/article/panais",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5158,8 +5364,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/patate-douce",
+    "url": "",
     "title": "Patate douce",
+    "image": "https://lesdelicesduverger.com/article/patate-douce",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5192,8 +5399,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/petit-poids",
+    "url": "",
     "title": "Petit poids",
+    "image": "https://lesdelicesduverger.com/article/petit-poids",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5226,8 +5434,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/petit-pois",
+    "url": "",
     "title": "Petit pois",
+    "image": "https://lesdelicesduverger.com/article/petit-pois",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5260,8 +5469,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/piment-vert",
+    "url": "",
     "title": "Piment vert",
+    "image": "https://lesdelicesduverger.com/article/piment-vert",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5294,8 +5504,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/poireau",
+    "url": "",
     "title": "Poireau",
+    "image": "https://lesdelicesduverger.com/article/poireau",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5328,8 +5539,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/poivrons-couleur",
+    "url": "",
     "title": "Poivrons couleur",
+    "image": "https://lesdelicesduverger.com/article/poivrons-couleur",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5438,8 +5650,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pomme-de-terre-bintje",
+    "url": "",
     "title": "Pomme de terre bintje",
+    "image": "https://lesdelicesduverger.com/article/pomme-de-terre-bintje",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5472,8 +5685,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pomme-de-terre-charlotte",
+    "url": "",
     "title": "Pomme de terre Charlotte",
+    "image": "https://lesdelicesduverger.com/article/pomme-de-terre-charlotte",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5506,8 +5720,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/pomme-de-terre-roseval",
+    "url": "",
     "title": "Pomme de terre Roseval",
+    "image": "https://lesdelicesduverger.com/article/pomme-de-terre-roseval",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5540,8 +5755,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/potimarron",
+    "url": "",
     "title": "Potimarron",
+    "image": "https://lesdelicesduverger.com/article/potimarron",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5556,8 +5772,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/potiron",
+    "url": "",
     "title": "Potiron",
+    "image": "https://lesdelicesduverger.com/article/potiron",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5590,8 +5807,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/radis-noir",
+    "url": "",
     "title": "Radis noir",
+    "image": "https://lesdelicesduverger.com/article/radis-noir",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5606,8 +5824,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/radis-rose-botte",
+    "url": "",
     "title": "Radis rose botte",
+    "image": "https://lesdelicesduverger.com/article/radis-rose-botte",
     "category": "Produits laitiers",
     "rawVariantsExist": true,
     "variants": [
@@ -5622,8 +5841,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/batavia",
+    "url": "",
     "title": "Batavia",
+    "image": "https://lesdelicesduverger.com/article/batavia",
     "category": "Sqlqde",
     "rawVariantsExist": true,
     "variants": [
@@ -5638,8 +5858,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/endive",
+    "url": "",
     "title": "Endive",
+    "image": "https://lesdelicesduverger.com/article/endive",
     "category": "Sqlqde",
     "rawVariantsExist": true,
     "variants": [
@@ -5672,8 +5893,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomate-noir",
+    "url": "",
     "title": "Tomate noir",
+    "image": "https://lesdelicesduverger.com/article/tomate-noir",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5706,8 +5928,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomates-a-farcir",
+    "url": "",
     "title": "Tomates à farcir",
+    "image": "https://lesdelicesduverger.com/article/tomates-a-farcir",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5740,8 +5963,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomates-anciennes",
+    "url": "",
     "title": "Tomates anciennes",
+    "image": "https://lesdelicesduverger.com/article/tomates-anciennes",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5774,8 +5998,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomates-cerises-meli-melo",
+    "url": "",
     "title": "Tomates cerises Méli Mélo",
+    "image": "https://lesdelicesduverger.com/article/tomates-cerises-meli-melo",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5808,8 +6033,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomates-cerises-rabelais",
+    "url": "",
     "title": "Tomates cerises Rabelais",
+    "image": "https://lesdelicesduverger.com/article/tomates-cerises-rabelais",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5842,8 +6068,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomates-coeur-de-boeuf",
+    "url": "",
     "title": "Tomates coeur de bœuf",
+    "image": "https://lesdelicesduverger.com/article/tomates-coeur-de-boeuf",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5876,8 +6103,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomates-grappes",
+    "url": "",
     "title": "Tomates grappes",
+    "image": "https://lesdelicesduverger.com/article/tomates-grappes",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5910,8 +6138,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomates-jouno",
+    "url": "",
     "title": "Tomates jouno",
+    "image": "https://lesdelicesduverger.com/article/tomates-jouno",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [
@@ -5944,8 +6173,9 @@
     ]
   },
   {
-    "url": "https://lesdelicesduverger.com/article/tomate-torino",
+    "url": "",
     "title": "Tomate Torino",
+    "image": "https://lesdelicesduverger.com/article/tomate-torino",
     "category": "Tomate",
     "rawVariantsExist": true,
     "variants": [

@@ -22,6 +22,7 @@ function convertProduct(product) {
   return {
     url: product.url || '',
     title: product.title || '',
+    image: product.image || '',          // <-- Added image field
     category: product.category || 'Uncategorized',
     rawVariantsExist: product.rawVariantsExist || false,
     variants,

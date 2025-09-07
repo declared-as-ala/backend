@@ -213,10 +213,19 @@ async function scrapeProductPage(url) {
   if (!html) return null;
   const $ = cheerio.load(html);
 
+  // Title
   const title = $("[data-selector='os-theme-product-title']").first().text().trim()
     || $("h1.headline-large").first().text().trim()
     || $("title").text().trim();
 
+  // Main image
+  let image = "";
+  const imgEl = $(".product-gallery .splide__list li a img").first();
+  if (imgEl && imgEl.attr) {
+    image = imgEl.attr("src") || "";
+  }
+
+  // Variants
   let dv = null;
   const selectors = [
     '#productContainer',
@@ -259,8 +268,9 @@ async function scrapeProductPage(url) {
 
   const normalized = normalizeVariantRecords(rawVariants);
 
-  return { url, title, variants: normalized, rawVariantsExist: !!dv };
+  return { url, title, image, variants: normalized, rawVariantsExist: !!dv };
 }
+
 
 // ---------- All categories runner ----------
 const categories = [
@@ -276,7 +286,7 @@ const categories = [
   { name: "Jus fruits", url: "https://lesdelicesduverger.com/produits?category=B912A7A6-6971-4E16-8AC9-837C10B7E148" },
   { name: "Légumes", url: "https://lesdelicesduverger.com/produits?category=917309D0-0F4A-4F28-8C5D-04F5DAA8221B" },
   { name: "Produits laitiers", url: "https://lesdelicesduverger.com/produits?category=917309D0-0F4A-4F28-8C5D-04F5DAA8221B" },
-  { name: "Sqlqde", url: "https://lesdelicesduverger.com/produits?category=B922BCE1-B416-4778-A2FA-F2014E29085E" },
+  { name: "salade", url: "https://lesdelicesduverger.com/produits?category=B922BCE1-B416-4778-A2FA-F2014E29085E" },
   { name: "Tomate", url: "https://lesdelicesduverger.com/produits?category=6CC64B4F-5E9B-4A80-AB68-648548BB031E" },
 ];
 
