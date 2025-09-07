@@ -1,38 +1,23 @@
-import { readFileSync, writeFileSync } from 'fs';
+import fs from 'fs';
 import path from 'path';
 
-// Path to your scraped JSON
+// Paths
 const inputFile = path.join(process.cwd(), 'aa.json');
-const outputFile = path.join(process.cwd(), 'products_model.json');
+const outputFile = path.join(process.cwd(), 'aa_clean.json');
 
-// Read JSON
-const rawData = JSON.parse(readFileSync(inputFile, 'utf-8'));
+// Read JSON file
+const rawData = fs.readFileSync(inputFile, 'utf-8');
+const products = JSON.parse(rawData);
 
-// Convert function
-function convertProduct(product) {
-  const variants = product.variants.map(v => ({
-    variant_id: v.variant_id || v.id || '', 
-    variant_name: v.variant_name || v.name || '',
-    price: v.price_eur != null ? v.price_eur : (v.price_cents != null ? v.price_cents / 100 : 0),
-    unit_type: v.grams != null && v.grams > 0 ? 'weight' : 'piece',
-    grams: v.grams || null,
-    options: Array.isArray(v.options) ? v.options : [],
-  }));
+// Clean image URLs
+const cleanedProducts = products.map((product) => {
+  if (product.image && typeof product.image === 'string') {
+    product.image = product.image.trim();
+  }
+  return product;
+});
 
-  return {
-    url: product.url || '',
-    title: product.title || '',
-    image: product.image || '',          // <-- Added image field
-    category: product.category || 'Uncategorized',
-    rawVariantsExist: product.rawVariantsExist || false,
-    variants,
-  };
-}
+// Write cleaned JSON
+fs.writeFileSync(outputFile, JSON.stringify(cleanedProducts, null, 2), 'utf-8');
 
-// Convert all products
-const converted = rawData.map(convertProduct);
-
-// Save to new JSON file
-writeFileSync(outputFile, JSON.stringify(converted, null, 2), 'utf-8');
-
-console.log(`Converted ${converted.length} products to model format and saved to ${outputFile}`);
+console.log(`Cleaned JSON saved to ${outputFile}`);

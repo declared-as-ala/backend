@@ -278,16 +278,16 @@ const categories = [
   { name: "Corbeille de fruit", url: "https://lesdelicesduverger.com/produits?category=6F40C208-251F-454D-A7E3-01D31494B322" },
   { name: "Épicerie Fine", url: "https://lesdelicesduverger.com/produits?category=CCD229E9-8F4E-4655-B45C-F47FD4890A63" },
   { name: "Fruits coupés", url: "https://lesdelicesduverger.com/produits?category=CF95D19B-1FD1-4956-B932-DF70CF975600" },
-  { name: "Fruits saison", url: "https://lesdelicesduverger.com/produits?category=CF95D19B-1FD1-4956-B932-DF70CF975600" },
+  { name: "Fruits De Saison", url: "https://lesdelicesduverger.com/produits?category=CACC0E15-B8C0-4DB1-94CB-0127ECB23997" },
   { name: "Fruits exotiques", url: "https://lesdelicesduverger.com/produits?category=D103016F-EF44-4C34-86A8-A05F9CD28CF1" },
   { name: "Fruits rouges", url: "https://lesdelicesduverger.com/produits?category=MERCHANTS_DEFAULT_CATEGORY" },
   { name: "Fruits secs", url: "https://lesdelicesduverger.com/produits?category=A0A2C38C-ED40-4AB8-B938-BE374E53CB61" },
   { name: "Herbes harmonique", url: "https://lesdelicesduverger.com/produits?category=B3E78B0B-61B2-4400-8BF5-3364F776DE6C" },
-  { name: "Jus fruits", url: "https://lesdelicesduverger.com/produits?category=B912A7A6-6971-4E16-8AC9-837C10B7E148" },
+  { name: "Jus De Fruits", url: "https://lesdelicesduverger.com/produits?category=B912A7A6-6971-4E16-8AC9-837C10B7E148" },
   { name: "Légumes", url: "https://lesdelicesduverger.com/produits?category=917309D0-0F4A-4F28-8C5D-04F5DAA8221B" },
-  { name: "Produits laitiers", url: "https://lesdelicesduverger.com/produits?category=917309D0-0F4A-4F28-8C5D-04F5DAA8221B" },
-  { name: "salade", url: "https://lesdelicesduverger.com/produits?category=B922BCE1-B416-4778-A2FA-F2014E29085E" },
-  { name: "Tomate", url: "https://lesdelicesduverger.com/produits?category=6CC64B4F-5E9B-4A80-AB68-648548BB031E" },
+  { name: "Produits laitiers", url: "https://lesdelicesduverger.com/produits?category=FB7618C4-3C76-4859-8924-DB6C0B565372" },
+  { name: "salades", url: "https://lesdelicesduverger.com/produits?category=B922BCE1-B416-4778-A2FA-F2014E29085E" },
+  { name: "Tomates", url: "https://lesdelicesduverger.com/produits?category=6CC64B4F-5E9B-4A80-AB68-648548BB031E" },
 ];
 
 async function runAllCategories() {
