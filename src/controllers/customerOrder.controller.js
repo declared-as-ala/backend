@@ -14,6 +14,7 @@ export const createOrder = async (req, res) => {
       pickupType,
       pickupLocation,
       deliveryAddress,
+      deliveryTime, // 🆕 added
       deliveryFee = 0,
       discountCode,
       discountAmount = 0,
@@ -28,6 +29,11 @@ export const createOrder = async (req, res) => {
 
     if (!['stripe', 'paypal', 'espèces'].includes(paymentMethod)) {
       return res.status(400).json({ message: 'Mode de paiement invalide' });
+    }
+
+    // Vérification du deliveryTime si livraison
+    if (pickupType === 'delivery' && !deliveryTime) {
+      return res.status(400).json({ message: "Veuillez choisir l'heure de livraison" });
     }
 
     let totalAmount = 0;
@@ -79,6 +85,7 @@ export const createOrder = async (req, res) => {
       pickupType,
       pickupLocation,
       deliveryAddress,
+      deliveryTime, // 🆕 included
       deliveryFee,
       amount: totalAmount,
       currency: 'EUR',
@@ -99,6 +106,7 @@ export const createOrder = async (req, res) => {
       .json({ message: err.message || 'Échec de la création de la commande' });
   }
 };
+
 
 /**
  * Récupérer toutes les commandes (admin)

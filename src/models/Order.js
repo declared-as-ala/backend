@@ -45,6 +45,14 @@ const orderSchema = new mongoose.Schema(
       country: String,
     },
 
+    /** 🆕 Delivery Time Feature **/
+    deliveryTime: {
+      type: String, // Ex: "14:30" or "2025-09-07T14:30:00Z"
+      required: function () {
+        return this.pickupType === 'delivery';
+      },
+    },
+
     deliveryFee: { type: Number, default: 0 },
     amount: { type: Number, required: true },
     currency: { type: String, default: 'EUR' },

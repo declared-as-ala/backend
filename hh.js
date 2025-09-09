@@ -1,35 +1,31 @@
-// convert_to_products_json.js
 import { readFileSync, writeFileSync } from "fs";
-import { v4 as uuidv4 } from "uuid";
+import path from "path";
 
-const inputFile = "aa.json";
-const outputFile = "products.json";
+// Paths
+const inputFile = path.join(process.cwd(), "aa.json");
+const outputFile = path.join(process.cwd(), "products_fixed.json");
 
-const rawData = JSON.parse(readFileSync(inputFile, "utf-8"));
+// Read the JSON file
+const rawData = readFileSync(inputFile, "utf-8");
+let products = JSON.parse(rawData);
 
-const cleanProducts = rawData.map(p => {
-  const now = new Date().toISOString();
-
-  const variants = (p.variants || []).map(v => ({
-    variant_id: v.variant_id || uuidv4(),
-    variant_name: v.variant_name || "",
-    price: v.price_eur || 0,
-    unit_type: v.unit_type || "weight",
-    grams: v.grams != null ? v.grams : null,
-    options: v.options || []
-  }));
-
-  return {
-    id: uuidv4(), // unique product id
-    Image: (p.image || "").trim(),
-    title: p.title || "",
-    category: p.category || "Uncategorized",
-    description: p.description || "",
-    variants,
-    createdAt: now,
-    updatedAt: now
-  };
+// Update unit_type if it's "unknown"
+products = products.map((product) => {
+  if (product.variants && Array.isArray(product.variants)) {
+    product.variants = product.variants.map((variant) => {
+      if (!variant.unit_type || variant.unit_type === "unknown") {
+        return {
+          ...variant,
+          unit_type: "piece", // Default value
+        };
+      }
+      return variant;
+    });
+  }
+  return product;
 });
 
-writeFileSync(outputFile, JSON.stringify(cleanProducts, null, 2), "utf-8");
-console.log(`Saved ${cleanProducts.length} products to ${outputFile}`);
+// Save the updated data into a new JSON file
+writeFileSync(outputFile, JSON.stringify(products, null, 2), "utf-8");
+
+console.log(`✅ Products updated successfully! Saved to ${outputFile}`);
