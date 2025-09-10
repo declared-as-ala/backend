@@ -11,11 +11,10 @@ const PAYPAL_API_BASE = {
 class PayPalController {
   constructor() {
     this.validateCredentials();
+    this.environment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
+    this.apiBase = PAYPAL_API_BASE[this.environment] || PAYPAL_API_BASE.sandbox;
   }
 
-  /**
-   * Validate PayPal credentials on initialization
-   */
   validateCredentials() {
     const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
     if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
@@ -23,18 +22,12 @@ class PayPalController {
     }
   }
 
-  /**
-   * Get PayPal access token
-   */
   async getAccessToken() {
     try {
-      const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_ENVIRONMENT } = process.env;
-     
-      const environment = PAYPAL_ENVIRONMENT || 'sandbox';
-      const apiBase = PAYPAL_API_BASE[environment] || PAYPAL_API_BASE.sandbox;
+      const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 
       const response = await axios({
-        url: `${apiBase}/v1/oauth2/token`,
+        url: `${this.apiBase}/v1/oauth2/token`,
         method: "post",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -45,7 +38,7 @@ class PayPalController {
           password: PAYPAL_CLIENT_SECRET,
         },
         data: "grant_type=client_credentials",
-        timeout: 10000,
+        timeout: 15000,
       });
 
       if (!response.data.access_token) {
@@ -54,14 +47,15 @@ class PayPalController {
 
       return response.data.access_token;
     } catch (error) {
-      logger.error("PayPal token generation failed:", error);
+      logger.error("PayPal token generation failed:", {
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data
+      });
       throw new PayPalError("Failed to authenticate with PayPal");
     }
   }
 
-  /**
-   * Validate order data
-   */
   validateOrderData(data) {
     const {
       amount,
@@ -72,85 +66,84 @@ class PayPalController {
       deliveryTime,
     } = data;
 
-    if (!amount || amount <= 0) {
-      throw new ValidationError("Invalid amount");
+    // Amount validation
+    if (!amount || isNaN(amount) || Number(amount) <= 0) {
+      throw new ValidationError("Invalid amount provided");
     }
 
-    if (!customer?.fullName || !customer?.email || !customer?.phone) {
+    // Customer validation
+    if (!customer?.fullName?.trim() || !customer?.email?.trim() || !customer?.phone?.trim()) {
       throw new ValidationError("Customer information is incomplete");
     }
 
-    if (!items || !Array.isArray(items) || items.length === 0) {
-      throw new ValidationError("Items are required");
-    }
-
-    if (!["store", "delivery"].includes(pickupType)) {
-      throw new ValidationError("Invalid pickup type");
-    }
-
-    if (pickupType === "delivery" && !deliveryAddress) {
-      throw new ValidationError("Delivery address is required");
-    }
-
-    if (pickupType === "delivery" && !deliveryTime) {
-      throw new ValidationError("Delivery time slot is required");
-    }
-
+    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(customer.email)) {
       throw new ValidationError("Invalid email format");
     }
 
-    // Validate item structure
-    items.forEach((item, index) => {
-      if (
-        !item.productId ||
-        !item.variantId ||
-        !item.name ||
-        !item.variantUnit ||
-        !item.price ||
-        !item.quantity
-      ) {
-        throw new ValidationError(
-          `Item ${index + 1} is missing required fields`
-        );
+    // Items validation
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      throw new ValidationError("Items are required");
+    }
+
+    // Pickup type validation
+    if (!["store", "delivery"].includes(pickupType)) {
+      throw new ValidationError("Invalid pickup type");
+    }
+
+    // Delivery validation
+    if (pickupType === "delivery") {
+      if (!deliveryAddress?.street?.trim() || !deliveryAddress?.city?.trim()) {
+        throw new ValidationError("Delivery address is incomplete");
       }
-      if (item.price <= 0 || item.quantity <= 0) {
-        throw new ValidationError(
-          `Item ${index + 1} has invalid price or quantity`
-        );
+      if (!deliveryTime) {
+        throw new ValidationError("Delivery time slot is required");
+      }
+    }
+
+    // Detailed item validation
+    items.forEach((item, index) => {
+      const requiredFields = ['productId', 'variantId', 'name', 'variantUnit', 'price', 'quantity'];
+      
+      for (const field of requiredFields) {
+        if (!item[field] && field !== 'quantity') {
+          throw new ValidationError(`Item ${index + 1}: ${field} is required`);
+        }
+      }
+
+      if (isNaN(item.price) || Number(item.price) <= 0) {
+        throw new ValidationError(`Item ${index + 1}: Invalid price`);
+      }
+
+      if (isNaN(item.quantity) || Number(item.quantity) <= 0 || !Number.isInteger(Number(item.quantity))) {
+        throw new ValidationError(`Item ${index + 1}: Invalid quantity`);
       }
     });
   }
 
-  /**
-   * Calculate totals
-   */
   calculateTotals(items, deliveryFee = 0, discountAmount = 0) {
     const itemsTotal = items.reduce(
-      (sum, item) => sum + Number(item.price) * Number(item.quantity),
+      (sum, item) => sum + (Number(item.price) * Number(item.quantity)),
       0
     );
 
     const shippingTotal = Number(deliveryFee) || 0;
-    const total = Number(
-      (itemsTotal + shippingTotal - (discountAmount || 0)).toFixed(2)
-    );
+    const discount = Number(discountAmount) || 0;
+    const total = Number((itemsTotal + shippingTotal - discount).toFixed(2));
 
     return {
       itemsTotal: Number(itemsTotal.toFixed(2)),
-      shippingTotal,
-      discountAmount: discountAmount || 0,
-      total,
+      shippingTotal: Number(shippingTotal.toFixed(2)),
+      discountAmount: Number(discount.toFixed(2)),
+      total
     };
   }
 
-  /**
-   * Build PayPal purchase unit
-   */
   buildPurchaseUnit(orderData, totals, orderId) {
     const { customer, items, pickupType, deliveryAddress } = orderData;
 
+    // Fix: Build PayPal items with ALL required fields
     const paypalItems = items.map((item) => ({
       name: `${String(item.name)} - ${String(item.variantUnit)}`.substring(0, 127),
       unit_amount: {
@@ -159,10 +152,17 @@ class PayPalController {
       },
       quantity: String(item.quantity),
       category: "PHYSICAL_GOODS",
+      // Fix: Add the missing required fields
+      total: {
+        currency_code: "EUR",
+        value: Number(Number(item.price) * Number(item.quantity)).toFixed(2)
+      },
+      unitType: "ITEM" // This was missing and causing the error
     }));
 
     const purchaseUnit = {
       custom_id: String(orderId),
+      reference_id: `ORDER_${orderId}`,
       description: `Commande #${orderId}`,
       amount: {
         currency_code: "EUR",
@@ -177,7 +177,7 @@ class PayPalController {
       items: paypalItems,
     };
 
-    // Add shipping fee if applicable
+    // Add shipping if applicable
     if (totals.shippingTotal > 0) {
       purchaseUnit.amount.breakdown.shipping = {
         currency_code: "EUR",
@@ -193,17 +193,17 @@ class PayPalController {
       };
     }
 
-    // Add delivery address if needed
+    // Add shipping address for delivery
     if (pickupType === "delivery" && deliveryAddress) {
       purchaseUnit.shipping = {
-        name: { full_name: String(customer.fullName).substring(0, 300) },
+        name: { 
+          full_name: String(customer.fullName).substring(0, 300) 
+        },
         address: {
           address_line_1: String(deliveryAddress.street).substring(0, 300),
           admin_area_2: String(deliveryAddress.city).substring(0, 120),
-          postal_code: String(deliveryAddress.postalCode).substring(0, 60),
-          country_code: String(deliveryAddress.country || "FR")
-            .substring(0, 2)
-            .toUpperCase(),
+          postal_code: String(deliveryAddress.postalCode || '').substring(0, 60),
+          country_code: String(deliveryAddress.country || "FR").substring(0, 2).toUpperCase(),
         },
       };
     }
@@ -211,9 +211,6 @@ class PayPalController {
     return purchaseUnit;
   }
 
-  /**
-   * Create PayPal order
-   */
   async createPayPalOrder(req, res) {
     const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     logger.info(`[${requestId}] PayPal order creation started`);
@@ -221,42 +218,43 @@ class PayPalController {
     try {
       const orderData = req.body;
       
-      // Remove environment from validation as we get it from ENV
+      // Clean and validate input
       const { environment, ...sanitizedData } = orderData;
-      
-      // Validate input data
       this.validateOrderData(sanitizedData);
 
-      // Calculate totals
+      // Calculate and verify totals
       const totals = this.calculateTotals(
         sanitizedData.items,
         sanitizedData.deliveryFee,
         sanitizedData.discountAmount
       );
 
-      // Verify total matches front-end
-      if (Math.abs(totals.total - Number(sanitizedData.amount)) > 0.01) {
+      // Verify total matches frontend calculation
+      const frontendTotal = Number(sanitizedData.amount);
+      if (Math.abs(totals.total - frontendTotal) > 0.01) {
         throw new ValidationError(
-          `Amount mismatch: calculated ${totals.total}, received ${sanitizedData.amount}`
+          `Total mismatch: calculated ${totals.total}€, received ${frontendTotal}€`
         );
       }
 
-      // Save order in DB first
+      // Create order in database
       const order = await Order.create({
         items: sanitizedData.items.map((item) => ({
           productId: item.productId,
           variantId: item.variantId,
           productTitle: item.name,
           variantName: item.variantUnit,
-          quantity: item.quantity,
-          price: item.price,
+          quantity: Number(item.quantity),
+          price: Number(item.price),
+          total: Number(item.price) * Number(item.quantity),
+          unitType: "ITEM",
           currency: item.currency || "EUR",
           image: item.image || "",
         })),
         customer: {
-          fullName: sanitizedData.customer.fullName,
-          email: sanitizedData.customer.email,
-          phone: sanitizedData.customer.phone,
+          fullName: sanitizedData.customer.fullName.trim(),
+          email: sanitizedData.customer.email.trim().toLowerCase(),
+          phone: sanitizedData.customer.phone.trim(),
           isAdmin: sanitizedData.customer.isAdmin || false,
         },
         pickupType: sanitizedData.pickupType,
@@ -267,20 +265,25 @@ class PayPalController {
         amount: totals.total,
         currency: "EUR",
         discountCode: sanitizedData.discountCode || "",
-        discountAmount: sanitizedData.discountAmount || 0,
+        discountAmount: totals.discountAmount,
         paymentMethod: "paypal",
         notes: sanitizedData.notes || "",
         status: "en_attente",
       });
 
-      logger.info(`[${requestId}] Order created in DB with ID: ${order._id}`);
+      logger.info(`[${requestId}] Order created in DB:`, { 
+        orderId: order._id, 
+        amount: totals.total,
+        itemsCount: sanitizedData.items.length 
+      });
 
       // Build PayPal payload
       const purchaseUnit = this.buildPurchaseUnit(sanitizedData, totals, order._id);
-
-      // Set up return URLs based on your mobile app deep linking scheme
-      const returnUrl = `${req.protocol}://${req.get("host")}/api/payments/paypal/return`;
-      const cancelUrl = `${req.protocol}://${req.get("host")}/api/payments/paypal/cancel`;
+      
+      // Setup mobile-friendly return URLs
+      const baseUrl = `${req.protocol}://${req.get("host")}`;
+      const returnUrl = `${baseUrl}/api/payments/paypal/return`;
+      const cancelUrl = `${baseUrl}/api/payments/paypal/cancel`;
 
       const payload = {
         intent: "CAPTURE",
@@ -296,23 +299,26 @@ class PayPalController {
         },
       };
 
-      // Request PayPal API
+      // Make PayPal API request
       const token = await this.getAccessToken();
-      const paypalEnvironment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
-      const apiBase = PAYPAL_API_BASE[paypalEnvironment];
+      
+      logger.info(`[${requestId}] Creating PayPal order in ${this.environment} environment`);
 
-      logger.info(`[${requestId}] Creating PayPal order in ${paypalEnvironment} environment`);
+      const response = await axios.post(
+        `${this.apiBase}/v2/checkout/orders`, 
+        payload, 
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            "PayPal-Request-Id": requestId,
+            Prefer: "return=representation",
+          },
+          timeout: 30000,
+        }
+      );
 
-      const response = await axios.post(`${apiBase}/v2/checkout/orders`, payload, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          "PayPal-Request-Id": requestId,
-          Prefer: "return=representation",
-        },
-        timeout: 30000,
-      });
-
+      // Extract approval URL
       const approvalUrl = response.data.links?.find((link) => link.rel === "approve")?.href;
 
       if (!approvalUrl) {
@@ -326,10 +332,13 @@ class PayPalController {
       logger.info(`[${requestId}] PayPal order created successfully`, {
         orderId: order._id,
         paypalOrderId: response.data.id,
-        status: response.data.status
+        status: response.data.status,
+        approvalUrl: approvalUrl
       });
 
+      // Return success response
       res.status(201).json({
+        success: true,
         orderId: order._id,
         approvalUrl,
         paypalOrder: {
@@ -337,13 +346,20 @@ class PayPalController {
           status: response.data.status,
           links: response.data.links,
         },
+        environment: this.environment,
+        requestId
       });
 
     } catch (error) {
-      logger.error(`[${requestId}] PayPal order creation failed:`, error);
+      logger.error(`[${requestId}] PayPal order creation failed:`, {
+        message: error.message,
+        stack: error.stack,
+        response: error.response?.data
+      });
       
       if (error instanceof ValidationError) {
         return res.status(400).json({
+          success: false,
           error: "Validation error",
           message: error.message,
           requestId,
@@ -352,6 +368,7 @@ class PayPalController {
 
       if (error instanceof PayPalError) {
         return res.status(502).json({
+          success: false,
           error: "PayPal service error",
           message: error.message,
           requestId,
@@ -359,6 +376,7 @@ class PayPalController {
       }
 
       res.status(500).json({
+        success: false,
         error: "Internal server error",
         message: "Failed to create PayPal order",
         requestId,
@@ -366,18 +384,16 @@ class PayPalController {
     }
   }
 
-  /**
-   * Capture PayPal order - FIXED VERSION (removed duplicate)
-   */
   async capturePayPalOrder(req, res) {
     const requestId = `cap_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     logger.info(`[${requestId}] PayPal capture started`);
 
     try {
-      const { orderId } = req.body;
+      const { orderId, paypalOrderId } = req.body;
       
       if (!orderId) {
         return res.status(400).json({ 
+          success: false,
           error: 'Order ID is required',
           requestId 
         });
@@ -387,26 +403,27 @@ class PayPalController {
       const order = await Order.findById(orderId);
       if (!order) {
         return res.status(404).json({ 
+          success: false,
           error: 'Order not found',
           requestId 
         });
       }
 
-      if (!order.paypalOrderId) {
+      const paypalId = paypalOrderId || order.paypalOrderId;
+      if (!paypalId) {
         return res.status(400).json({ 
+          success: false,
           error: 'PayPal order ID not found',
           requestId 
         });
       }
 
-      const paypalEnvironment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
       const token = await this.getAccessToken();
-      const apiBase = PAYPAL_API_BASE[paypalEnvironment] || PAYPAL_API_BASE.sandbox;
 
-      logger.info(`[${requestId}] Capturing PayPal order: ${order.paypalOrderId}`);
+      logger.info(`[${requestId}] Capturing PayPal order: ${paypalId}`);
 
       const response = await axios.post(
-        `${apiBase}/v2/checkout/orders/${order.paypalOrderId}/capture`,
+        `${this.apiBase}/v2/checkout/orders/${paypalId}/capture`,
         {},
         {
           headers: {
@@ -418,17 +435,26 @@ class PayPalController {
         }
       );
 
-      logger.info(`[${requestId}] PayPal capture response status: ${response.status}`);
-
-      // Update order status based on PayPal response
       const captureStatus = response.data.status;
-      order.status = captureStatus === 'COMPLETED' ? 'payé' : 'annulé';
+      const isCompleted = captureStatus === 'COMPLETED';
+
+      // Update order status
+      order.status = isCompleted ? 'payé' : 'échec_paiement';
+      order.paypalCaptureId = response.data.purchase_units?.[0]?.payments?.captures?.[0]?.id;
       await order.save();
 
-      logger.info(`[${requestId}] Order status updated to: ${order.status}`);
+      logger.info(`[${requestId}] PayPal capture completed`, {
+        orderId: order._id,
+        paypalOrderId: paypalId,
+        status: captureStatus,
+        captureId: order.paypalCaptureId
+      });
 
       res.json({
-        success: captureStatus === 'COMPLETED',
+        success: isCompleted,
+        orderId: order._id,
+        paypalOrderId: paypalId,
+        captureStatus,
         order: {
           id: order._id,
           status: order.status,
@@ -439,24 +465,32 @@ class PayPalController {
       });
 
     } catch (error) {
-      logger.error(`[${requestId}] PayPal capture failed:`, error);
+      logger.error(`[${requestId}] PayPal capture failed:`, {
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data
+      });
 
       if (error.response?.status === 404) {
         return res.status(404).json({
+          success: false,
           error: 'PayPal order not found',
           requestId
         });
       }
 
       if (error.response?.status === 422) {
-        return res.status(400).json({
+        return res.status(422).json({
+          success: false,
           error: 'PayPal order cannot be captured',
           message: 'Order may already be captured or cancelled',
+          details: error.response?.data,
           requestId
         });
       }
 
       res.status(500).json({
+        success: false,
         error: 'Failed to capture PayPal payment',
         message: error.response?.data?.message || error.message,
         requestId
@@ -464,13 +498,10 @@ class PayPalController {
     }
   }
 
-  /**
-   * Handle PayPal success return
-   */
   async handlePayPalReturn(req, res) {
     try {
       const { token, PayerID } = req.query;
-      logger.info('PayPal return with token:', token, 'PayerID:', PayerID);
+      logger.info('PayPal return:', { token, PayerID });
 
       res.send(`
         <!DOCTYPE html>
@@ -528,23 +559,34 @@ class PayPalController {
               ${token ? `<div class="details">Référence: ${token.substring(0, 10)}***</div>` : ''}
             </div>
             <script>
-              window.location.hash = '#paypal-success';
-              
-              // Communication with React Native WebView
+              // Enhanced mobile app communication
+              const messageData = {
+                type: 'PAYPAL_SUCCESS',
+                token: '${token || ''}',
+                payerId: '${PayerID || ''}',
+                timestamp: new Date().toISOString()
+              };
+
+              // React Native WebView
               if (window.ReactNativeWebView) {
-                window.ReactNativeWebView.postMessage(JSON.stringify({
-                  type: 'PAYPAL_SUCCESS',
-                  token: '${token || ''}',
-                  payerId: '${PayerID || ''}'
-                }));
+                window.ReactNativeWebView.postMessage(JSON.stringify(messageData));
               }
-              
-              // Fallback redirect
+
+              // Expo WebBrowser
+              if (window.location.origin !== 'null') {
+                window.location.hash = '#paypal-success';
+              }
+
+              // Custom URL scheme redirect
               setTimeout(() => {
-                if (window.location.href.indexOf('auto_redirect') === -1) {
-                  window.location.href = window.location.href + '&auto_redirect=true';
-                }
-              }, 3000);
+                const customUrl = 'yourapp://paypal/success?token=${token || ''}&payerId=${PayerID || ''}';
+                window.location.href = customUrl;
+              }, 2000);
+
+              // Fallback
+              setTimeout(() => {
+                window.close();
+              }, 5000);
             </script>
           </body>
         </html>
@@ -560,13 +602,10 @@ class PayPalController {
     }
   }
 
-  /**
-   * Handle PayPal cancel
-   */
   async handlePayPalCancel(req, res) {
     try {
       const { token } = req.query;
-      logger.info('PayPal payment cancelled, token:', token);
+      logger.info('PayPal payment cancelled:', { token });
 
       res.send(`
         <!DOCTYPE html>
@@ -598,7 +637,6 @@ class PayPalController {
               .cancel-icon { font-size: 60px; margin-bottom: 20px; }
               h1 { color: #ef4444; margin-bottom: 15px; font-size: 24px; }
               p { color: #666; margin-bottom: 20px; line-height: 1.5; }
-              .details { font-size: 12px; color: #9ca3af; margin-top: 15px; }
             </style>
           </head>
           <body>
@@ -607,17 +645,28 @@ class PayPalController {
               <h1>Paiement Annulé</h1>
               <p>Vous avez annulé le paiement PayPal.</p>
               <p><small>Vous pouvez fermer cette fenêtre et réessayer.</small></p>
-              ${token ? `<div class="details">Référence: ${token.substring(0, 10)}***</div>` : ''}
             </div>
             <script>
+              const messageData = {
+                type: 'PAYPAL_CANCELLED',
+                token: '${token || ''}',
+                timestamp: new Date().toISOString()
+              };
+
+              if (window.ReactNativeWebView) {
+                window.ReactNativeWebView.postMessage(JSON.stringify(messageData));
+              }
+
               window.location.hash = '#paypal-cancelled';
               
-              if (window.ReactNativeWebView) {
-                window.ReactNativeWebView.postMessage(JSON.stringify({
-                  type: 'PAYPAL_CANCELLED',
-                  token: '${token || ''}'
-                }));
-              }
+              setTimeout(() => {
+                const customUrl = 'yourapp://paypal/cancel?token=${token || ''}';
+                window.location.href = customUrl;
+              }, 2000);
+
+              setTimeout(() => {
+                window.close();
+              }, 5000);
             </script>
           </body>
         </html>
@@ -633,12 +682,13 @@ class PayPalController {
     }
   }
 
-  /**
-   * Get order status
-   */
   async getOrderStatus(req, res) {
     try {
       const { orderId } = req.params;
+      
+      if (!orderId) {
+        return res.status(400).json({ error: 'Order ID is required' });
+      }
       
       const order = await Order.findById(orderId);
       if (!order) {
@@ -646,23 +696,31 @@ class PayPalController {
       }
 
       res.json({
-        id: order._id,
-        status: order.status,
-        amount: order.amount,
-        currency: order.currency,
-        paypalOrderId: order.paypalOrderId,
-        pickupType: order.pickupType,
-        createdAt: order.createdAt,
-        updatedAt: order.updatedAt
+        success: true,
+        order: {
+          id: order._id,
+          status: order.status,
+          amount: order.amount,
+          currency: order.currency,
+          paypalOrderId: order.paypalOrderId,
+          paypalCaptureId: order.paypalCaptureId,
+          pickupType: order.pickupType,
+          itemsCount: order.items?.length || 0,
+          createdAt: order.createdAt,
+          updatedAt: order.updatedAt
+        }
       });
     } catch (error) {
       logger.error('Order status check failed:', error);
-      res.status(500).json({ error: 'Failed to get order status' });
+      res.status(500).json({ 
+        success: false,
+        error: 'Failed to get order status' 
+      });
     }
   }
 }
 
-// Export controller instance
+// Export singleton instance
 const paypalController = new PayPalController();
 
 export const createPayPalOrder = (req, res) => paypalController.createPayPalOrder(req, res);
