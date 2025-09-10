@@ -71,8 +71,9 @@ class PayPalController {
       throw new ValidationError("Invalid amount provided");
     }
 
-    // Customer validation
-    if (!customer?.fullName?.trim() || !customer?.email?.trim() || !customer?.phone?.trim()) {
+    // Customer validation - Fix: check for 'name' or 'fullName'
+    const customerName = customer?.fullName || customer?.name;
+    if (!customerName?.trim() || !customer?.email?.trim() || !customer?.phone?.trim()) {
       throw new ValidationError("Customer information is incomplete");
     }
 
@@ -119,6 +120,11 @@ class PayPalController {
       if (isNaN(item.quantity) || Number(item.quantity) <= 0 || !Number.isInteger(Number(item.quantity))) {
         throw new ValidationError(`Item ${index + 1}: Invalid quantity`);
       }
+
+      // Validate unitType
+      if (item.unitType && !['weight', 'piece'].includes(item.unitType)) {
+        throw new ValidationError(`Item ${index + 1}: Invalid unitType '${item.unitType}'. Must be 'weight' or 'piece'`);
+      }
     });
   }
 
@@ -143,7 +149,7 @@ class PayPalController {
   buildPurchaseUnit(orderData, totals, orderId) {
     const { customer, items, pickupType, deliveryAddress } = orderData;
 
-    // Fix: Build PayPal items with ALL required fields
+    // Build PayPal items - Remove unitType as PayPal doesn't need it
     const paypalItems = items.map((item) => ({
       name: `${String(item.name)} - ${String(item.variantUnit)}`.substring(0, 127),
       unit_amount: {
@@ -152,13 +158,10 @@ class PayPalController {
       },
       quantity: String(item.quantity),
       category: "PHYSICAL_GOODS",
-      // Fix: Add the missing required fields
-      total: {
-        currency_code: "EUR",
-        value: Number(Number(item.price) * Number(item.quantity)).toFixed(2)
-      },
-      unitType: "ITEM" // This was missing and causing the error
     }));
+
+    // Fix: Handle both 'name' and 'fullName' from customer
+    const customerName = customer.fullName || customer.name;
 
     const purchaseUnit = {
       custom_id: String(orderId),
@@ -197,7 +200,7 @@ class PayPalController {
     if (pickupType === "delivery" && deliveryAddress) {
       purchaseUnit.shipping = {
         name: { 
-          full_name: String(customer.fullName).substring(0, 300) 
+          full_name: String(customerName).substring(0, 300) 
         },
         address: {
           address_line_1: String(deliveryAddress.street).substring(0, 300),
@@ -237,6 +240,12 @@ class PayPalController {
         );
       }
 
+      // Fix: Handle both customer.name and customer.fullName
+      const customerName = sanitizedData.customer.fullName || sanitizedData.customer.name;
+      if (!customerName) {
+        throw new ValidationError("Customer name is required");
+      }
+
       // Create order in database
       const order = await Order.create({
         items: sanitizedData.items.map((item) => ({
@@ -247,18 +256,19 @@ class PayPalController {
           quantity: Number(item.quantity),
           price: Number(item.price),
           total: Number(item.price) * Number(item.quantity),
-          unitType: "ITEM",
+          unitType: item.unitType || 'piece', // Use actual unitType from frontend
           currency: item.currency || "EUR",
           image: item.image || "",
         })),
         customer: {
-          fullName: sanitizedData.customer.fullName.trim(),
+          fullName: customerName.trim(),
           email: sanitizedData.customer.email.trim().toLowerCase(),
           phone: sanitizedData.customer.phone.trim(),
           isAdmin: sanitizedData.customer.isAdmin || false,
         },
         pickupType: sanitizedData.pickupType,
-        pickupLocation: sanitizedData.pickupType === "store" ? sanitizedData.pickupLocation : undefined,
+        pickupLocation: sanitizedData.pickupType === "store" ? 
+          (sanitizedData.pickupLocation || sanitizedData.pickupLocationDetails) : undefined,
         deliveryAddress: sanitizedData.pickupType === "delivery" ? sanitizedData.deliveryAddress : undefined,
         deliveryTime: sanitizedData.pickupType === "delivery" ? sanitizedData.deliveryTime : undefined,
         deliveryFee: totals.shippingTotal,
@@ -291,7 +301,7 @@ class PayPalController {
         application_context: {
           return_url: returnUrl,
           cancel_url: cancelUrl,
-          brand_name: "Votre Boutique",
+          brand_name: "Délices du Terroir",
           locale: "fr-FR",
           landing_page: "LOGIN",
           shipping_preference: sanitizedData.pickupType === "delivery" ? "SET_PROVIDED_ADDRESS" : "NO_SHIPPING",
