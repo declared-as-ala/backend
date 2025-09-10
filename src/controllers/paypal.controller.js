@@ -29,6 +29,7 @@ class PayPalController {
   async getAccessToken() {
     try {
       const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_ENVIRONMENT } = process.env;
+     
       const environment = PAYPAL_ENVIRONMENT || 'sandbox';
       const apiBase = PAYPAL_API_BASE[environment] || PAYPAL_API_BASE.sandbox;
 
@@ -297,10 +298,10 @@ class PayPalController {
 
       // Request PayPal API
       const token = await this.getAccessToken();
-      const environment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
-      const apiBase = PAYPAL_API_BASE[environment];
+      const paypalEnvironment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
+      const apiBase = PAYPAL_API_BASE[paypalEnvironment];
 
-      logger.info(`[${requestId}] Creating PayPal order in ${environment} environment`);
+      logger.info(`[${requestId}] Creating PayPal order in ${paypalEnvironment} environment`);
 
       const response = await axios.post(`${apiBase}/v2/checkout/orders`, payload, {
         headers: {
@@ -398,9 +399,9 @@ class PayPalController {
         });
       }
 
-      const environment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
+      const paypalEnvironment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
       const token = await this.getAccessToken();
-      const apiBase = PAYPAL_API_BASE[environment] || PAYPAL_API_BASE.sandbox;
+      const apiBase = PAYPAL_API_BASE[paypalEnvironment] || PAYPAL_API_BASE.sandbox;
 
       logger.info(`[${requestId}] Capturing PayPal order: ${order.paypalOrderId}`);
 
