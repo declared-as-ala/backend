@@ -1,13 +1,15 @@
-// controllers/paypal.controller.js
-import axios from 'axios';
-import Order from '../models/Order.js';
-import { PayPalError, ValidationError } from '../utils/errors.js';
-import { validatePayPalEnvironment, sanitizePayPalData } from '../utils/paypal.utils.js';
-import { logger } from '../utils/logger.js';
+import axios from "axios";
+import Order from "../models/Order.js";
+import { PayPalError, ValidationError } from "../utils/errors.js";
+import {
+  validatePayPalEnvironment,
+  sanitizePayPalData,
+} from "../utils/paypal.utils.js";
+import { logger } from "../utils/logger.js";
 
 const PAYPAL_API_BASE = {
-  sandbox: 'https://api-m.sandbox.paypal.com',
-  live: 'https://api-m.paypal.com'
+  sandbox: "https://api-m.sandbox.paypal.com",
+  live: "https://api-m.paypal.com",
 };
 
 class PayPalController {
@@ -21,49 +23,41 @@ class PayPalController {
   validateCredentials() {
     const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
     if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
-      throw new Error('PayPal credentials are not configured');
+      throw new Error("PayPal credentials are not configured");
     }
   }
 
   /**
-   * Get PayPal access token with caching
+   * Get PayPal access token
    */
-  async getAccessToken(environment = 'sandbox') {
-    const cacheKey = `paypal_token_${environment}`;
-    
-    // Check cache first (implement your caching strategy)
-    // For now, we'll get a fresh token each time
-    
+  async getAccessToken(environment = "sandbox") {
     try {
       const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
       const apiBase = PAYPAL_API_BASE[environment] || PAYPAL_API_BASE.sandbox;
 
       const response = await axios({
         url: `${apiBase}/v1/oauth2/token`,
-        method: 'post',
-        headers: { 
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json",
         },
-        auth: { 
-          username: PAYPAL_CLIENT_ID, 
-          password: PAYPAL_CLIENT_SECRET 
+        auth: {
+          username: PAYPAL_CLIENT_ID,
+          password: PAYPAL_CLIENT_SECRET,
         },
-        data: 'grant_type=client_credentials',
-        timeout: 10000
+        data: "grant_type=client_credentials",
+        timeout: 10000,
       });
 
       if (!response.data.access_token) {
-        throw new PayPalError('Invalid token response from PayPal');
+        throw new PayPalError("Invalid token response from PayPal");
       }
 
       return response.data.access_token;
     } catch (error) {
-      logger.error('PayPal token generation failed:', error);
-      if (error.response?.status === 401) {
-        throw new PayPalError('Invalid PayPal credentials');
-      }
-      throw new PayPalError('Failed to authenticate with PayPal');
+      logger.error("PayPal token generation failed:", error);
+      throw new PayPalError("Failed to authenticate with PayPal");
     }
   }
 
@@ -71,56 +65,85 @@ class PayPalController {
    * Validate order data
    */
   validateOrderData(data) {
-    const { amount, customer, items, pickupType } = data;
-    
+    const {
+      amount,
+      customer,
+      items,
+      pickupType,
+      deliveryAddress,
+      deliveryTime,
+    } = data;
+
     if (!amount || amount <= 0) {
-      throw new ValidationError('Invalid amount');
+      throw new ValidationError("Invalid amount");
     }
 
     if (!customer?.fullName || !customer?.email || !customer?.phone) {
-      throw new ValidationError('Customer information is incomplete');
+      throw new ValidationError("Customer information is incomplete");
     }
 
     if (!items || !Array.isArray(items) || items.length === 0) {
-      throw new ValidationError('Items are required');
+      throw new ValidationError("Items are required");
     }
 
-    if (!['store', 'delivery'].includes(pickupType)) {
-      throw new ValidationError('Invalid pickup type');
+    if (!["store", "delivery"].includes(pickupType)) {
+      throw new ValidationError("Invalid pickup type");
     }
 
-    // Validate email format
+    if (pickupType === "delivery" && !deliveryAddress) {
+      throw new ValidationError("Delivery address is required");
+    }
+
+    if (pickupType === "delivery" && !deliveryTime) {
+      throw new ValidationError("Delivery time slot is required");
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(customer.email)) {
-      throw new ValidationError('Invalid email format');
+      throw new ValidationError("Invalid email format");
     }
 
-    // Validate item structure - updated for new model
+    // Validate item structure
     items.forEach((item, index) => {
-      if (!item.productId || !item.variantId || !item.name || !item.variantUnit || !item.price || !item.quantity) {
-        throw new ValidationError(`Item ${index + 1} is missing required fields`);
+      if (
+        !item.productId ||
+        !item.variantId ||
+        !item.name ||
+        !item.variantUnit ||
+        !item.price ||
+        !item.quantity
+      ) {
+        throw new ValidationError(
+          `Item ${index + 1} is missing required fields`
+        );
       }
       if (item.price <= 0 || item.quantity <= 0) {
-        throw new ValidationError(`Item ${index + 1} has invalid price or quantity`);
+        throw new ValidationError(
+          `Item ${index + 1} has invalid price or quantity`
+        );
       }
     });
   }
 
   /**
-   * Calculate and validate totals
+   * Calculate totals
    */
-  calculateTotals(items, deliveryFee = 0) {
-    const itemsTotal = items.reduce((sum, item) => {
-      return sum + (Number(item.price) * Number(item.quantity));
-    }, 0);
-    
+  calculateTotals(items, deliveryFee = 0, discountAmount = 0) {
+    const itemsTotal = items.reduce(
+      (sum, item) => sum + Number(item.price) * Number(item.quantity),
+      0
+    );
+
     const shippingTotal = Number(deliveryFee) || 0;
-    const total = Number((itemsTotal + shippingTotal).toFixed(2));
+    const total = Number(
+      (itemsTotal + shippingTotal - (discountAmount || 0)).toFixed(2)
+    );
 
     return {
       itemsTotal: Number(itemsTotal.toFixed(2)),
       shippingTotal,
-      total
+      discountAmount,
+      total,
     };
   }
 
@@ -129,54 +152,56 @@ class PayPalController {
    */
   buildPurchaseUnit(orderData, totals) {
     const { customer, items, pickupType, deliveryAddress } = orderData;
-    
-    // Build PayPal items with proper validation - updated for new model
-    const paypalItems = items.map(item => ({
-      name: `${String(item.name)} - ${String(item.variantUnit)}`.substring(0, 127),
+
+    const paypalItems = items.map((item) => ({
+      name: `${String(item.name)} - ${String(item.variantUnit)}`.substring(
+        0,
+        127
+      ),
       unit_amount: {
-        currency_code: 'EUR',
-        value: Number(item.price).toFixed(2)
+        currency_code: "EUR",
+        value: Number(item.price).toFixed(2),
       },
       quantity: String(item.quantity),
-      category: 'PHYSICAL_GOODS'
+      category: "PHYSICAL_GOODS",
     }));
 
     const purchaseUnit = {
       custom_id: orderData.orderId,
       description: `Commande #${orderData.orderId}`,
       amount: {
-        currency_code: 'EUR',
+        currency_code: "EUR",
         value: totals.total.toFixed(2),
         breakdown: {
           item_total: {
-            currency_code: 'EUR',
-            value: totals.itemsTotal.toFixed(2)
-          }
-        }
+            currency_code: "EUR",
+            value: totals.itemsTotal.toFixed(2),
+          },
+        },
       },
-      items: paypalItems
+      items: paypalItems,
     };
 
-    // Add shipping if applicable
+    // Add shipping fee if applicable
     if (totals.shippingTotal > 0) {
       purchaseUnit.amount.breakdown.shipping = {
-        currency_code: 'EUR',
-        value: totals.shippingTotal.toFixed(2)
+        currency_code: "EUR",
+        value: totals.shippingTotal.toFixed(2),
       };
     }
 
-    // Add shipping address for delivery
-    if (pickupType === 'delivery' && deliveryAddress) {
+    // Add delivery address if needed
+    if (pickupType === "delivery" && deliveryAddress) {
       purchaseUnit.shipping = {
-        name: { 
-          full_name: String(customer.fullName).substring(0, 300) 
-        },
+        name: { full_name: String(customer.fullName).substring(0, 300) },
         address: {
           address_line_1: String(deliveryAddress.street).substring(0, 300),
           admin_area_2: String(deliveryAddress.city).substring(0, 120),
           postal_code: String(deliveryAddress.postalCode).substring(0, 60),
-          country_code: String(deliveryAddress.country || 'FR').substring(0, 2).toUpperCase()
-        }
+          country_code: String(deliveryAddress.country || "FR")
+            .substring(0, 2)
+            .toUpperCase(),
+        },
       };
     }
 
@@ -187,95 +212,105 @@ class PayPalController {
    * Create PayPal order
    */
   async createPayPalOrder(req, res) {
-    const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const requestId = `req_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
     logger.info(`[${requestId}] PayPal order creation started`);
 
     try {
       const orderData = sanitizePayPalData(req.body);
-      logger.info(`[${requestId}] Sanitized order data:`, { 
-        amount: orderData.amount, 
-        itemCount: orderData.items?.length,
-        pickupType: orderData.pickupType,
-        customerId: orderData.customer?.email?.substring(0, 5) + '***'
-      });
-
-      // Validate environment
       const environment = validatePayPalEnvironment(orderData.environment);
-      
-      // Validate order data
+
+      // Validate input data
       this.validateOrderData(orderData);
 
       // Calculate totals
-      const totals = this.calculateTotals(orderData.items, orderData.deliveryFee);
-      
-      // Verify amounts match
+      const totals = this.calculateTotals(
+        orderData.items,
+        orderData.deliveryFee,
+        orderData.discountAmount
+      );
+
+      // Verify total matches front-end
       if (Math.abs(totals.total - Number(orderData.amount)) > 0.01) {
         throw new ValidationError(
           `Amount mismatch: calculated ${totals.total}, received ${orderData.amount}`
         );
       }
 
-      // Create order in database first - updated for new model
+      // Save order in DB first
       const order = await Order.create({
-        items: orderData.items.map(item => ({
+        items: orderData.items.map((item) => ({
           productId: item.productId,
           variantId: item.variantId,
-          name: item.name,
-          variantUnit: item.variantUnit,
+          productTitle: item.name,
+          variantName: item.variantUnit,
           quantity: item.quantity,
           price: item.price,
-          currency: item.currency || 'EUR',
-          image: item.image
+          currency: item.currency || "EUR",
+          image: item.image,
         })),
         customer: {
           fullName: orderData.customer.fullName,
           email: orderData.customer.email,
           phone: orderData.customer.phone,
-          isAdmin: orderData.customer.isAdmin || false
+          isAdmin: orderData.customer.isAdmin || false,
         },
         pickupType: orderData.pickupType,
-        pickupLocation: orderData.pickupType === 'store' ? {
-          id: orderData.pickupLocation?.id,
-          name: orderData.pickupLocation?.name,
-          address: orderData.pickupLocation?.address,
-          description: orderData.pickupLocation?.description
-        } : undefined,
-        deliveryAddress: orderData.pickupType === 'delivery' ? orderData.deliveryAddress : undefined,
+        pickupLocation:
+          orderData.pickupType === "store"
+            ? orderData.pickupLocation
+            : undefined,
+        deliveryAddress:
+          orderData.pickupType === "delivery"
+            ? orderData.deliveryAddress
+            : undefined,
+        deliveryTime:
+          orderData.pickupType === "delivery"
+            ? orderData.deliveryTime
+            : undefined,
         deliveryFee: totals.shippingTotal,
         amount: totals.total,
-        currency: 'EUR',
-        discountCode: orderData.discountCode,
+        currency: "EUR",
+        discountCode: orderData.discountCode || "",
         discountAmount: orderData.discountAmount || 0,
-        paymentMethod: 'paypal',
+        paymentMethod: "paypal",
         notes: orderData.notes,
-        status: 'en_attente'
+        status: "en_attente",
       });
 
-      logger.info(`[${requestId}] Order created in database with ID: ${order._id}`);
+      logger.info(
+        `[${requestId}] Order created in DB with ID: ${order._id}`
+      );
 
       // Build PayPal payload
-      const purchaseUnit = this.buildPurchaseUnit({
-        ...orderData,
-        orderId: order._id
-      }, totals);
+      const purchaseUnit = this.buildPurchaseUnit(
+        { ...orderData, orderId: order._id },
+        totals
+      );
 
       const payload = {
-        intent: 'CAPTURE',
+        intent: "CAPTURE",
         purchase_units: [purchaseUnit],
         application_context: {
-          return_url: orderData.returnUrl || `${req.protocol}://${req.get('host')}/api/payments/paypal/return`,
-          cancel_url: orderData.cancelUrl || `${req.protocol}://${req.get('host')}/api/payments/paypal/cancel`,
-          brand_name: 'Votre Boutique',
-          locale: 'fr-FR',
-          landing_page: 'LOGIN', // Changed from 'BILLING' to 'LOGIN' to avoid signup page
-          shipping_preference: orderData.pickupType === 'delivery' ? 'SET_PROVIDED_ADDRESS' : 'NO_SHIPPING',
-          user_action: 'PAY_NOW'
-        }
+          return_url:
+            orderData.returnUrl ||
+            `${req.protocol}://${req.get("host")}/api/payments/paypal/return`,
+          cancel_url:
+            orderData.cancelUrl ||
+            `${req.protocol}://${req.get("host")}/api/payments/paypal/cancel`,
+          brand_name: "Votre Boutique",
+          locale: "fr-FR",
+          landing_page: "LOGIN",
+          shipping_preference:
+            orderData.pickupType === "delivery"
+              ? "SET_PROVIDED_ADDRESS"
+              : "NO_SHIPPING",
+          user_action: "PAY_NOW",
+        },
       };
 
-      logger.info(`[${requestId}] PayPal payload prepared`);
-
-      // Get access token and make API call
+      // Request PayPal API
       const token = await this.getAccessToken(environment);
       const apiBase = PAYPAL_API_BASE[environment] || PAYPAL_API_BASE.sandbox;
 
@@ -284,76 +319,107 @@ class PayPalController {
         payload,
         {
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-            'PayPal-Request-Id': requestId,
-            'Prefer': 'return=representation'
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            "PayPal-Request-Id": requestId,
+            Prefer: "return=representation",
           },
-          timeout: 30000
+          timeout: 30000,
         }
       );
 
-      logger.info(`[${requestId}] PayPal API response status: ${response.status}`);
-
-      if (!response.data?.id) {
-        throw new PayPalError('Invalid PayPal order response - missing order ID');
-      }
-
-      // Find approval URL
       const approvalUrl = response.data.links?.find(
-        link => link.rel === 'approve'
+        (link) => link.rel === "approve"
       )?.href;
 
       if (!approvalUrl) {
-        logger.error(`[${requestId}] No approval URL in PayPal response:`, response.data.links);
-        throw new PayPalError('No approval URL received from PayPal');
+        throw new PayPalError("No approval URL received from PayPal");
       }
 
-      // Update order with PayPal order ID
+      // Save PayPal order ID
       order.paypalOrderId = response.data.id;
       await order.save();
 
-      const responseData = {
+      res.status(201).json({
         orderId: order._id,
         approvalUrl,
         paypalOrder: {
           id: response.data.id,
           status: response.data.status,
-          links: response.data.links
-        }
-      };
-
-      logger.info(`[${requestId}] PayPal order created successfully`, {
-        orderId: order._id,
-        paypalOrderId: response.data.id
+          links: response.data.links,
+        },
       });
-
-      res.status(201).json(responseData);
-
     } catch (error) {
       logger.error(`[${requestId}] PayPal order creation failed:`, error);
-
-      if (error instanceof ValidationError) {
-        return res.status(400).json({
-          error: 'Validation Error',
-          message: error.message,
-          requestId
-        });
-      }
-
-      if (error instanceof PayPalError) {
-        return res.status(502).json({
-          error: 'PayPal Service Error',
-          message: error.message,
-          requestId
-        });
-      }
-
-      // Database or other errors
       res.status(500).json({
-        error: 'Internal Server Error',
-        message: 'Failed to create PayPal order',
-        requestId
+        error: "Failed to create PayPal order",
+        message: error.message,
+        requestId,
+      });
+    }
+  }
+
+  /**
+   * Capture PayPal order
+   */
+  async capturePayPalOrder(req, res) {
+    const requestId = `cap_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
+    try {
+      const { orderId } = req.body;
+
+      if (!orderId) {
+        return res.status(400).json({
+          error: "Order ID is required",
+          requestId,
+        });
+      }
+
+      const order = await Order.findById(orderId);
+      if (!order) {
+        return res.status(404).json({ error: "Order not found", requestId });
+      }
+
+      if (!order.paypalOrderId) {
+        return res
+          .status(400)
+          .json({ error: "PayPal order ID missing", requestId });
+      }
+
+      const environment = process.env.PAYPAL_ENVIRONMENT || "sandbox";
+      const token = await this.getAccessToken(environment);
+      const apiBase = PAYPAL_API_BASE[environment] || PAYPAL_API_BASE.sandbox;
+
+      const response = await axios.post(
+        `${apiBase}/v2/checkout/orders/${order.paypalOrderId}/capture`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            "PayPal-Request-Id": requestId,
+          },
+          timeout: 30000,
+        }
+      );
+
+      const captureStatus = response.data.status;
+      order.status = captureStatus === "COMPLETED" ? "payé" : "annulé";
+      await order.save();
+
+      res.json({
+        success: captureStatus === "COMPLETED",
+        order,
+        capture: response.data,
+        requestId,
+      });
+    } catch (error) {
+      logger.error(`[${requestId}] PayPal capture failed:`, error);
+      res.status(500).json({
+        error: "Failed to capture PayPal payment",
+        message: error.message,
+        requestId,
       });
     }
   }

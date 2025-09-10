@@ -14,6 +14,7 @@ export const createPaymentIntent = async (req, res) => {
       pickupType,
       pickupLocationDetails,
       deliveryAddress,
+      deliveryTime, // 🆕 Nouvelle fonctionnalité
       deliveryFee = 0,
       notes,
       discountCode,
@@ -43,20 +44,27 @@ export const createPaymentIntent = async (req, res) => {
         .status(400)
         .json({ message: 'Adresse de livraison manquante' });
 
-    // Calcul du montant total
-    const orderItems = items.map((item) => ({
-      productId: item.productId,
-      variantId: item.variantId,
-      name: item.name,
-      variantUnit: item.variantUnit,
-      quantity: item.quantity,
-      price: item.price,
-      currency: item.currency || 'EUR',
-      image: item.image || '',
-    }));
+    // Calcul des articles pour le modèle Order
+    const orderItems = items.map((item) => {
+      const total = item.price * item.quantity;
+      return {
+        productId: item.productId,
+        variantId: item.variantId,
+        productTitle: item.name, // correspondance avec le schéma
+        variantName: item.variantUnit || '',
+        unitType: item.unitType || 'piece',
+        grams: item.grams || null,
+        quantity: item.quantity,
+        price: item.price,
+        total,
+        image: item.image || '',
+        currency: item.currency || 'EUR',
+      };
+    });
 
+    // Calcul du montant total
     const totalAmount =
-      orderItems.reduce((sum, i) => sum + i.price * i.quantity, 0) +
+      orderItems.reduce((sum, i) => sum + i.total, 0) +
       deliveryFee -
       (discountAmount || 0);
 
@@ -78,11 +86,13 @@ export const createPaymentIntent = async (req, res) => {
         fullName: customer.fullName || customer.name || 'Inconnu',
         email: customer.email,
         phone: customer.phone,
+        isAdmin: customer.isAdmin || false,
       },
       pickupType,
       pickupLocation:
         pickupType === 'store' ? pickupLocationDetails : undefined,
       deliveryAddress: pickupType === 'delivery' ? deliveryAddress : undefined,
+      deliveryTime: pickupType === 'delivery' ? deliveryTime : undefined, // 🆕 Ajout du créneau horaire
       deliveryFee,
       amount: totalAmount,
       currency: currency.toUpperCase(),
@@ -94,6 +104,7 @@ export const createPaymentIntent = async (req, res) => {
       discountAmount: discountAmount || 0,
     };
 
+    // Sauvegarder la commande
     const order = await Order.create(orderData);
 
     // Mettre à jour PaymentIntent metadata avec orderId
