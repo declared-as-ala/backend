@@ -3,6 +3,46 @@ import Order from '../models/Order.js';
 import { sendInvoiceEmail } from '../utils/mailer.js';
 
 /**
+ * Helper function to split large JSON into multiple metadata fields
+ */
+function splitMetadata(data, maxChars = 450) {
+  const jsonString = JSON.stringify(data);
+  const chunks = [];
+  
+  for (let i = 0; i < jsonString.length; i += maxChars) {
+    chunks.push(jsonString.substring(i, i + maxChars));
+  }
+  
+  const metadata = {};
+  chunks.forEach((chunk, index) => {
+    metadata[`orderData_${index}`] = chunk;
+  });
+  metadata.orderDataChunks = chunks.length.toString();
+  
+  return metadata;
+}
+
+/**
+ * Helper function to reconstruct JSON from multiple metadata fields
+ */
+function reconstructMetadata(metadata) {
+  const chunks = parseInt(metadata.orderDataChunks || '0');
+  if (chunks === 0) return null;
+  
+  let jsonString = '';
+  for (let i = 0; i < chunks; i++) {
+    jsonString += metadata[`orderData_${i}`] || '';
+  }
+  
+  try {
+    return JSON.parse(jsonString);
+  } catch (err) {
+    console.error('Error reconstructing metadata:', err);
+    return null;
+  }
+}
+
+/**
  * Créer un PaymentIntent Stripe SANS sauvegarder la commande
  * POST /api/stripe/create-payment-intent
  */
@@ -92,16 +132,19 @@ export const createPaymentIntent = async (req, res) => {
       discountAmount: discountAmount || 0,
     };
 
-    // Créer PaymentIntent Stripe avec toutes les données dans les métadonnées
+    // Split order data into multiple metadata fields to avoid 500 char limit
+    const metadata = {
+      ...splitMetadata(orderData),
+      paymentMethod: 'stripe'
+    };
+
+    // Créer PaymentIntent Stripe avec données splitées dans les métadonnées
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(totalAmount * 100), // en cents
       currency: currency.toLowerCase(),
       automatic_payment_methods: { enabled: true },
       receipt_email: customer.email,
-      metadata: {
-        orderData: JSON.stringify(orderData), // Stocker toutes les données ici
-        paymentMethod: 'stripe'
-      },
+      metadata,
     });
 
     res.json({
@@ -141,8 +184,12 @@ export const handleStripeWebhook = async (req, res) => {
         const pi = event.data.object;
         
         try {
-          // Récupérer les données de commande depuis les métadonnées
-          const orderData = JSON.parse(pi.metadata.orderData);
+          // Reconstruct order data from split metadata
+          const orderData = reconstructMetadata(pi.metadata);
+          
+          if (!orderData) {
+            throw new Error('Unable to reconstruct order data from metadata');
+          }
           
           // CRÉER la commande maintenant que le paiement est confirmé
           const order = await Order.create({
@@ -165,7 +212,7 @@ export const handleStripeWebhook = async (req, res) => {
             paymentIntentId: pi.id,
             customerEmail: pi.receipt_email,
             amount: pi.amount,
-            metadata: pi.metadata
+            metadataKeys: Object.keys(pi.metadata)
           });
         }
         break;
