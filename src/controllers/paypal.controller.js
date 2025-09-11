@@ -2,6 +2,7 @@ import axios from "axios";
 import Order from "../models/Order.js";
 import { PayPalError, ValidationError } from "../utils/errors.js";
 import { logger } from "../utils/logger.js";
+import { sendInvoiceEmail } from '../utils/mailer.js';
 
 const PAYPAL_API_BASE = {
   sandbox: "https://api-m.sandbox.paypal.com",
@@ -145,7 +146,7 @@ class PayPalController {
     };
   }
 
-  buildPurchaseUnit(orderData, totals, orderId) {
+  buildPurchaseUnit(orderData, totals, customId) {
     const { customer, items, pickupType, deliveryAddress } = orderData;
 
     const paypalItems = items.map((item) => ({
@@ -161,9 +162,9 @@ class PayPalController {
     const customerName = customer.fullName || customer.name;
 
     const purchaseUnit = {
-      custom_id: String(orderId),
-      reference_id: `ORDER_${orderId}`,
-      description: `Commande #${orderId}`,
+      custom_id: String(customId),
+      reference_id: `TEMP_${Date.now()}`, // Temporary reference since no DB order yet
+      description: `Commande en attente de paiement`,
       amount: {
         currency_code: "EUR",
         value: totals.total.toFixed(2),
@@ -236,8 +237,8 @@ class PayPalController {
         throw new ValidationError("Customer name is required");
       }
 
-      // Create order in database first
-      const order = await Order.create({
+      // Préparer les données complètes de commande pour les stocker dans PayPal
+      const completeOrderData = {
         items: sanitizedData.items.map((item) => ({
           productId: item.productId,
           variantId: item.variantId,
@@ -268,17 +269,10 @@ class PayPalController {
         discountAmount: totals.discountAmount,
         paymentMethod: "paypal",
         notes: sanitizedData.notes || "",
-        status: "en_attente",
-      });
-
-      logger.info(`[${requestId}] Order created in DB:`, { 
-        orderId: order._id, 
-        amount: totals.total,
-        itemsCount: sanitizedData.items.length 
-      });
+      };
 
       // Build PayPal payload
-      const purchaseUnit = this.buildPurchaseUnit(sanitizedData, totals, order._id);
+      const purchaseUnit = this.buildPurchaseUnit(sanitizedData, totals, requestId);
       
       // Setup mobile-optimized return URLs
       const baseUrl = `${req.protocol}://${req.get("host")}`;
@@ -325,21 +319,21 @@ class PayPalController {
         throw new PayPalError("No approval URL received from PayPal");
       }
 
-      // Save PayPal order ID
-      order.paypalOrderId = response.data.id;
-      await order.save();
-
       logger.info(`[${requestId}] PayPal order created successfully`, {
-        orderId: order._id,
         paypalOrderId: response.data.id,
         status: response.data.status,
         approvalUrl: approvalUrl
       });
 
-      // Return success response
+      // Store order data temporarily in memory/cache for later retrieval during capture
+      // You could also use Redis or another temporary storage solution
+      global.pendingPayPalOrders = global.pendingPayPalOrders || {};
+      global.pendingPayPalOrders[response.data.id] = completeOrderData;
+
+      // Return success response - NO database order created yet
       res.status(201).json({
         success: true,
-        orderId: order._id,
+        paypalOrderId: response.data.id, // Return PayPal order ID, not DB order ID
         approvalUrl,
         paypalOrder: {
           id: response.data.id,
@@ -389,31 +383,23 @@ class PayPalController {
     logger.info(`[${requestId}] PayPal capture started`);
 
     try {
-      const { orderId, paypalOrderId } = req.body;
+      const { paypalOrderId } = req.body;
       
-      if (!orderId) {
+      if (!paypalOrderId) {
         return res.status(400).json({ 
           success: false,
-          error: 'Order ID is required',
+          error: 'PayPal Order ID is required',
           requestId 
         });
       }
 
-      // Find order in database
-      const order = await Order.findById(orderId);
-      if (!order) {
+      // Get order data from temporary storage
+      const orderData = global.pendingPayPalOrders?.[paypalOrderId];
+      if (!orderData) {
+        logger.error(`[${requestId}] No pending order data found for PayPal order: ${paypalOrderId}`);
         return res.status(404).json({ 
           success: false,
-          error: 'Order not found',
-          requestId 
-        });
-      }
-
-      const paypalId = paypalOrderId || order.paypalOrderId;
-      if (!paypalId) {
-        return res.status(400).json({ 
-          success: false,
-          error: 'PayPal order ID not found',
+          error: 'Order data not found',
           requestId 
         });
       }
@@ -421,10 +407,10 @@ class PayPalController {
       // First, get the order details to verify it's approved
       const token = await this.getAccessToken();
 
-      logger.info(`[${requestId}] Checking PayPal order status: ${paypalId}`);
+      logger.info(`[${requestId}] Checking PayPal order status: ${paypalOrderId}`);
 
       const orderDetailsResponse = await axios.get(
-        `${this.apiBase}/v2/checkout/orders/${paypalId}`,
+        `${this.apiBase}/v2/checkout/orders/${paypalOrderId}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -450,7 +436,7 @@ class PayPalController {
 
         logger.warn(`[${requestId}] Cannot capture order:`, {
           status: orderDetails.status,
-          paypalOrderId: paypalId
+          paypalOrderId
         });
 
         return res.status(422).json({
@@ -459,17 +445,17 @@ class PayPalController {
           message: errorMessage,
           details: {
             status: orderDetails.status,
-            paypalOrderId: paypalId
+            paypalOrderId
           },
           requestId
         });
       }
 
       // Proceed with capture
-      logger.info(`[${requestId}] Capturing approved PayPal order: ${paypalId}`);
+      logger.info(`[${requestId}] Capturing approved PayPal order: ${paypalOrderId}`);
 
       const response = await axios.post(
-        `${this.apiBase}/v2/checkout/orders/${paypalId}/capture`,
+        `${this.apiBase}/v2/checkout/orders/${paypalOrderId}/capture`,
         {},
         {
           headers: {
@@ -484,28 +470,59 @@ class PayPalController {
       const captureStatus = response.data.status;
       const isCompleted = captureStatus === 'COMPLETED';
 
-      // Update order status
-      order.status = isCompleted ? 'payé' : 'échec_paiement';
-      order.paypalCaptureId = response.data.purchase_units?.[0]?.payments?.captures?.[0]?.id;
-      order.paypalCaptureDetails = {
-        captureId: order.paypalCaptureId,
-        status: captureStatus,
-        capturedAt: new Date(),
-        amount: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.amount
-      };
-      await order.save();
+      if (!isCompleted) {
+        logger.error(`[${requestId}] PayPal capture failed:`, {
+          status: captureStatus,
+          paypalOrderId
+        });
+        
+        // Clean up temporary data
+        delete global.pendingPayPalOrders[paypalOrderId];
+        
+        return res.status(422).json({
+          success: false,
+          error: 'CAPTURE_FAILED',
+          message: 'Le paiement n\'a pas pu être capturé',
+          requestId
+        });
+      }
 
-      logger.info(`[${requestId}] PayPal capture completed`, {
+      // NOW CREATE THE ORDER IN DATABASE - Payment is confirmed!
+      const order = await Order.create({
+        ...orderData,
+        status: 'payé', // Directly set to paid since capture succeeded
+        paypalOrderId: paypalOrderId,
+        paypalCaptureId: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.id,
+        paypalCaptureDetails: {
+          captureId: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.id,
+          status: captureStatus,
+          capturedAt: new Date(),
+          amount: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.amount
+        }
+      });
+
+      logger.info(`[${requestId}] Order created in database after successful payment:`, {
         orderId: order._id,
-        paypalOrderId: paypalId,
+        paypalOrderId,
         status: captureStatus,
         captureId: order.paypalCaptureId
       });
 
+      // Clean up temporary data
+      delete global.pendingPayPalOrders[paypalOrderId];
+
+      // Send invoice email
+      try {
+        await sendInvoiceEmail(order.customer.email, order);
+        logger.info(`[${requestId}] Invoice sent to:`, order.customer.email);
+      } catch (emailError) {
+        logger.error(`[${requestId}] Failed to send invoice:`, emailError.message);
+      }
+
       res.json({
-        success: isCompleted,
-        orderId: order._id,
-        paypalOrderId: paypalId,
+        success: true,
+        orderId: order._id, // Now we have the actual DB order ID
+        paypalOrderId,
         captureStatus,
         order: {
           id: order._id,
