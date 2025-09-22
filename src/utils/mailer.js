@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransporter({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
   secure: false, // true for 465, false for other ports
@@ -420,6 +420,19 @@ export const sendInvoiceEmail = async (to, order) => {
                     <div class="info-value">✅ Payé</div>
                   </div>
                 </div>
+                ${
+                  order.pickupType === 'delivery' && order.deliveryTime
+                    ? `
+                    <div class="info-item">
+                      <span class="info-icon">⏰</span>
+                      <div>
+                        <div class="info-label">Heure de livraison</div>
+                        <div class="info-value">${order.deliveryTime}</div>
+                      </div>
+                    </div>
+                  `
+                    : ''
+                }
               </div>
             </div>
             
@@ -440,10 +453,20 @@ export const sendInvoiceEmail = async (to, order) => {
                   <div class="item">
                     <div class="item-icon">🥕</div>
                     <div class="item-details">
-                      <div class="item-name">${item.name}</div>
-                      <div class="item-meta">Quantité: ${item.quantity}</div>
+                      <div class="item-name">${item.productTitle}${
+                      item.variantName ? ` - ${item.variantName}` : ''
+                    }</div>
+                      <div class="item-meta">
+                        ${item.unitType === 'weight' && item.grams 
+                          ? `${item.grams}g • ` 
+                          : ''
+                        }Quantité: ${item.quantity} ${
+                      item.unitType === 'piece' 
+                        ? 'pièce' + (item.quantity > 1 ? 's' : '')
+                        : 'kg'
+                    }</div>
                     </div>
-                    <div class="item-price">${item.price}€</div>
+                    <div class="item-price">${item.total.toFixed(2)}€</div>
                   </div>
                 `
                   )
@@ -458,7 +481,26 @@ export const sendInvoiceEmail = async (to, order) => {
                       <div class="item-name">Frais de livraison</div>
                       <div class="item-meta">Transport à domicile</div>
                     </div>
-                    <div class="item-price">${order.deliveryFee}€</div>
+                    <div class="item-price">${order.deliveryFee.toFixed(2)}€</div>
+                  </div>
+                `
+                    : ''
+                }
+                
+                ${
+                  order.discountAmount > 0
+                    ? `
+                  <div class="item">
+                    <div class="item-icon">🎟️</div>
+                    <div class="item-details">
+                      <div class="item-name">Réduction${
+                        order.discountCode ? ` (${order.discountCode})` : ''
+                      }</div>
+                      <div class="item-meta">Code promo appliqué</div>
+                    </div>
+                    <div class="item-price" style="color: #e74c3c;">-${order.discountAmount.toFixed(
+                      2
+                    )}€</div>
                   </div>
                 `
                     : ''
@@ -476,8 +518,17 @@ export const sendInvoiceEmail = async (to, order) => {
                 <p style="margin: 10px 0; font-weight: 500;">
                   ${order.deliveryAddress.street}<br>
                   ${order.deliveryAddress.postalCode} ${order.deliveryAddress.city}<br>
-                  ${order.deliveryAddress.country}
+                  ${order.deliveryAddress.country || 'France'}
                 </p>
+                ${
+                  order.deliveryTime
+                    ? `
+                  <p style="margin: 10px 0; color: #e74c3c; font-weight: 500;">
+                    ⏰ Livraison prévue le : ${order.deliveryTime}
+                  </p>
+                `
+                    : ''
+                }
                 <p style="font-size: 13px; color: #e74c3c; margin-top: 15px;">
                   📞 Nous vous contacterons avant la livraison pour confirmer votre disponibilité.
                 </p>
@@ -490,8 +541,8 @@ export const sendInvoiceEmail = async (to, order) => {
                   🏪 Retrait en magasin
                 </h3>
                 <p style="margin: 10px 0; font-weight: 500;">
-                  ${order.pickupLocation.name}<br>
-                  ${order.pickupLocation.address}
+                  ${order.pickupLocation.name || 'Les Délices du Verger'}<br>
+                  ${order.pickupLocation.address || '123 Rue des Jardins, 75001 Paris'}
                 </p>
                 ${
                   order.pickupLocation.description
@@ -537,7 +588,7 @@ export const sendInvoiceEmail = async (to, order) => {
             
             <!-- Total -->
             <div class="total-section">
-              <div class="total-amount">${order.amount}€</div>
+              <div class="total-amount">${order.amount.toFixed(2)}€</div>
               <div class="total-label">Montant total payé</div>
             </div>
             
@@ -602,19 +653,22 @@ Détails de votre commande :
 
 Articles commandés :
 ${order.items
-  .map((item) => `• ${item.name} x ${item.quantity} - ${item.price}€`)
+  .map((item) => `• ${item.productTitle}${item.variantName ? ` - ${item.variantName}` : ''} x ${item.quantity} - ${item.total.toFixed(2)}€`)
   .join('\n')}
-${order.deliveryFee > 0 ? `• Frais de livraison - ${order.deliveryFee}€` : ''}
+${order.deliveryFee > 0 ? `• Frais de livraison - ${order.deliveryFee.toFixed(2)}€` : ''}
+${order.discountAmount > 0 ? `• Réduction${order.discountCode ? ` (${order.discountCode})` : ''} - -${order.discountAmount.toFixed(2)}€` : ''}
 
-Montant total : ${order.amount}€
+Montant total : ${order.amount.toFixed(2)}€
 
 ${
   order.pickupType === 'delivery' && order.deliveryAddress
-    ? `Livraison à : ${order.deliveryAddress.street}, ${order.deliveryAddress.postalCode} ${order.deliveryAddress.city}`
+    ? `Livraison à : ${order.deliveryAddress.street}, ${order.deliveryAddress.postalCode} ${order.deliveryAddress.city}${order.deliveryTime ? `\nHeure prévue : ${order.deliveryTime}` : ''}`
     : order.pickupLocation
-    ? `À retirer au : ${order.pickupLocation.name}, ${order.pickupLocation.address}`
+    ? `À retirer au : ${order.pickupLocation.name || 'Les Délices du Verger'}, ${order.pickupLocation.address || '123 Rue des Jardins, 75001 Paris'}`
     : 'À retirer au : 123 Rue des Jardins, 75001 Paris'
 }
+
+${order.notes ? `Notes spéciales : ${order.notes}` : ''}
 
 Merci de votre confiance !
 Les Délices du Verger

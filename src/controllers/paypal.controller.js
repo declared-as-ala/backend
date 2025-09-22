@@ -106,7 +106,7 @@ class PayPalController {
 
     // Detailed item validation
     items.forEach((item, index) => {
-      const requiredFields = ['productId', 'variantId', 'name', 'variantUnit', 'price', 'quantity'];
+      const requiredFields = ['productId', 'variantId', 'name', 'price', 'quantity'];
       
       for (const field of requiredFields) {
         if (!item[field] && field !== 'quantity') {
@@ -150,7 +150,7 @@ class PayPalController {
     const { customer, items, pickupType, deliveryAddress } = orderData;
 
     const paypalItems = items.map((item) => ({
-      name: `${String(item.name)} - ${String(item.variantUnit)}`.substring(0, 127),
+      name: `${String(item.name)} - ${String(item.variantUnit || item.variantName || '')}`.substring(0, 127),
       unit_amount: {
         currency_code: "EUR",
         value: Number(item.price).toFixed(2),
@@ -238,18 +238,20 @@ class PayPalController {
       }
 
       // Préparer les données complètes de commande pour les stocker dans PayPal
+      // Map the data correctly to match the new Order model structure
       const completeOrderData = {
         items: sanitizedData.items.map((item) => ({
           productId: item.productId,
           variantId: item.variantId,
-          productTitle: item.name,
-          variantName: item.variantUnit,
+          productTitle: item.name, // Map 'name' to 'productTitle'
+          variantName: item.variantUnit || item.variantName || '', // Handle both field names
+          unitType: item.unitType || 'piece',
+          grams: item.grams || null,
           quantity: Number(item.quantity),
           price: Number(item.price),
           total: Number(item.price) * Number(item.quantity),
-          unitType: item.unitType || 'piece',
-          currency: item.currency || "EUR",
           image: item.image || "",
+          currency: item.currency || "EUR",
         })),
         customer: {
           fullName: customerName.trim(),
@@ -511,12 +513,18 @@ class PayPalController {
       // Clean up temporary data
       delete global.pendingPayPalOrders[paypalOrderId];
 
-      // Send invoice email
+      // Send invoice email with proper error handling
       try {
         await sendInvoiceEmail(order.customer.email, order);
-        logger.info(`[${requestId}] Invoice sent to:`, order.customer.email);
+        logger.info(`[${requestId}] Invoice sent successfully to: ${order.customer.email}`);
       } catch (emailError) {
-        logger.error(`[${requestId}] Failed to send invoice:`, emailError.message);
+        logger.error(`[${requestId}] Failed to send invoice email:`, {
+          email: order.customer.email,
+          orderId: order._id,
+          error: emailError.message,
+          stack: emailError.stack
+        });
+        // Don't fail the entire request if email fails - order is already created and paid
       }
 
       res.json({
