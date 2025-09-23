@@ -47,7 +47,7 @@ export const getDashboardStats = async (req, res) => {
       {
         $group: {
           _id: "$items.productId",
-          name: { $first: "$items.name" },
+          name: { $first: "$items.productTitle" }, // Changed from name to productTitle
           totalQty: { $sum: "$items.quantity" },
           revenue: { $sum: { $multiply: ["$items.price", "$items.quantity"] } },
         },
@@ -97,10 +97,10 @@ export const getDashboardStats = async (req, res) => {
 export const getRecentOrders = async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 10;
+    // Removed populate since customer is embedded, not referenced
     const orders = await Order.find({})
       .sort({ createdAt: -1 })
-      .limit(limit)
-      .populate("customer", "fullName email");
+      .limit(limit);
     res.json({ success: true, data: orders });
   } catch (err) {
     res
@@ -221,11 +221,21 @@ export const getCustomerGrowth = async (req, res) => {
 export const getLowStockProducts = async (req, res) => {
   try {
     const threshold = parseInt(req.query.threshold) || 5;
-    const products = await Product.find({
-      "variants.stock": { $lte: threshold },
-      isActive: true,
-    }).select("title variants");
-    res.json({ success: true, data: products });
+    // Note: Your Product model doesn't have stock fields anymore
+    // This function needs to be updated based on your inventory management approach
+    // For now, returning empty array until you define how stock is managed
+    const products = [];
+    
+    // If you add stock management back to variants, use this:
+    // const products = await Product.find({
+    //   "variants.stock": { $lte: threshold },
+    // }).select("title variants");
+    
+    res.json({ 
+      success: true, 
+      data: products,
+      message: "Stock management not implemented in current Product model"
+    });
   } catch (err) {
     res
       .status(500)
