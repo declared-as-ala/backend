@@ -31,6 +31,7 @@ const allowedOrigins = [
   "https://peaceful-pavlova-13c173.netlify.app",
   "http://localhost:3000",
   "https://lesdelicesadmin.com",
+  "https://www.lesdelicesadmin.com/",
 ];
 
 app.use(
