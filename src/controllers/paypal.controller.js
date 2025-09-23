@@ -12,20 +12,57 @@ const PAYPAL_API_BASE = {
 class PayPalController {
   constructor() {
     this.validateCredentials();
-    this.environment = process.env.PAYPAL_ENVIRONMENT || 'sandbox';
+    
+    // Production environment detection
+    this.environment = process.env.PAYPAL_ENVIRONMENT || 
+                      (process.env.NODE_ENV === 'production' ? 'live' : 'sandbox');
+                      
     this.apiBase = PAYPAL_API_BASE[this.environment] || PAYPAL_API_BASE.sandbox;
+    
+    // Production validation
+    if (process.env.NODE_ENV === 'production' && this.environment !== 'live') {
+      logger.warn('WARNING: Running in production but PayPal environment is not set to live');
+    }
+    
+    // Log environment info (remove sensitive data)
+    logger.info('PayPal Controller initialized:', {
+      environment: this.environment,
+      apiBase: this.apiBase,
+      nodeEnv: process.env.NODE_ENV,
+      hasClientId: !!process.env.PAYPAL_CLIENT_ID,
+      hasClientSecret: !!process.env.PAYPAL_CLIENT_SECRET,
+      baseUrl: process.env.BASE_URL
+    });
   }
 
   validateCredentials() {
-    const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
+    const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, BASE_URL } = process.env;
+    
     if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
       throw new Error("PayPal credentials are not configured");
+    }
+    
+    if (!BASE_URL) {
+      throw new Error("BASE_URL is required for PayPal return URLs");
+    }
+    
+    // Production validation
+    if (process.env.NODE_ENV === 'production') {
+      if (!BASE_URL.startsWith('https://')) {
+        logger.warn('WARNING: Production BASE_URL should use HTTPS');
+      }
+      
+      if (BASE_URL.includes('localhost')) {
+        throw new Error("Production environment cannot use localhost URLs");
+      }
     }
   }
 
   async getAccessToken() {
     try {
       const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
+
+      logger.info(`Requesting PayPal access token from ${this.environment} environment`);
 
       const response = await axios({
         url: `${this.apiBase}/v1/oauth2/token`,
@@ -46,13 +83,22 @@ class PayPalController {
         throw new PayPalError("Invalid token response from PayPal");
       }
 
+      logger.info('PayPal access token obtained successfully');
       return response.data.access_token;
+
     } catch (error) {
       logger.error("PayPal token generation failed:", {
         message: error.message,
         status: error.response?.status,
-        data: error.response?.data
+        data: error.response?.data,
+        environment: this.environment,
+        apiBase: this.apiBase
       });
+      
+      if (error.response?.status === 401) {
+        throw new PayPalError("PayPal credentials are invalid for " + this.environment + " environment");
+      }
+      
       throw new PayPalError("Failed to authenticate with PayPal");
     }
   }
@@ -163,8 +209,8 @@ class PayPalController {
 
     const purchaseUnit = {
       custom_id: String(customId),
-      reference_id: `TEMP_${Date.now()}`, // Temporary reference since no DB order yet
-      description: `Commande en attente de paiement`,
+      reference_id: `TEMP_${Date.now()}`,
+      description: `Commande Délices du Terroir - ${this.environment}`,
       amount: {
         currency_code: "EUR",
         value: totals.total.toFixed(2),
@@ -211,7 +257,7 @@ class PayPalController {
 
   async createPayPalOrder(req, res) {
     const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    logger.info(`[${requestId}] PayPal order creation started`);
+    logger.info(`[${requestId}] PayPal order creation started in ${this.environment} environment`);
 
     try {
       const orderData = req.body;
@@ -237,14 +283,13 @@ class PayPalController {
         throw new ValidationError("Customer name is required");
       }
 
-      // Préparer les données complètes de commande pour les stocker dans PayPal
-      // Map the data correctly to match the new Order model structure
+      // Prepare complete order data
       const completeOrderData = {
         items: sanitizedData.items.map((item) => ({
           productId: item.productId,
           variantId: item.variantId,
-          productTitle: item.name, // Map 'name' to 'productTitle'
-          variantName: item.variantUnit || item.variantName || '', // Handle both field names
+          productTitle: item.name,
+          variantName: item.variantUnit || item.variantName || '',
           unitType: item.unitType || 'piece',
           grams: item.grams || null,
           quantity: Number(item.quantity),
@@ -276,10 +321,12 @@ class PayPalController {
       // Build PayPal payload
       const purchaseUnit = this.buildPurchaseUnit(sanitizedData, totals, requestId);
       
-      // Setup mobile-optimized return URLs
-      const baseUrl = `${req.protocol}://${req.get("host")}`;
+      // Production return URLs
+      const baseUrl = process.env.BASE_URL;
       const returnUrl = `${baseUrl}/api/payments/paypal/return`;
       const cancelUrl = `${baseUrl}/api/payments/paypal/cancel`;
+
+      logger.info(`[${requestId}] PayPal return URLs:`, { returnUrl, cancelUrl });
 
       const payload = {
         intent: "CAPTURE",
@@ -298,7 +345,7 @@ class PayPalController {
       // Make PayPal API request
       const token = await this.getAccessToken();
       
-      logger.info(`[${requestId}] Creating PayPal order in ${this.environment} environment`);
+      logger.info(`[${requestId}] Creating PayPal order with payload size: ${JSON.stringify(payload).length} chars`);
 
       const response = await axios.post(
         `${this.apiBase}/v2/checkout/orders`, 
@@ -324,18 +371,17 @@ class PayPalController {
       logger.info(`[${requestId}] PayPal order created successfully`, {
         paypalOrderId: response.data.id,
         status: response.data.status,
-        approvalUrl: approvalUrl
+        approvalUrl: approvalUrl,
+        environment: this.environment
       });
 
-      // Store order data temporarily in memory/cache for later retrieval during capture
-      // You could also use Redis or another temporary storage solution
+      // Store order data temporarily
       global.pendingPayPalOrders = global.pendingPayPalOrders || {};
       global.pendingPayPalOrders[response.data.id] = completeOrderData;
 
-      // Return success response - NO database order created yet
       res.status(201).json({
         success: true,
-        paypalOrderId: response.data.id, // Return PayPal order ID, not DB order ID
+        paypalOrderId: response.data.id,
         approvalUrl,
         paypalOrder: {
           id: response.data.id,
@@ -350,7 +396,8 @@ class PayPalController {
       logger.error(`[${requestId}] PayPal order creation failed:`, {
         message: error.message,
         stack: error.stack,
-        response: error.response?.data
+        response: error.response?.data,
+        environment: this.environment
       });
       
       if (error instanceof ValidationError) {
@@ -382,7 +429,7 @@ class PayPalController {
 
   async capturePayPalOrder(req, res) {
     const requestId = `cap_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    logger.info(`[${requestId}] PayPal capture started`);
+    logger.info(`[${requestId}] PayPal capture started in ${this.environment} environment`);
 
     try {
       const { paypalOrderId } = req.body;
@@ -406,7 +453,6 @@ class PayPalController {
         });
       }
 
-      // First, get the order details to verify it's approved
       const token = await this.getAccessToken();
 
       logger.info(`[${requestId}] Checking PayPal order status: ${paypalOrderId}`);
@@ -425,10 +471,10 @@ class PayPalController {
       const orderDetails = orderDetailsResponse.data;
       logger.info(`[${requestId}] PayPal order status:`, {
         status: orderDetails.status,
-        intent: orderDetails.intent
+        intent: orderDetails.intent,
+        environment: this.environment
       });
 
-      // Check if order is approved before attempting capture
       if (orderDetails.status !== 'APPROVED') {
         const errorMessage = orderDetails.status === 'CANCELLED' 
           ? 'Le paiement a été annulé'
@@ -438,7 +484,8 @@ class PayPalController {
 
         logger.warn(`[${requestId}] Cannot capture order:`, {
           status: orderDetails.status,
-          paypalOrderId
+          paypalOrderId,
+          environment: this.environment
         });
 
         return res.status(422).json({
@@ -447,13 +494,13 @@ class PayPalController {
           message: errorMessage,
           details: {
             status: orderDetails.status,
-            paypalOrderId
+            paypalOrderId,
+            environment: this.environment
           },
           requestId
         });
       }
 
-      // Proceed with capture
       logger.info(`[${requestId}] Capturing approved PayPal order: ${paypalOrderId}`);
 
       const response = await axios.post(
@@ -475,10 +522,10 @@ class PayPalController {
       if (!isCompleted) {
         logger.error(`[${requestId}] PayPal capture failed:`, {
           status: captureStatus,
-          paypalOrderId
+          paypalOrderId,
+          environment: this.environment
         });
         
-        // Clean up temporary data
         delete global.pendingPayPalOrders[paypalOrderId];
         
         return res.status(422).json({
@@ -489,31 +536,32 @@ class PayPalController {
         });
       }
 
-      // NOW CREATE THE ORDER IN DATABASE - Payment is confirmed!
+      // Create order in database
       const order = await Order.create({
         ...orderData,
-        status: 'payé', // Directly set to paid since capture succeeded
+        status: 'payé',
         paypalOrderId: paypalOrderId,
         paypalCaptureId: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.id,
         paypalCaptureDetails: {
           captureId: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.id,
           status: captureStatus,
           capturedAt: new Date(),
-          amount: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.amount
+          amount: response.data.purchase_units?.[0]?.payments?.captures?.[0]?.amount,
+          environment: this.environment
         }
       });
 
-      logger.info(`[${requestId}] Order created in database after successful payment:`, {
+      logger.info(`[${requestId}] Order created successfully:`, {
         orderId: order._id,
         paypalOrderId,
         status: captureStatus,
-        captureId: order.paypalCaptureId
+        captureId: order.paypalCaptureId,
+        environment: this.environment
       });
 
-      // Clean up temporary data
       delete global.pendingPayPalOrders[paypalOrderId];
 
-      // Send invoice email with proper error handling
+      // Send invoice email
       try {
         await sendInvoiceEmail(order.customer.email, order);
         logger.info(`[${requestId}] Invoice sent successfully to: ${order.customer.email}`);
@@ -521,15 +569,13 @@ class PayPalController {
         logger.error(`[${requestId}] Failed to send invoice email:`, {
           email: order.customer.email,
           orderId: order._id,
-          error: emailError.message,
-          stack: emailError.stack
+          error: emailError.message
         });
-        // Don't fail the entire request if email fails - order is already created and paid
       }
 
       res.json({
         success: true,
-        orderId: order._id, // Now we have the actual DB order ID
+        orderId: order._id,
         paypalOrderId,
         captureStatus,
         order: {
@@ -538,6 +584,7 @@ class PayPalController {
           amount: order.amount,
           currency: order.currency,
         },
+        environment: this.environment,
         requestId
       });
 
@@ -545,7 +592,8 @@ class PayPalController {
       logger.error(`[${requestId}] PayPal capture failed:`, {
         message: error.message,
         status: error.response?.status,
-        data: error.response?.data
+        data: error.response?.data,
+        environment: this.environment
       });
 
       if (error.response?.status === 404) {
@@ -578,13 +626,13 @@ class PayPalController {
   async handlePayPalReturn(req, res) {
     try {
       const { token, PayerID } = req.query;
-      logger.info('PayPal return:', { token, PayerID });
+      logger.info(`PayPal return - Environment: ${this.environment}`, { token, PayerID });
 
       res.send(`
         <!DOCTYPE html>
         <html lang="fr">
           <head>
-            <title>Paiement Approuvé</title>
+            <title>Paiement Approuvé - Délices du Terroir</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta charset="utf-8">
             <style>
@@ -634,31 +682,29 @@ class PayPalController {
               <div class="spinner"></div>
               <p><small>Finalisation en cours...</small></p>
               ${token ? `<div class="details">Référence: ${token.substring(0, 10)}***</div>` : ''}
+              <div class="details">Environnement: ${this.environment}</div>
             </div>
             <script>
               const messageData = {
                 type: 'PAYPAL_SUCCESS',
                 token: '${token || ''}',
                 payerId: '${PayerID || ''}',
+                environment: '${this.environment}',
                 timestamp: new Date().toISOString()
               };
 
-              // React Native WebView communication
               if (window.ReactNativeWebView) {
                 window.ReactNativeWebView.postMessage(JSON.stringify(messageData));
               }
 
-              // Alternative communication methods
               if (window.parent && window.parent !== window) {
                 window.parent.postMessage(messageData, '*');
               }
 
-              // Try to close after successful communication
               setTimeout(() => {
                 try {
                   window.close();
                 } catch (e) {
-                  // If can't close, show success message
                   document.body.innerHTML = \`
                     <div class="container">
                       <div class="success-icon">🎉</div>
@@ -682,7 +728,8 @@ class PayPalController {
             if (window.ReactNativeWebView) {
               window.ReactNativeWebView.postMessage(JSON.stringify({
                 type: 'PAYPAL_ERROR',
-                error: 'Payment processing failed'
+                error: 'Payment processing failed',
+                environment: '${this.environment}'
               }));
             }
           </script>
@@ -694,13 +741,13 @@ class PayPalController {
   async handlePayPalCancel(req, res) {
     try {
       const { token } = req.query;
-      logger.info('PayPal payment cancelled:', { token });
+      logger.info(`PayPal payment cancelled - Environment: ${this.environment}`, { token });
 
       res.send(`
         <!DOCTYPE html>
         <html lang="fr">
           <head>
-            <title>Paiement Annulé</title>
+            <title>Paiement Annulé - Délices du Terroir</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta charset="utf-8">
             <style>
@@ -726,6 +773,7 @@ class PayPalController {
               .cancel-icon { font-size: 60px; margin-bottom: 20px; }
               h1 { color: #ef4444; margin-bottom: 15px; font-size: 24px; }
               p { color: #666; margin-bottom: 20px; line-height: 1.5; }
+              .details { font-size: 12px; color: #9ca3af; margin-top: 15px; }
             </style>
           </head>
           <body>
@@ -734,11 +782,13 @@ class PayPalController {
               <h1>Paiement Annulé</h1>
               <p>Vous avez annulé le paiement PayPal.</p>
               <p><small>Vous pouvez fermer cette fenêtre et réessayer.</small></p>
+              <div class="details">Environnement: ${this.environment}</div>
             </div>
             <script>
               const messageData = {
                 type: 'PAYPAL_CANCELLED',
                 token: '${token || ''}',
+                environment: '${this.environment}',
                 timestamp: new Date().toISOString()
               };
 
@@ -785,6 +835,12 @@ class PayPalController {
         return res.status(404).json({ error: 'Order not found' });
       }
 
+      logger.info(`Order status check:`, {
+        orderId,
+        status: order.status,
+        environment: this.environment
+      });
+
       res.json({
         success: true,
         order: {
@@ -798,7 +854,8 @@ class PayPalController {
           itemsCount: order.items?.length || 0,
           createdAt: order.createdAt,
           updatedAt: order.updatedAt
-        }
+        },
+        environment: this.environment
       });
     } catch (error) {
       logger.error('Order status check failed:', error);

@@ -28,7 +28,7 @@ const app = express();
 // Standard middlewares (before body parsing)
 app.use(helmet());
 const allowedOrigins = [
-  "https://peaceful-pavlova-13c173.netlify.app",
+
   "http://localhost:3000",
   "https://lesdelicesadmin.com",
   "https://www.lesdelicesadmin.com",
