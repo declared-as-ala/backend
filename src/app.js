@@ -4,7 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { tinyRateLimit } from "./middleware/rateLimit.js";
-
+import { connectDB } from "./config/db.js";
 // Customer routes
 import productRoutes from "./routes/product.routes.js";
 import StripeRoutes from "./routes/stripe.routes.js";
@@ -64,7 +64,15 @@ app.use("/api", (req, res, next) => {
   res.setHeader("Expires", "0");
   next();
 });
-
+app.get('/db', async (req, res) => {
+  try {
+    await connectDB();
+    res.status(200).json({ message: '✅ Database connected successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: '❌ Database connection failed', error: err.message });
+  }
+});
 // ------------------- Routes -------------------
 
 // Customer routes
