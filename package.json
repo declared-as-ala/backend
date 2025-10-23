@@ -1,12 +1,13 @@
 {
   "name": "ecommerce-backend",
   "version": "1.0.0",
-  "main": "src/Server.js",
+  "main": "api/index.js",
   "type": "module",
   "scripts": {
     "start": "node src/Server.js",
     "dev": "nodemon src/Server.js",
-    "seed": "node scripts/seed.js"
+    "seed": "node scripts/seed.js",
+    "build": "echo 'No build step required for Node.js API'"
   },
   "keywords": [],
   "author": "",

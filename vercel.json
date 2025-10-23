@@ -1,23 +1,19 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/Server.js",
-      "use": "@vercel/node"
+  "name": "ecommerce-backend",
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30,
+      "memory": 1024
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/Server.js"
+      "dest": "/api/index.js"
     }
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "src/Server.js": {
-      "maxDuration": 30
-    }
   }
 }
