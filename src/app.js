@@ -65,6 +65,27 @@ app.use("/api", (req, res, next) => {
   res.setHeader("Expires", "0");
   next();
 });
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  try {
+    await connectDB();
+    res.status(200).json({ 
+      status: 'healthy',
+      message: '✅ Database connected successfully',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('Health check failed:', err);
+    res.status(503).json({ 
+      status: 'unhealthy',
+      message: '❌ Database connection failed', 
+      error: err.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Database connection test endpoint
 app.get('/db', async (req, res) => {
   try {
     await connectDB();

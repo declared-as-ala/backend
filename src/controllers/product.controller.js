@@ -1,4 +1,5 @@
 import Product from '../models/Product.js';
+import { connectDB } from '../config/db.js';
 
 /**
  * @desc   List products with search, filter, pagination
@@ -6,6 +7,9 @@ import Product from '../models/Product.js';
  */
 export async function listProducts(req, res, next) {
   try {
+    // Ensure database connection
+    await connectDB();
+
     const {
       q, // search keyword
       category, // filter by category
@@ -40,10 +44,11 @@ export async function listProducts(req, res, next) {
     const products = await Product.find(filter)
       .skip(skip)
       .limit(limitNumber)
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .maxTimeMS(10000); // 10 second timeout
 
     // Total count
-    const total = await Product.countDocuments(filter);
+    const total = await Product.countDocuments(filter).maxTimeMS(10000);
 
     res.json({
       data: products,
@@ -53,6 +58,15 @@ export async function listProducts(req, res, next) {
     });
   } catch (err) {
     console.error('[listProducts] Error:', err);
+    
+    // Handle specific MongoDB errors
+    if (err.name === 'MongooseError' && err.message.includes('buffering timed out')) {
+      return res.status(503).json({ 
+        message: 'Service temporarily unavailable. Please try again later.',
+        error: 'Database connection timeout'
+      });
+    }
+    
     next(err);
   }
 }
@@ -63,12 +77,25 @@ export async function listProducts(req, res, next) {
  */
 export async function getProduct(req, res, next) {
   try {
-    const product = await Product.findById(req.params.id);
+    // Ensure database connection
+    await connectDB();
+    
+    const product = await Product.findById(req.params.id).maxTimeMS(10000);
     if (!product) {
       return res.status(404).json({ message: 'Produit introuvable' });
     }
     res.json(product);
   } catch (err) {
+    console.error('[getProduct] Error:', err);
+    
+    // Handle specific MongoDB errors
+    if (err.name === 'MongooseError' && err.message.includes('buffering timed out')) {
+      return res.status(503).json({ 
+        message: 'Service temporarily unavailable. Please try again later.',
+        error: 'Database connection timeout'
+      });
+    }
+    
     next(err);
   }
 }
