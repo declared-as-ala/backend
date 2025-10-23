@@ -1,5 +1,5 @@
 import Product from '../models/Product.js';
-import { connectDB } from '../config/db.js';
+import { connectDB } from '../config/db-vercel.js';
 
 /**
  * @desc   List products with search, filter, pagination

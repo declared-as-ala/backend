@@ -12,14 +12,12 @@ export async function connectDB() {
   }
 
   if (!cached.promise) {
+    // Simplified options for Vercel/serverless
     const opts = {
-      maxPoolSize: 10,
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-      connectTimeoutMS: 10000,
-      maxIdleTimeMS: 30000,
-      retryWrites: true,
-      retryReads: true,
+      maxPoolSize: 5,
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 30000,
+      connectTimeoutMS: 15000,
     };
 
     cached.promise = mongoose

@@ -4,7 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { tinyRateLimit } from "./middleware/rateLimit.js";
-import { connectDB } from "./config/db.js";
+import { connectDB } from "./config/db-vercel.js";
 // Customer routes
 import productRoutes from "./routes/product.routes.js";
 import StripeRoutes from "./routes/stripe.routes.js";
