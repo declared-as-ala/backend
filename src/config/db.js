@@ -12,19 +12,6 @@ export async function connectDB() {
   }
 
   if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
-      bufferMaxEntries: 0,
-      maxPoolSize: 10,
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-      family: 4,
-      connectTimeoutMS: 10000,
-      maxIdleTimeMS: 30000,
-      retryWrites: true,
-      retryReads: true,
-    };
-
     cached.promise = mongoose
       .connect(process.env.MONGO_URI, opts)
       .then((mongoose) => {
